@@ -1,0 +1,116 @@
+name: CyberLeafX
+options:
+  minimumXcodeGenVersion: 2.42.0
+  createIntermediateGroups: true
+packages:
+  Alamofire:
+    url: https://github.com/Alamofire/Alamofire.git
+    majorVersion: 5.10.0
+  RealmSwift:
+    url: https://github.com/realm/realm-swift.git
+    majorVersion: 20.0.2
+  SQLite:
+    url: https://github.com/stephencelis/SQLite.swift.git
+    majorVersion: 0.15.3
+targets:
+  CyberLeafX-iOS:
+    platform: iOS 
+    type: application
+    sources:
+      - CyberLeafX/iOS
+    configFiles:
+      Debug: configs/CyberLeafX-iOS-Debug.xcconfig
+      Release: configs/CyberLeafX-iOS-Release.xcconfig
+    scheme:
+      environmentVariables:
+        ENABLE_SIGNPOST: YES
+  #macOS application
+  CyberLeafX-macOS:
+    platform: macOS
+    type: application
+    sources:
+      - CyberLeafX/macOS
+    configFiles:
+      Debug: configs/CyberLeafX-macOS-Debug.xcconfig
+      Release: configs/CyberLeafX-macOS-Release.xcconfig
+    dependencies:
+      - target: Shared
+    scheme:
+      environmentVariables:
+        ENABLE_SIGNPOST: YES
+
+  # Framework Targets
+  Shared:
+    platform: macOS
+    type: framework
+    sources:
+      - Shared
+    configFiles:
+      Debug: configs/Shared-Debug.xcconfig
+      Release: configs/Shared-Release.xcconfig
+    dependencies:
+      - target: CyberLeafXCore
+  CyberLeafXCore:
+    platform: macOS
+    type: framework
+    sources:
+      - CyberLeafXCore
+    configFiles:
+      Debug: configs/CyberLeafXCore-Debug.xcconfig
+      Release: configs/CyberLeafXCore-Release.xcconfig
+    dependencies:
+      - package: Alamofire 
+      - package: RealmSwift
+  #Test Targets
+  CyberLeafX-macOSTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/CyberLeafX-macOSTests.xcconfig
+    sources:
+      - Tests/CyberLeafX-macOSTests
+    dependencies:
+      - target: CyberLeafX-macOS
+    scheme:
+      testTargets:
+        - CyberLeafX-macOSTests
+      gatherCoverageData: true
+  CyberLeafX-iOSTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/CyberLeafX-iOSTests.xcconfig
+    sources:
+      - Tests/CyberLeafX-iOSTests
+    dependencies:
+      - target: CyberLeafX-iOS
+    scheme:
+      testTargets:
+        - CyberLeafX-iOSTests
+      gatherCoverageData: true
+  SharedTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/SharedTests.xcconfig
+    sources:
+      - Tests/SharedTests
+    dependencies:
+      - target: Shared
+    scheme:
+      testTargets:
+        - SharedTests
+      gatherCoverageData: true
+  CyberLeafXCoreTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/CyberLeafXCoreTests.xcconfig
+    sources:
+      - Tests/CyberLeafXCoreTests
+    dependencies:
+      - target: CyberLeafXCore
+    scheme:
+      testTargets:
+        - CyberLeafXCoreTests
+      gatherCoverageData: true

@@ -2,7 +2,7 @@
 //  Shared.h
 //  Shared
 //
-//  Created by Hung Q. on 20/4/25.
+//  Created by Hg Q. on 20/4/25.
 //
 
 #import <Foundation/Foundation.h>

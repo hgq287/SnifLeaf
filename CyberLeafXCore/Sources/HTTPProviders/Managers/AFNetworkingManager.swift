@@ -2,7 +2,7 @@
 //  AFNetworkingManager.swift
 //  CyberLeafXCore
 //
-//  Created by Dat T. on 10/14/19.
+//  Created by Hg Q. on 10/14/19.
 //
 
 import Foundation

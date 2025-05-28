@@ -2,7 +2,7 @@
 //  NetworkingFactory.swift
 //  CyberLeafXCore
 //
-//  Created by Dat T. on 10/15/19.
+//  Created by Hg Q. on 10/15/19.
 //
 
 import Foundation

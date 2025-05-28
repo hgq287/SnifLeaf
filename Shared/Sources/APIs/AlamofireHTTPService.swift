@@ -2,12 +2,12 @@
 //  AlamofireHTTPService.swift
 //  Shared
 //
-//  Created by Dat T. on 10/13/19.
+//  Created by Hg Q. on 10/13/19.
 //
 
 import Foundation
 import CyberLeafXCore
 
-class AlamofireHTTPService  {
+public class AlamofireHTTPService  {
 
 }

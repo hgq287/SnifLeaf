@@ -12,6 +12,9 @@ packages:
   SQLite:
     url: https://github.com/stephencelis/SQLite.swift.git
     majorVersion: 0.15.3
+  SwiftNIO:
+    url: https://github.com/apple/swift-nio.git
+    majorVersion: 2.83.0
 targets:
   CyberLeafX-iOS:
     platform: iOS 

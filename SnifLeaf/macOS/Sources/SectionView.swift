@@ -11,35 +11,38 @@ struct SectionView: View {
     let title: String
     var json: [String: String]? = nil
     var raw: String? = nil
+    var regex: NSRegularExpression? = nil
+
+    @State private var nodes: [JSONNode] = []
+    @State private var expanded = true
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(title)
-                .font(.headline)
-            if let json = json {
-                ScrollView(.horizontal) {
-                    VStack(alignment: .leading, spacing: 2) {
-                        ForEach(json.sorted(by: { $0.key < $1.key }), id: \ .key) { key, value in
-                            Text("\(key): \(value)")
-                                .font(.system(.caption, design: .monospaced))
-                        }
-                    }
-                }
-            } else if let raw = raw, !raw.isEmpty {
-                ScrollView(.horizontal) {
-                    Text(raw)
-                        .font(.system(.caption, design: .monospaced))
-                        .padding(4)
-                        .background(Color(.systemGray.withAlphaComponent(0.5)))
-                        .cornerRadius(4)
-                }
-            } else {
-                Text("No data")
-                    .foregroundColor(.secondary)
-            }
+        DisclosureGroup(isExpanded: $expanded) { content } label: {
+            Text(title).font(.headline)
         }
-        .padding(6)
-        .background(Color(.systemGray.withAlphaComponent(0.5)))
-        .cornerRadius(8)
+        .onAppear {
+            if let json { nodes = json.map { JSONNode(key: $0.key, value: .string($0.value)) } }
+        }
+    }
+
+    @ViewBuilder private var content: some View {
+        if let json {
+            VStack(alignment: .leading, spacing: 2) {
+                ForEach(nodes) { JSONNodeView(node: $0, regex: regex) }
+            }.padding(.leading, 6)
+        } else if let raw, !raw.isEmpty {
+            ScrollView(.horizontal) {
+                Text(raw)
+                    .font(.system(.caption, design: .monospaced))
+                    .foregroundColor(colorFor(raw))
+            }
+        } else { Text("No data").foregroundColor(.secondary) }
+    }
+
+    private func colorFor(_ text: String) -> Color { regexMatch(text) ? .red : .primary }
+    private func regexMatch(_ text: String) -> Bool {
+        guard let regex else { return false }
+        let range = NSRange(text.startIndex..., in: text)
+        return regex.firstMatch(in: text, options: [], range: range) != nil
     }
 }

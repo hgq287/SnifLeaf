@@ -9,22 +9,15 @@ import SwiftUI
 
 struct MitmLogRow: View {
     let log: MitmLog
-
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 2) {
             Text("[\(log.method)] \(log.url)")
-                .font(.subheadline)
                 .lineLimit(1)
             HStack {
-                Text("Status: \(log.status_code)")
-                    .foregroundColor(.green)
+                Text("Status: \(log.status_code)").foregroundColor(.green)
                 Spacer()
-                Text("Host: \(log.host)")
-                    .foregroundColor(.gray)
-            }
-            .font(.caption)
+                Text(log.host).foregroundColor(.gray)
+            }.font(.caption)
         }
-        .padding(4)
     }
 }
-

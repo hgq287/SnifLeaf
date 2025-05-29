@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MitmLog: Identifiable, Decodable {
+struct MitmLog: Identifiable, Decodable, Hashable {
     let id = UUID()
     let type: String
     let method: String
@@ -18,7 +18,5 @@ struct MitmLog: Identifiable, Decodable {
     let response_headers: [String: String]
     let response_content: String
 
-    var host: String {
-        URL(string: url)?.host ?? ""
-    }
+    var host: String { URL(string: url)?.host ?? "" }
 }

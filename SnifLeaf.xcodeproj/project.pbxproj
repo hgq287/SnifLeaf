@@ -1,0 +1,1395 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		08076691FE6180502A4DA154 /* APICredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4BFFDCF121FD8894DD483 /* APICredentials.swift */; };
+		0A81C48185CE5AD20D3058BA /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617F88703E86451F54504E8D /* BaseObject.swift */; };
+		0B6F7AEED7F9AA302076EAFC /* SnifLeafTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58749B397B8BB5B9FE546819 /* SnifLeafTests.swift */; };
+		0BC0CA58497582AD8F2656DE /* SnifLeafCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0EE9F587D752BD9E0A9F20A9 /* Shared.docc in Sources */ = {isa = PBXBuildFile; fileRef = 572F6524E84CD2CA552A247C /* Shared.docc */; };
+		16F0EE14E04587E2EB062D8D /* CyberLeafXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51925A276B112A48FC8C903 /* CyberLeafXApp.swift */; };
+		1AB07AFD2C689D7A5AED2056 /* IDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27478ADB64C00C7E99FA44A4 /* IDatabase.swift */; };
+		2091699F7A734279C566D3B0 /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF5D5D9AF2FA040C6B20449D /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2C1EC5C03D29C3214B55D84B /* IBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF310B83651454699A55176F /* IBaseService.swift */; };
+		2ED1957AF57DFF50034947F6 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE84612F17E3F74C54B6C2B0 /* AlamofireManager.swift */; };
+		318B34ACEE1EDF68BE73230E /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
+		3427ECE1C8CE58CEC944D6CE /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF217A39F3FE2B08493DFA5 /* APIConfig.swift */; };
+		374AAD1DF746EC4DF74CDDBA /* AlamofireHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CDA1F510BC8CDBDB598E5F /* AlamofireHTTPService.swift */; };
+		381D642AEAB5EE63D9D1981B /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8D3E9DBC5852E42A5F7318 /* BaseService.swift */; };
+		4E4768677729C439289265CA /* IBaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F349F8A1E34878C5930F0B7D /* IBaseRepository.swift */; };
+		4E9B80AE2329D786E70AA992 /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF5D5D9AF2FA040C6B20449D /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4FA21684DDE6EC141F92CB8B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3033738EC1D8844C676BCD7C /* RealmSwift */; };
+		56B217BD92C6F74DBDE111F6 /* Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC62F9E4E6FB80459803164 /* Shared.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		66A6894F158DD8DA75F3D312 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5D5D9AF2FA040C6B20449D /* Shared.framework */; };
+		74A38362564A1BB6FE709439 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5D5D9AF2FA040C6B20449D /* Shared.framework */; };
+		7D3760A3ADDC91062A2D4E8D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BA68911699B9BB0495BBA5 /* ContentView.swift */; };
+		8589BFC0AE3675882A6A9C2C /* NioClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59606CAA95643E61FDC40F /* NioClient.swift */; };
+		8AAC2B696CDC3F9CE3374FE4 /* APICredentialsComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7D0418BE07829203386EC2 /* APICredentialsComponents.swift */; };
+		9559300C3CD8D0015599084F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 488B25AFBD1ACA0C04581660 /* Assets.xcassets */; };
+		95794707C6CB42859FB4CB72 /* SnifLeafCore.docc in Sources */ = {isa = PBXBuildFile; fileRef = 30A73B4EAFEF863551378076 /* SnifLeafCore.docc */; };
+		96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0133403FFABD67FA55E939C /* SnifLeafApp.swift */; };
+		9F8F7FDC68FF3FBDAD03E469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D3E8DB852049383161BE2E /* Assets.xcassets */; };
+		A343742005EEDA76B20E027D /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A45232C7AA6395F27A63 /* SharedTests.swift */; };
+		A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */; };
+		AF24A0ACD2B5B32268CA52AE /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
+		BBC45DFF32751C58868415A4 /* GenericItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */; };
+		BF508BE7C15711E540829961 /* SnifLeafCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B1D31778A7F0EA199C4747E /* SnifLeafCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8D83B0FEEEDFD9BE727162C /* APICredentialsComponentsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C94C03ADF7BB61383DD92 /* APICredentialsComponentsError.swift */; };
+		C8F362740A389E5D237C4FDA /* SnifLeafTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CD2EDAB610F0B21294023D /* SnifLeafTests.swift */; };
+		D4327E300A9CBCE182F3D6B6 /* SnifLeafCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9825CD601110C306F1ECA80A /* SnifLeafCoreTests.swift */; };
+		DAABEE8BC9EE2497CA0396C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A72B74545B7F1397C582285 /* Preview Assets.xcassets */; };
+		E69A576AA776A7134E7E269D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 010D13645D20C92B855982CE /* Alamofire */; };
+		EB2DB5B7DC3F49B059E1F744 /* NetworkingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294ED0F15FE4B62ACB3E67D /* NetworkingFactory.swift */; };
+		EB2E413FAA14DF61D5C84518 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6140F733EAE7B8085ABEF9FF /* Preview Assets.xcassets */; };
+		F0E1FCCBACF5FC519AC63DBF /* INetworkingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB16C0EDE1B3A55B70B7B5D /* INetworkingFactory.swift */; };
+		F1AEA6BCA5D1DE8089C9A1E0 /* IHTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E1A22158281CB859F67816 /* IHTTPManager.swift */; };
+		F6FD1D03E6718E1E748DF62D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC9E3F986CF841F18C9F8D8 /* ContentView.swift */; };
+		F9D82B00C0F04FDECE1A175C /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC925710F3A122E5A211165D /* Database.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0DC8FD35605CF8B6DD81A379 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E636D91F21B1EFBE41B889E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F607616D2158766B57B44116;
+			remoteInfo = SnifLeafCore;
+		};
+		7D003C1D4AA0804634B321EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E636D91F21B1EFBE41B889E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46DC3005F1BE18659533593F;
+			remoteInfo = "SnifLeaf-iOS";
+		};
+		9D7ACF7B13F5C8A60743911C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E636D91F21B1EFBE41B889E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2276B664E57CC0A135772C1;
+			remoteInfo = Shared;
+		};
+		CAA5BEFC3FF789CEA40BC39C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E636D91F21B1EFBE41B889E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D0A9F2A19BA4A77897604D0;
+			remoteInfo = "SnifLeaf-macOS";
+		};
+		D064AD5E8FBF1E7B89D04402 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E636D91F21B1EFBE41B889E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2276B664E57CC0A135772C1;
+			remoteInfo = Shared;
+		};
+		D6ACE57D87A44604F74D1946 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E636D91F21B1EFBE41B889E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F607616D2158766B57B44116;
+			remoteInfo = SnifLeafCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF84F16B75520CB275FDB2C2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2091699F7A734279C566D3B0 /* Shared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA99489EE48A488F718C2850 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4E9B80AE2329D786E70AA992 /* Shared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDDEF6546FE8B8618D4190D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0BC0CA58497582AD8F2656DE /* SnifLeafCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0294ED0F15FE4B62ACB3E67D /* NetworkingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingFactory.swift; sourceTree = "<group>"; };
+		08B4BFFDCF121FD8894DD483 /* APICredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICredentials.swift; sourceTree = "<group>"; };
+		0C4536E0C8C6BF7B13444AAC /* SnifLeafCore-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeafCore-Debug.xcconfig"; sourceTree = "<group>"; };
+		1305DE5B865DF53B152EBFE3 /* SharedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EC8A45232C7AA6395F27A63 /* SharedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTests.swift; sourceTree = "<group>"; };
+		1EC9E3F986CF841F18C9F8D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1F28CE6CECD5BD982B5DE1DE /* SnifLeaf-iOS-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-iOS-Debug.xcconfig"; sourceTree = "<group>"; };
+		27478ADB64C00C7E99FA44A4 /* IDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDatabase.swift; sourceTree = "<group>"; };
+		2F8BF09FCD81374D6A9811CD /* SnifLeaf-iOS-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-iOS-Release.xcconfig"; sourceTree = "<group>"; };
+		30A73B4EAFEF863551378076 /* SnifLeafCore.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SnifLeafCore.docc; sourceTree = "<group>"; };
+		33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFNetworkingManager.swift; sourceTree = "<group>"; };
+		344C94C03ADF7BB61383DD92 /* APICredentialsComponentsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICredentialsComponentsError.swift; sourceTree = "<group>"; };
+		488B25AFBD1ACA0C04581660 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A7D0418BE07829203386EC2 /* APICredentialsComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICredentialsComponents.swift; sourceTree = "<group>"; };
+		572F6524E84CD2CA552A247C /* Shared.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Shared.docc; sourceTree = "<group>"; };
+		58749B397B8BB5B9FE546819 /* SnifLeafTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnifLeafTests.swift; sourceTree = "<group>"; };
+		6140F733EAE7B8085ABEF9FF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		617F88703E86451F54504E8D /* BaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
+		6569B26E22A4F1B5A38A6135 /* Shared-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Shared-Debug.xcconfig"; sourceTree = "<group>"; };
+		69DCF76AD814E93D36076B71 /* SnifLeaf-macOSTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-macOSTests.xcconfig"; sourceTree = "<group>"; };
+		6AA1ABB6FD345CD75495E330 /* SnifLeaf-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SnifLeaf-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C8D3E9DBC5852E42A5F7318 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		76830FBD54532B00BFE9B3DC /* SnifLeafCore-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeafCore-Release.xcconfig"; sourceTree = "<group>"; };
+		77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnifLeafCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7808ED5BC8D2F8A6B979417A /* SnifLeaf-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SnifLeaf-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EF217A39F3FE2B08493DFA5 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
+		83F77C526345A886EFA96A75 /* SnifLeaf-macOS-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-macOS-Debug.xcconfig"; sourceTree = "<group>"; };
+		84CD2EDAB610F0B21294023D /* SnifLeafTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnifLeafTests.swift; sourceTree = "<group>"; };
+		89734DAA8B96A521DCA1CDA3 /* SnifLeaf-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SnifLeaf-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A72B74545B7F1397C582285 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8AB16C0EDE1B3A55B70B7B5D /* INetworkingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INetworkingFactory.swift; sourceTree = "<group>"; };
+		90D3E8DB852049383161BE2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		93CDA1F510BC8CDBDB598E5F /* AlamofireHTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireHTTPService.swift; sourceTree = "<group>"; };
+		9825CD601110C306F1ECA80A /* SnifLeafCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnifLeafCoreTests.swift; sourceTree = "<group>"; };
+		9B1D31778A7F0EA199C4747E /* SnifLeafCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnifLeafCore.h; sourceTree = "<group>"; };
+		9BC62F9E4E6FB80459803164 /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
+		9FE60CE0E812382C0D7AB32A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
+		A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTests.xcconfig; sourceTree = "<group>"; };
+		A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericItemRepository.swift; sourceTree = "<group>"; };
+		A9358DA13BCE6A5266FF305A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
+		B7FED6C8E9988A89199B9BE0 /* Shared-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Shared-Release.xcconfig"; sourceTree = "<group>"; };
+		BE84612F17E3F74C54B6C2B0 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
+		BF310B83651454699A55176F /* IBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBaseService.swift; sourceTree = "<group>"; };
+		C0133403FFABD67FA55E939C /* SnifLeafApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnifLeafApp.swift; sourceTree = "<group>"; };
+		C94B986170E9DC23235C74A9 /* SnifLeaf-macOS-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-macOS-Release.xcconfig"; sourceTree = "<group>"; };
+		C9E1A22158281CB859F67816 /* IHTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHTTPManager.swift; sourceTree = "<group>"; };
+		CB309C4D749280B99F7AD699 /* SnifLeaf-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SnifLeaf-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF7A24E6553D86FD4F7FF485 /* SnifLeafCoreTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SnifLeafCoreTests.xcconfig; sourceTree = "<group>"; };
+		DC925710F3A122E5A211165D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		E51925A276B112A48FC8C903 /* CyberLeafXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyberLeafXApp.swift; sourceTree = "<group>"; };
+		E8BA68911699B9BB0495BBA5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EC846B7A9B178A67216F9754 /* SnifLeafCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnifLeafCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF59606CAA95643E61FDC40F /* NioClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NioClient.swift; sourceTree = "<group>"; };
+		F349F8A1E34878C5930F0B7D /* IBaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBaseRepository.swift; sourceTree = "<group>"; };
+		F3FDAE2A956F4EB42B2F96CF /* SnifLeaf-iOSTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-iOSTests.xcconfig"; sourceTree = "<group>"; };
+		FF5D5D9AF2FA040C6B20449D /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		21F3728CDDF83D01545BC431 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66A6894F158DD8DA75F3D312 /* Shared.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AA9252F379BCF12BDD75FF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E69A576AA776A7134E7E269D /* Alamofire in Frameworks */,
+				4FA21684DDE6EC141F92CB8B /* RealmSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5132D91D6F50C9D34A13357 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF24A0ACD2B5B32268CA52AE /* SnifLeafCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0FCB7AE16E7A8288A73BB7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				318B34ACEE1EDF68BE73230E /* SnifLeafCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE019F8F8613A87ECE59D3B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74A38362564A1BB6FE709439 /* Shared.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05EA1FAE3FF31BCE6AAA8234 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6140F733EAE7B8085ABEF9FF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0EF21DEDB8CBE72097A0925E /* SnifLeaf-macOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				58749B397B8BB5B9FE546819 /* SnifLeafTests.swift */,
+			);
+			path = "SnifLeaf-macOSTests";
+			sourceTree = "<group>";
+		};
+		119983A2AA9F0F486B7C624F /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				DC925710F3A122E5A211165D /* Database.swift */,
+				27478ADB64C00C7E99FA44A4 /* IDatabase.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		2AE2683CFB78D8FA21FD0BDC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				617F88703E86451F54504E8D /* BaseObject.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		332FED7C28F75E29F4F42737 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				5038B2688520C9C4BBC5DFD6 /* Data */,
+				335FF8E04045E064984F1E9B /* HTTPProviders */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		335FF8E04045E064984F1E9B /* HTTPProviders */ = {
+			isa = PBXGroup;
+			children = (
+				7EF217A39F3FE2B08493DFA5 /* APIConfig.swift */,
+				C9E1A22158281CB859F67816 /* IHTTPManager.swift */,
+				8AB16C0EDE1B3A55B70B7B5D /* INetworkingFactory.swift */,
+				0294ED0F15FE4B62ACB3E67D /* NetworkingFactory.swift */,
+				8D99A570745DDCC0F2748CBC /* APICredentials */,
+				DCF53A1B6534FB8C1E5CA7A7 /* Managers */,
+			);
+			path = HTTPProviders;
+			sourceTree = "<group>";
+		};
+		3541B6ADC88419C0AE2C2B0F /* SnifLeafCore */ = {
+			isa = PBXGroup;
+			children = (
+				30A73B4EAFEF863551378076 /* SnifLeafCore.docc */,
+				9B1D31778A7F0EA199C4747E /* SnifLeafCore.h */,
+				332FED7C28F75E29F4F42737 /* Sources */,
+			);
+			path = SnifLeafCore;
+			sourceTree = "<group>";
+		};
+		5038B2688520C9C4BBC5DFD6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				119983A2AA9F0F486B7C624F /* Database */,
+				2AE2683CFB78D8FA21FD0BDC /* Models */,
+				70AEC61D8F32CD99C03A6F87 /* Repositories */,
+				6F02A4E756D4E38384A7A239 /* Services */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		50D9B23A2085F16F21DFF6E5 /* SnifLeaf */ = {
+			isa = PBXGroup;
+			children = (
+				A54B45AE77E1D93D240F940F /* iOS */,
+				63D5F497EAA6FD4068096BD3 /* macOS */,
+			);
+			path = SnifLeaf;
+			sourceTree = "<group>";
+		};
+		56EFBDC6F1D9C333E89E70BB /* NetInterceptor */ = {
+			isa = PBXGroup;
+			children = (
+				EF59606CAA95643E61FDC40F /* NioClient.swift */,
+			);
+			path = NetInterceptor;
+			sourceTree = "<group>";
+		};
+		5822D557B3C521300075582A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				90D3E8DB852049383161BE2E /* Assets.xcassets */,
+				E8BA68911699B9BB0495BBA5 /* ContentView.swift */,
+				E51925A276B112A48FC8C903 /* CyberLeafXApp.swift */,
+				05EA1FAE3FF31BCE6AAA8234 /* Preview Content */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		58506E4867330C9E05B224AF /* SnifLeafCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				9825CD601110C306F1ECA80A /* SnifLeafCoreTests.swift */,
+			);
+			path = SnifLeafCoreTests;
+			sourceTree = "<group>";
+		};
+		63D5F497EAA6FD4068096BD3 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				9FE60CE0E812382C0D7AB32A /* SnifLeaf.entitlements */,
+				83CACDCF0E642970BD88D871 /* Sources */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		652AF68A30E240B0CDB81525 = {
+			isa = PBXGroup;
+			children = (
+				7A180F4A562F9843182C104C /* configs */,
+				50D9B23A2085F16F21DFF6E5 /* SnifLeaf */,
+				B4BFD59A2D87E1514B2A847C /* Shared */,
+				3541B6ADC88419C0AE2C2B0F /* SnifLeafCore */,
+				A235E3CAA172158A71109A5B /* Tests */,
+				7AA2A425B8C6EFE7ABBC662D /* Products */,
+				A33410042DE83F8200EE9B4C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6F02A4E756D4E38384A7A239 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6C8D3E9DBC5852E42A5F7318 /* BaseService.swift */,
+				BF310B83651454699A55176F /* IBaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		70AEC61D8F32CD99C03A6F87 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */,
+				F349F8A1E34878C5930F0B7D /* IBaseRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		7A180F4A562F9843182C104C /* configs */ = {
+			isa = PBXGroup;
+			children = (
+				6569B26E22A4F1B5A38A6135 /* Shared-Debug.xcconfig */,
+				B7FED6C8E9988A89199B9BE0 /* Shared-Release.xcconfig */,
+				A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */,
+				1F28CE6CECD5BD982B5DE1DE /* SnifLeaf-iOS-Debug.xcconfig */,
+				2F8BF09FCD81374D6A9811CD /* SnifLeaf-iOS-Release.xcconfig */,
+				F3FDAE2A956F4EB42B2F96CF /* SnifLeaf-iOSTests.xcconfig */,
+				83F77C526345A886EFA96A75 /* SnifLeaf-macOS-Debug.xcconfig */,
+				C94B986170E9DC23235C74A9 /* SnifLeaf-macOS-Release.xcconfig */,
+				69DCF76AD814E93D36076B71 /* SnifLeaf-macOSTests.xcconfig */,
+				0C4536E0C8C6BF7B13444AAC /* SnifLeafCore-Debug.xcconfig */,
+				76830FBD54532B00BFE9B3DC /* SnifLeafCore-Release.xcconfig */,
+				CF7A24E6553D86FD4F7FF485 /* SnifLeafCoreTests.xcconfig */,
+			);
+			path = configs;
+			sourceTree = "<group>";
+		};
+		7AA2A425B8C6EFE7ABBC662D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF5D5D9AF2FA040C6B20449D /* Shared.framework */,
+				1305DE5B865DF53B152EBFE3 /* SharedTests.xctest */,
+				89734DAA8B96A521DCA1CDA3 /* SnifLeaf-iOS.app */,
+				CB309C4D749280B99F7AD699 /* SnifLeaf-iOSTests.xctest */,
+				7808ED5BC8D2F8A6B979417A /* SnifLeaf-macOS.app */,
+				6AA1ABB6FD345CD75495E330 /* SnifLeaf-macOSTests.xctest */,
+				77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */,
+				EC846B7A9B178A67216F9754 /* SnifLeafCoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		83CACDCF0E642970BD88D871 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				488B25AFBD1ACA0C04581660 /* Assets.xcassets */,
+				1EC9E3F986CF841F18C9F8D8 /* ContentView.swift */,
+				C0133403FFABD67FA55E939C /* SnifLeafApp.swift */,
+				CE0B45AD9B4B6F65C0B3DC1E /* Preview Content */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		8D99A570745DDCC0F2748CBC /* APICredentials */ = {
+			isa = PBXGroup;
+			children = (
+				08B4BFFDCF121FD8894DD483 /* APICredentials.swift */,
+				4A7D0418BE07829203386EC2 /* APICredentialsComponents.swift */,
+				344C94C03ADF7BB61383DD92 /* APICredentialsComponentsError.swift */,
+			);
+			path = APICredentials;
+			sourceTree = "<group>";
+		};
+		A235E3CAA172158A71109A5B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B2B4A14A04097C8602C5DC79 /* SharedTests */,
+				BCEED7CF0499CCA966413E27 /* SnifLeaf-iOSTests */,
+				0EF21DEDB8CBE72097A0925E /* SnifLeaf-macOSTests */,
+				58506E4867330C9E05B224AF /* SnifLeafCoreTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A33410042DE83F8200EE9B4C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A54B45AE77E1D93D240F940F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A9358DA13BCE6A5266FF305A /* SnifLeaf.entitlements */,
+				5822D557B3C521300075582A /* Sources */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		AD21C7C5CC834151AB5C6D17 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CDB005040E2A9D6B4FAE4C63 /* APIs */,
+				56EFBDC6F1D9C333E89E70BB /* NetInterceptor */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B2B4A14A04097C8602C5DC79 /* SharedTests */ = {
+			isa = PBXGroup;
+			children = (
+				1EC8A45232C7AA6395F27A63 /* SharedTests.swift */,
+			);
+			path = SharedTests;
+			sourceTree = "<group>";
+		};
+		B4BFD59A2D87E1514B2A847C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				572F6524E84CD2CA552A247C /* Shared.docc */,
+				9BC62F9E4E6FB80459803164 /* Shared.h */,
+				AD21C7C5CC834151AB5C6D17 /* Sources */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		BCEED7CF0499CCA966413E27 /* SnifLeaf-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				84CD2EDAB610F0B21294023D /* SnifLeafTests.swift */,
+			);
+			path = "SnifLeaf-iOSTests";
+			sourceTree = "<group>";
+		};
+		CDB005040E2A9D6B4FAE4C63 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				93CDA1F510BC8CDBDB598E5F /* AlamofireHTTPService.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		CE0B45AD9B4B6F65C0B3DC1E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8A72B74545B7F1397C582285 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DCF53A1B6534FB8C1E5CA7A7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */,
+				BE84612F17E3F74C54B6C2B0 /* AlamofireManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2774F5A0E0212AB0FB13A87B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56B217BD92C6F74DBDE111F6 /* Shared.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C4C8C6304B1256F57D63694 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF508BE7C15711E540829961 /* SnifLeafCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		107D2E59C8155115E23400C1 /* SnifLeaf-macOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE0FC6ED3E52FB69450FC111 /* Build configuration list for PBXNativeTarget "SnifLeaf-macOSTests" */;
+			buildPhases = (
+				12DFCFB8D4B42BD14C3FD0FC /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE01DB40F648A436533CAEF5 /* PBXTargetDependency */,
+			);
+			name = "SnifLeaf-macOSTests";
+			productName = "SnifLeaf-macOSTests";
+			productReference = 6AA1ABB6FD345CD75495E330 /* SnifLeaf-macOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3D0A9F2A19BA4A77897604D0 /* SnifLeaf-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6F6F381A1C668A99826E2BE /* Build configuration list for PBXNativeTarget "SnifLeaf-macOS" */;
+			buildPhases = (
+				9E598BD8AEFFEF394C9DD3A0 /* Sources */,
+				795F892EECB3C1355032B6A0 /* Resources */,
+				FE019F8F8613A87ECE59D3B5 /* Frameworks */,
+				EA99489EE48A488F718C2850 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78C6E3213E2C40D993C4E782 /* PBXTargetDependency */,
+			);
+			name = "SnifLeaf-macOS";
+			productName = "SnifLeaf-macOS";
+			productReference = 7808ED5BC8D2F8A6B979417A /* SnifLeaf-macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		46DC3005F1BE18659533593F /* SnifLeaf-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65BE7F491D20000ECEDD6CC1 /* Build configuration list for PBXNativeTarget "SnifLeaf-iOS" */;
+			buildPhases = (
+				E0A2627E16566F53E772A21E /* Sources */,
+				C26CD833B1526AC5FE1AD7E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SnifLeaf-iOS";
+			productName = "SnifLeaf-iOS";
+			productReference = 89734DAA8B96A521DCA1CDA3 /* SnifLeaf-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5ED6B473502B1522A90AC7AA /* SharedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F7C75829C3DF3E26FDC1F1E /* Build configuration list for PBXNativeTarget "SharedTests" */;
+			buildPhases = (
+				E7FD5FE5423BE44F8538D0FC /* Sources */,
+				21F3728CDDF83D01545BC431 /* Frameworks */,
+				BF84F16B75520CB275FDB2C2 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9E182D7B2F69F420EC81F2F0 /* PBXTargetDependency */,
+			);
+			name = SharedTests;
+			productName = SharedTests;
+			productReference = 1305DE5B865DF53B152EBFE3 /* SharedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		73DB40CCECD8C3B899A6CA30 /* SnifLeaf-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F60553D3DD71FC459431AF68 /* Build configuration list for PBXNativeTarget "SnifLeaf-iOSTests" */;
+			buildPhases = (
+				249897BACE7293903F971A93 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2F070AE2E877D1FE4971B99 /* PBXTargetDependency */,
+			);
+			name = "SnifLeaf-iOSTests";
+			productName = "SnifLeaf-iOSTests";
+			productReference = CB309C4D749280B99F7AD699 /* SnifLeaf-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8047E316D287C2AAA4D7CED0 /* SnifLeafCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDDF009E834C253912CB97EB /* Build configuration list for PBXNativeTarget "SnifLeafCoreTests" */;
+			buildPhases = (
+				879E33C37C2AA136514CD30B /* Sources */,
+				C5132D91D6F50C9D34A13357 /* Frameworks */,
+				EFDDEF6546FE8B8618D4190D /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78B4F8D8F1F8F88107C25124 /* PBXTargetDependency */,
+			);
+			name = SnifLeafCoreTests;
+			productName = SnifLeafCoreTests;
+			productReference = EC846B7A9B178A67216F9754 /* SnifLeafCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F2276B664E57CC0A135772C1 /* Shared */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4405B7CD237EF64D9751B8EE /* Build configuration list for PBXNativeTarget "Shared" */;
+			buildPhases = (
+				2774F5A0E0212AB0FB13A87B /* Headers */,
+				217E69721265BE8D8CE44FC6 /* Sources */,
+				D0FCB7AE16E7A8288A73BB7C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F30C2997DC4449C9008C45E0 /* PBXTargetDependency */,
+			);
+			name = Shared;
+			productName = Shared;
+			productReference = FF5D5D9AF2FA040C6B20449D /* Shared.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F607616D2158766B57B44116 /* SnifLeafCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 040F7474F73ECFD4EE5DB560 /* Build configuration list for PBXNativeTarget "SnifLeafCore" */;
+			buildPhases = (
+				6C4C8C6304B1256F57D63694 /* Headers */,
+				593E224923533E733777F62A /* Sources */,
+				7AA9252F379BCF12BDD75FF0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SnifLeafCore;
+			packageProductDependencies = (
+				010D13645D20C92B855982CE /* Alamofire */,
+				3033738EC1D8844C676BCD7C /* RealmSwift */,
+			);
+			productName = SnifLeafCore;
+			productReference = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E636D91F21B1EFBE41B889E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					3D0A9F2A19BA4A77897604D0 = {
+						ProvisioningStyle = Manual;
+					};
+					46DC3005F1BE18659533593F = {
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 4BFD96249042569312E722A2 /* Build configuration list for PBXProject "SnifLeaf" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 652AF68A30E240B0CDB81525;
+			packageReferences = (
+				13025A2BAE2DA04B245F4F0C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				5895B3463B254782C7F2BCE2 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				84E728E99295A27D72072781 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2276B664E57CC0A135772C1 /* Shared */,
+				5ED6B473502B1522A90AC7AA /* SharedTests */,
+				46DC3005F1BE18659533593F /* SnifLeaf-iOS */,
+				73DB40CCECD8C3B899A6CA30 /* SnifLeaf-iOSTests */,
+				3D0A9F2A19BA4A77897604D0 /* SnifLeaf-macOS */,
+				107D2E59C8155115E23400C1 /* SnifLeaf-macOSTests */,
+				F607616D2158766B57B44116 /* SnifLeafCore */,
+				8047E316D287C2AAA4D7CED0 /* SnifLeafCoreTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		795F892EECB3C1355032B6A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9559300C3CD8D0015599084F /* Assets.xcassets in Resources */,
+				DAABEE8BC9EE2497CA0396C5 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C26CD833B1526AC5FE1AD7E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F8F7FDC68FF3FBDAD03E469 /* Assets.xcassets in Resources */,
+				EB2E413FAA14DF61D5C84518 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12DFCFB8D4B42BD14C3FD0FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B6F7AEED7F9AA302076EAFC /* SnifLeafTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		217E69721265BE8D8CE44FC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				374AAD1DF746EC4DF74CDDBA /* AlamofireHTTPService.swift in Sources */,
+				8589BFC0AE3675882A6A9C2C /* NioClient.swift in Sources */,
+				0EE9F587D752BD9E0A9F20A9 /* Shared.docc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		249897BACE7293903F971A93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8F362740A389E5D237C4FDA /* SnifLeafTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		593E224923533E733777F62A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */,
+				3427ECE1C8CE58CEC944D6CE /* APIConfig.swift in Sources */,
+				08076691FE6180502A4DA154 /* APICredentials.swift in Sources */,
+				8AAC2B696CDC3F9CE3374FE4 /* APICredentialsComponents.swift in Sources */,
+				C8D83B0FEEEDFD9BE727162C /* APICredentialsComponentsError.swift in Sources */,
+				2ED1957AF57DFF50034947F6 /* AlamofireManager.swift in Sources */,
+				0A81C48185CE5AD20D3058BA /* BaseObject.swift in Sources */,
+				381D642AEAB5EE63D9D1981B /* BaseService.swift in Sources */,
+				F9D82B00C0F04FDECE1A175C /* Database.swift in Sources */,
+				BBC45DFF32751C58868415A4 /* GenericItemRepository.swift in Sources */,
+				4E4768677729C439289265CA /* IBaseRepository.swift in Sources */,
+				2C1EC5C03D29C3214B55D84B /* IBaseService.swift in Sources */,
+				1AB07AFD2C689D7A5AED2056 /* IDatabase.swift in Sources */,
+				F1AEA6BCA5D1DE8089C9A1E0 /* IHTTPManager.swift in Sources */,
+				F0E1FCCBACF5FC519AC63DBF /* INetworkingFactory.swift in Sources */,
+				EB2DB5B7DC3F49B059E1F744 /* NetworkingFactory.swift in Sources */,
+				95794707C6CB42859FB4CB72 /* SnifLeafCore.docc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		879E33C37C2AA136514CD30B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4327E300A9CBCE182F3D6B6 /* SnifLeafCoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E598BD8AEFFEF394C9DD3A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6FD1D03E6718E1E748DF62D /* ContentView.swift in Sources */,
+				96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0A2627E16566F53E772A21E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D3760A3ADDC91062A2D4E8D /* ContentView.swift in Sources */,
+				16F0EE14E04587E2EB062D8D /* CyberLeafXApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7FD5FE5423BE44F8538D0FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A343742005EEDA76B20E027D /* SharedTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		78B4F8D8F1F8F88107C25124 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F607616D2158766B57B44116 /* SnifLeafCore */;
+			targetProxy = 0DC8FD35605CF8B6DD81A379 /* PBXContainerItemProxy */;
+		};
+		78C6E3213E2C40D993C4E782 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2276B664E57CC0A135772C1 /* Shared */;
+			targetProxy = D064AD5E8FBF1E7B89D04402 /* PBXContainerItemProxy */;
+		};
+		9E182D7B2F69F420EC81F2F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2276B664E57CC0A135772C1 /* Shared */;
+			targetProxy = 9D7ACF7B13F5C8A60743911C /* PBXContainerItemProxy */;
+		};
+		AE01DB40F648A436533CAEF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D0A9F2A19BA4A77897604D0 /* SnifLeaf-macOS */;
+			targetProxy = CAA5BEFC3FF789CEA40BC39C /* PBXContainerItemProxy */;
+		};
+		D2F070AE2E877D1FE4971B99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46DC3005F1BE18659533593F /* SnifLeaf-iOS */;
+			targetProxy = 7D003C1D4AA0804634B321EF /* PBXContainerItemProxy */;
+		};
+		F30C2997DC4449C9008C45E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F607616D2158766B57B44116 /* SnifLeafCore */;
+			targetProxy = D6ACE57D87A44604F74D1946 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		017F71430C42ACC82016D41F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3FDAE2A956F4EB42B2F96CF /* SnifLeaf-iOSTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnifLeaf-iOS.app/SnifLeaf-iOS";
+			};
+			name = Debug;
+		};
+		025C5BC081E19691343D1D8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7FED6C8E9988A89199B9BE0 /* Shared-Release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		071788465E00B4045C59B459 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69DCF76AD814E93D36076B71 /* SnifLeaf-macOSTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnifLeaf-macOS.app/Contents/MacOS/SnifLeaf-macOS";
+			};
+			name = Debug;
+		};
+		0B4344538EF0E88BC1E5E4AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6569B26E22A4F1B5A38A6135 /* Shared-Debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		1FAF271626BE891E76759DA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C94B986170E9DC23235C74A9 /* SnifLeaf-macOS-Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SnifLeaf/macOS/SnifLeaf.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		217502759B65BE15EAD0E6FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF7A24E6553D86FD4F7FF485 /* SnifLeafCoreTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		36A5DB920D0FD8A0A3B16F33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		44ED8D9E46374858D0F9F499 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		456EA3BD4DF41CEE67FE9AFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83F77C526345A886EFA96A75 /* SnifLeaf-macOS-Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SnifLeaf/macOS/SnifLeaf.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		64CC66702703450529C4A721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		7B5077A10B3EDC6A5786A419 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnifLeaf-macOS.app/Contents/MacOS/SnifLeaf-macOS";
+			};
+			name = Release;
+		};
+		88569310BCE622110B35EF47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F28CE6CECD5BD982B5DE1DE /* SnifLeaf-iOS-Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8B2E1C55C1437AA5B5411439 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B11DB9D64C6A3B9C27433E59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnifLeaf-iOS.app/SnifLeaf-iOS";
+			};
+			name = Release;
+		};
+		B65EB9368D7B956F357340E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BE18CF5241C5622D8776D438 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C4536E0C8C6BF7B13444AAC /* SnifLeafCore-Debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		EFDACD8936D81F7C327F84CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76830FBD54532B00BFE9B3DC /* SnifLeafCore-Release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		F2537F1736A019CFEB3D8B2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F8BF09FCD81374D6A9811CD /* SnifLeaf-iOS-Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		040F7474F73ECFD4EE5DB560 /* Build configuration list for PBXNativeTarget "SnifLeafCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE18CF5241C5622D8776D438 /* Debug */,
+				EFDACD8936D81F7C327F84CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4405B7CD237EF64D9751B8EE /* Build configuration list for PBXNativeTarget "Shared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B4344538EF0E88BC1E5E4AD /* Debug */,
+				025C5BC081E19691343D1D8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4BFD96249042569312E722A2 /* Build configuration list for PBXProject "SnifLeaf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64CC66702703450529C4A721 /* Debug */,
+				8B2E1C55C1437AA5B5411439 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		65BE7F491D20000ECEDD6CC1 /* Build configuration list for PBXNativeTarget "SnifLeaf-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88569310BCE622110B35EF47 /* Debug */,
+				F2537F1736A019CFEB3D8B2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7F7C75829C3DF3E26FDC1F1E /* Build configuration list for PBXNativeTarget "SharedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B65EB9368D7B956F357340E6 /* Debug */,
+				44ED8D9E46374858D0F9F499 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A6F6F381A1C668A99826E2BE /* Build configuration list for PBXNativeTarget "SnifLeaf-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456EA3BD4DF41CEE67FE9AFE /* Debug */,
+				1FAF271626BE891E76759DA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BDDF009E834C253912CB97EB /* Build configuration list for PBXNativeTarget "SnifLeafCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				217502759B65BE15EAD0E6FC /* Debug */,
+				36A5DB920D0FD8A0A3B16F33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DE0FC6ED3E52FB69450FC111 /* Build configuration list for PBXNativeTarget "SnifLeaf-macOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				071788465E00B4045C59B459 /* Debug */,
+				7B5077A10B3EDC6A5786A419 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F60553D3DD71FC459431AF68 /* Build configuration list for PBXNativeTarget "SnifLeaf-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				017F71430C42ACC82016D41F /* Debug */,
+				B11DB9D64C6A3B9C27433E59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		13025A2BAE2DA04B245F4F0C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.0;
+			};
+		};
+		5895B3463B254782C7F2BCE2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.2;
+			};
+		};
+		84E728E99295A27D72072781 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		010D13645D20C92B855982CE /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 13025A2BAE2DA04B245F4F0C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		3033738EC1D8844C676BCD7C /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5895B3463B254782C7F2BCE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 3E636D91F21B1EFBE41B889E /* Project object */;
+}

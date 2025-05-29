@@ -35,6 +35,11 @@
 		96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0133403FFABD67FA55E939C /* SnifLeafApp.swift */; };
 		9F8F7FDC68FF3FBDAD03E469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D3E8DB852049383161BE2E /* Assets.xcassets */; };
 		A343742005EEDA76B20E027D /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A45232C7AA6395F27A63 /* SharedTests.swift */; };
+		A3C0DDF82DE8502E007A82FF /* MitmLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DDF72DE8502E007A82FF /* MitmLog.swift */; };
+		A3C0DDFA2DE85053007A82FF /* MitmProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DDF92DE85053007A82FF /* MitmProxyManager.swift */; };
+		A3C0DDFC2DE85070007A82FF /* MitmLogRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DDFB2DE85070007A82FF /* MitmLogRow.swift */; };
+		A3C0DDFE2DE852BA007A82FF /* MitmLogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DDFD2DE852BA007A82FF /* MitmLogDetailView.swift */; };
+		A3C0DE002DE852F0007A82FF /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DDFF2DE852F0007A82FF /* SectionView.swift */; };
 		A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */; };
 		AF24A0ACD2B5B32268CA52AE /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
 		BBC45DFF32751C58868415A4 /* GenericItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */; };
@@ -172,6 +177,11 @@
 		9BC62F9E4E6FB80459803164 /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		9FE60CE0E812382C0D7AB32A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
 		A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTests.xcconfig; sourceTree = "<group>"; };
+		A3C0DDF72DE8502E007A82FF /* MitmLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmLog.swift; sourceTree = "<group>"; };
+		A3C0DDF92DE85053007A82FF /* MitmProxyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmProxyManager.swift; sourceTree = "<group>"; };
+		A3C0DDFB2DE85070007A82FF /* MitmLogRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmLogRow.swift; sourceTree = "<group>"; };
+		A3C0DDFD2DE852BA007A82FF /* MitmLogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmLogDetailView.swift; sourceTree = "<group>"; };
+		A3C0DDFF2DE852F0007A82FF /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericItemRepository.swift; sourceTree = "<group>"; };
 		A9358DA13BCE6A5266FF305A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
 		B7FED6C8E9988A89199B9BE0 /* Shared-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Shared-Release.xcconfig"; sourceTree = "<group>"; };
@@ -429,6 +439,11 @@
 				488B25AFBD1ACA0C04581660 /* Assets.xcassets */,
 				1EC9E3F986CF841F18C9F8D8 /* ContentView.swift */,
 				C0133403FFABD67FA55E939C /* SnifLeafApp.swift */,
+				A3C0DDF72DE8502E007A82FF /* MitmLog.swift */,
+				A3C0DDF92DE85053007A82FF /* MitmProxyManager.swift */,
+				A3C0DDFB2DE85070007A82FF /* MitmLogRow.swift */,
+				A3C0DDFD2DE852BA007A82FF /* MitmLogDetailView.swift */,
+				A3C0DDFF2DE852F0007A82FF /* SectionView.swift */,
 				CE0B45AD9B4B6F65C0B3DC1E /* Preview Content */,
 			);
 			path = Sources;
@@ -826,6 +841,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6FD1D03E6718E1E748DF62D /* ContentView.swift in Sources */,
+				A3C0DDFE2DE852BA007A82FF /* MitmLogDetailView.swift in Sources */,
+				A3C0DDFA2DE85053007A82FF /* MitmProxyManager.swift in Sources */,
+				A3C0DE002DE852F0007A82FF /* SectionView.swift in Sources */,
+				A3C0DDFC2DE85070007A82FF /* MitmLogRow.swift in Sources */,
+				A3C0DDF82DE8502E007A82FF /* MitmLog.swift in Sources */,
 				96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

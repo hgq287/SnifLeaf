@@ -6,59 +6,47 @@
 //
 
 import SwiftUI
-import Shared
-
-class PacketLogger: ObservableObject {
-    @Published var logs: [String] = []
-
-    private var task: Process?
-    private var pipe: Pipe?
-
-    func startMITMProxy() {
-        let pipe = Pipe()
-        self.pipe = pipe
-
-        let task = Process()
-        task.launchPath = "/usr/bin/env"
-        task.arguments = ["mitmproxy", "--mode", "regular", "--set", "console_eventlog_verbosity=debug"]
-        task.standardOutput = pipe
-        task.standardError = pipe
-
-        let handle = pipe.fileHandleForReading
-
-        handle.readabilityHandler = { [weak self] fileHandle in
-            let data = fileHandle.availableData
-            if let line = String(data: data, encoding: .utf8), !line.isEmpty {
-                DispatchQueue.main.async {
-                    self?.logs.insert(line.trimmingCharacters(in: .whitespacesAndNewlines), at: 0)
-                }
-            }
-        }
-
-        self.task = task
-        task.launch()
-    }
-
-    func stopMITMProxy() {
-        task?.terminate()
-        pipe?.fileHandleForReading.readabilityHandler = nil
-    }
-}
 
 struct ContentView: View {
-    @StateObject var logger = PacketLogger()
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("HTTP/HTTPS Traffic Log")
-                .font(.headline)
-                .padding()
+    @StateObject private var manager = MitmProxyManager()
+    @State private var filterHost = ""
+    @State private var filterMethod = ""
+    @State private var filterStatus = ""
+
+    var filteredLogs: [MitmLog] {
+        manager.logs.filter { log in
+            (filterHost.isEmpty || log.host.contains(filterHost)) &&
+            (filterMethod.isEmpty || log.method.localizedCaseInsensitiveContains(filterMethod)) &&
+            (filterStatus.isEmpty || String(log.status_code).contains(filterStatus))
         }
-        .frame(minWidth: 800, minHeight: 600)
+    }
+
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 8) {
+                HStack {
+                    TextField("Host", text: $filterHost)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    TextField("Method", text: $filterMethod)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    TextField("Status", text: $filterStatus)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+                .padding(.horizontal)
+
+                List(filteredLogs) { log in
+                    NavigationLink(destination: MitmLogDetailView(log: log)) {
+                        MitmLogRow(log: log)
+                    }
+                }
+            }
+            .navigationTitle("Inspector")
+        }
         .onAppear {
-            logger.startMITMProxy()
+            manager.startProxy()
         }
         .onDisappear {
-            logger.stopMITMProxy()
+            manager.stopProxy()
         }
     }
 }

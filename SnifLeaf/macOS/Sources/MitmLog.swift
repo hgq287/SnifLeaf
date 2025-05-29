@@ -12,11 +12,14 @@ struct MitmLog: Identifiable, Decodable, Hashable {
     let type: String
     let method: String
     let url: String
-    let headers: [String: String]
-    let content: String
+    var headers: [String: String]
+    var content: String
     let status_code: Int
     let response_headers: [String: String]
     let response_content: String
 
     var host: String { URL(string: url)?.host ?? "" }
+    var isJSON: Bool {
+        response_headers["Content-Type"]?.contains("application/json") == true
+    }
 }

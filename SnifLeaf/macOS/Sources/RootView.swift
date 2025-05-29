@@ -7,49 +7,6 @@
 
 import SwiftUI
 
-//struct RootView: View {
-//    @StateObject private var proxy = MitmProxyManager()
-//    @StateObject private var filter = FilterModel()
-//
-//    var body: some View {
-//        NavigationSplitView {
-//            SidebarFilterView(filter: filter, logs: proxy.logs)
-//                .frame(minWidth: 220)
-//        } detail: {
-//            LogListView(logs: proxy.logs, filter: filter)
-//        }
-//        .navigationDestination(for: MitmLog.self) { log in
-//            MitmLogDetailView(log: log, regex: filter.regex)
-//        }
-//        .onAppear {
-//            proxy.startProxy()
-//        }
-//    }
-//}
-
-//struct RootView: View {
-//    @StateObject private var proxy = MitmProxyManager()
-//    @StateObject private var filter = FilterModel()
-//
-//    var body: some View {
-//        NavigationSplitView {
-//            SidebarFilterView(filter: filter, logs: proxy.logs)
-//                .frame(minWidth: 220)
-//        } content: {
-//            LogListView(logs: proxy.logs, filter: filter)
-//        } detail: {
-//            Text("Chọn một log để xem chi tiết") // placeholder nếu chưa chọn log
-//        }
-//        // ⬇️ GẮN trực tiếp ở đây!
-//        .navigationDestination(for: MitmLog.self) { log in
-//            MitmLogDetailView(log: log, regex: filter.regex)
-//        }
-//        .onAppear {
-//            proxy.startProxy()
-//        }
-//    }
-//}
-
 struct RootView: View {
     @StateObject private var proxy = MitmProxyManager()
     @StateObject private var filter = FilterModel()
@@ -70,7 +27,9 @@ struct RootView: View {
                 MitmLogDetailView(log: log, regex: filter.regex)
             }
         } detail: {
-            Text("Chọn một log để xem chi tiết")
+            Text("Chọn log để xem chi tiết")
+                .foregroundColor(.secondary)
+                .font(.headline)
         }
         .onAppear {
             proxy.startProxy()

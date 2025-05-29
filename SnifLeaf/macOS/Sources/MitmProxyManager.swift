@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import UniformTypeIdentifiers
 
 class MitmProxyManager: ObservableObject {
     @Published var logs: [MitmLog] = []
@@ -55,6 +57,57 @@ class MitmProxyManager: ObservableObject {
             try task?.run()
         } catch {
             print("Proxy start error", error)
+        }
+    }
+    
+    
+    func exportLogAsHAR(_ log: MitmLog) -> String {
+        let har = [
+            "log": [
+                "version": "1.2",
+                "creator": ["name": "MitmSwiftUIApp", "version": "1.0"],
+                "entries": [[
+                    "request": [
+                        "method": log.method,
+                        "url": log.url,
+                        "headers": log.headers.map { ["name": $0.key, "value": $0.value] },
+                        "postData": ["text": log.content],
+                    ],
+                    "response": [
+                        "status": log.status_code,
+                        "headers": log.response_headers.map { ["name": $0.key, "value": $0.value] },
+                        "content": ["text": log.response_content],
+                    ]
+                ]]
+            ]
+        ]
+        if let data = try? JSONSerialization.data(withJSONObject: har, options: .prettyPrinted),
+           let json = String(data: data, encoding: .utf8) {
+            return json
+        }
+        return "{}"
+    }
+
+    func replay(log: MitmLog) {
+        guard let url = URL(string: log.url) else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = log.method
+        log.headers.forEach { request.setValue($0.value, forHTTPHeaderField: $0.key) }
+        if !log.content.isEmpty {
+            request.httpBody = log.content.data(using: .utf8)
+        }
+        URLSession.shared.dataTask(with: request).resume()
+    }
+
+    func exportToFile(_ log: MitmLog) {
+        let panel = NSSavePanel()
+        panel.title = "Export HAR Log"
+        panel.allowedContentTypes = [UTType.json]
+        panel.nameFieldStringValue = "request.har.json"
+
+        if panel.runModal() == .OK, let url = panel.url {
+            let data = exportLogAsHAR(log).data(using: .utf8)
+            try? data?.write(to: url)
         }
     }
 

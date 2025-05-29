@@ -1,6 +1,6 @@
 #include "Base.xcconfig"
 
-CODE_SIGN_ENTITLEMENTS = CyberLeafX/CyberLeafX.entitlements
+CODE_SIGN_ENTITLEMENTS = SnifLeaf/SnifLeaf.entitlements
 CODE_SIGN_STYLE = Manual
 COMBINE_HIDPI_IMAGES = YES
 CURRENT_PROJECT_VERSION = 1

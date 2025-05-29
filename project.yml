@@ -1,4 +1,4 @@
-name: CyberLeafX
+name: SnifLeaf
 options:
   minimumXcodeGenVersion: 2.42.0
   createIntermediateGroups: true
@@ -16,26 +16,26 @@ packages:
     url: https://github.com/apple/swift-nio.git
     majorVersion: 2.83.0
 targets:
-  CyberLeafX-iOS:
+  SnifLeaf-iOS:
     platform: iOS 
     type: application
     sources:
-      - CyberLeafX/iOS
+      - SnifLeaf/iOS
     configFiles:
-      Debug: configs/CyberLeafX-iOS-Debug.xcconfig
-      Release: configs/CyberLeafX-iOS-Release.xcconfig
+      Debug: configs/SnifLeaf-iOS-Debug.xcconfig
+      Release: configs/SnifLeaf-iOS-Release.xcconfig
     scheme:
       environmentVariables:
         ENABLE_SIGNPOST: YES
   #macOS application
-  CyberLeafX-macOS:
+  SnifLeaf-macOS:
     platform: macOS
     type: application
     sources:
-      - CyberLeafX/macOS
+      - SnifLeaf/macOS
     configFiles:
-      Debug: configs/CyberLeafX-macOS-Debug.xcconfig
-      Release: configs/CyberLeafX-macOS-Release.xcconfig
+      Debug: configs/SnifLeaf-macOS-Debug.xcconfig
+      Release: configs/SnifLeaf-macOS-Release.xcconfig
     dependencies:
       - target: Shared
     scheme:
@@ -52,44 +52,44 @@ targets:
       Debug: configs/Shared-Debug.xcconfig
       Release: configs/Shared-Release.xcconfig
     dependencies:
-      - target: CyberLeafXCore
-  CyberLeafXCore:
+      - target: SnifLeafCore
+  SnifLeafCore:
     platform: macOS
     type: framework
     sources:
-      - CyberLeafXCore
+      - SnifLeafCore
     configFiles:
-      Debug: configs/CyberLeafXCore-Debug.xcconfig
-      Release: configs/CyberLeafXCore-Release.xcconfig
+      Debug: configs/SnifLeafCore-Debug.xcconfig
+      Release: configs/SnifLeafCore-Release.xcconfig
     dependencies:
       - package: Alamofire 
       - package: RealmSwift
   #Test Targets
-  CyberLeafX-macOSTests:
+  SnifLeaf-macOSTests:
     platform: macOS
     type: bundle.unit-test
     configFiles:
-      Debug: configs/CyberLeafX-macOSTests.xcconfig
+      Debug: configs/SnifLeaf-macOSTests.xcconfig
     sources:
-      - Tests/CyberLeafX-macOSTests
+      - Tests/SnifLeaf-macOSTests
     dependencies:
-      - target: CyberLeafX-macOS
+      - target: SnifLeaf-macOS
     scheme:
       testTargets:
-        - CyberLeafX-macOSTests
+        - SnifLeaf-macOSTests
       gatherCoverageData: true
-  CyberLeafX-iOSTests:
+  SnifLeaf-iOSTests:
     platform: macOS
     type: bundle.unit-test
     configFiles:
-      Debug: configs/CyberLeafX-iOSTests.xcconfig
+      Debug: configs/SnifLeaf-iOSTests.xcconfig
     sources:
-      - Tests/CyberLeafX-iOSTests
+      - Tests/SnifLeaf-iOSTests
     dependencies:
-      - target: CyberLeafX-iOS
+      - target: SnifLeaf-iOS
     scheme:
       testTargets:
-        - CyberLeafX-iOSTests
+        - SnifLeaf-iOSTests
       gatherCoverageData: true
   SharedTests:
     platform: macOS
@@ -104,16 +104,16 @@ targets:
       testTargets:
         - SharedTests
       gatherCoverageData: true
-  CyberLeafXCoreTests:
+  SnifLeafCoreTests:
     platform: macOS
     type: bundle.unit-test
     configFiles:
-      Debug: configs/CyberLeafXCoreTests.xcconfig
+      Debug: configs/SnifLeafCoreTests.xcconfig
     sources:
-      - Tests/CyberLeafXCoreTests
+      - Tests/SnifLeafCoreTests
     dependencies:
-      - target: CyberLeafXCore
+      - target: SnifLeafCore
     scheme:
       testTargets:
-        - CyberLeafXCoreTests
+        - SnifLeafCoreTests
       gatherCoverageData: true

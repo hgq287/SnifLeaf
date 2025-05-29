@@ -1,3 +1,0 @@
-#include "Base-iOS.xcconfig"
-
-PRODUCT_BUNDLE_IDENTIFIER = com.datt.CyberLeafX

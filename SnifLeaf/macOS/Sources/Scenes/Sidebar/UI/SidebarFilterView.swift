@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Shared
 
 struct SidebarFilterView: View {
-    @ObservedObject var filter: FilterModel
-    let logs: [MitmLog]
+    @ObservedObject var filter: LogFilter
+    let logs: [ProxyLog]
 
     var body: some View {
         List {

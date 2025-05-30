@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,18 +32,12 @@
 		8AAC2B696CDC3F9CE3374FE4 /* APICredentialsComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7D0418BE07829203386EC2 /* APICredentialsComponents.swift */; };
 		9559300C3CD8D0015599084F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 488B25AFBD1ACA0C04581660 /* Assets.xcassets */; };
 		95794707C6CB42859FB4CB72 /* SnifLeafCore.docc in Sources */ = {isa = PBXBuildFile; fileRef = 30A73B4EAFEF863551378076 /* SnifLeafCore.docc */; };
-		96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0133403FFABD67FA55E939C /* SnifLeafApp.swift */; };
+		96A9D48B78B70045B1F77705 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0133403FFABD67FA55E939C /* App.swift */; };
 		9F8F7FDC68FF3FBDAD03E469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D3E8DB852049383161BE2E /* Assets.xcassets */; };
+		A3343E742DE9873B00E75B78 /* ProxyMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343E732DE9873B00E75B78 /* ProxyMan.swift */; };
+		A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343F0E2DE996A000E75B78 /* AppState.swift */; };
 		A343742005EEDA76B20E027D /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A45232C7AA6395F27A63 /* SharedTests.swift */; };
-		A3C0DDF82DE8502E007A82FF /* MitmLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DDF72DE8502E007A82FF /* MitmLog.swift */; };
-		A3C0DDFA2DE85053007A82FF /* MitmProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DDF92DE85053007A82FF /* MitmProxyManager.swift */; };
-		A3C0DDFC2DE85070007A82FF /* MitmLogRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DDFB2DE85070007A82FF /* MitmLogRow.swift */; };
-		A3C0DDFE2DE852BA007A82FF /* MitmLogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DDFD2DE852BA007A82FF /* MitmLogDetailView.swift */; };
-		A3C0DE002DE852F0007A82FF /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DDFF2DE852F0007A82FF /* SectionView.swift */; };
-		A3C0DE022DE87C64007A82FF /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DE012DE87C64007A82FF /* FilterModel.swift */; };
 		A3C0DE042DE87C7B007A82FF /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DE032DE87C7B007A82FF /* RootView.swift */; };
-		A3C0DE062DE87C9B007A82FF /* SidebarFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DE052DE87C9B007A82FF /* SidebarFilterView.swift */; };
-		A3C0DE082DE87CB4007A82FF /* LogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DE072DE87CB4007A82FF /* LogListView.swift */; };
 		A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */; };
 		AF24A0ACD2B5B32268CA52AE /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
 		BBC45DFF32751C58868415A4 /* GenericItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */; };
@@ -180,22 +174,16 @@
 		9B1D31778A7F0EA199C4747E /* SnifLeafCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnifLeafCore.h; sourceTree = "<group>"; };
 		9BC62F9E4E6FB80459803164 /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		9FE60CE0E812382C0D7AB32A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
+		A3343E732DE9873B00E75B78 /* ProxyMan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyMan.swift; sourceTree = "<group>"; };
+		A3343F0E2DE996A000E75B78 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTests.xcconfig; sourceTree = "<group>"; };
-		A3C0DDF72DE8502E007A82FF /* MitmLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmLog.swift; sourceTree = "<group>"; };
-		A3C0DDF92DE85053007A82FF /* MitmProxyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmProxyManager.swift; sourceTree = "<group>"; };
-		A3C0DDFB2DE85070007A82FF /* MitmLogRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmLogRow.swift; sourceTree = "<group>"; };
-		A3C0DDFD2DE852BA007A82FF /* MitmLogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmLogDetailView.swift; sourceTree = "<group>"; };
-		A3C0DDFF2DE852F0007A82FF /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
-		A3C0DE012DE87C64007A82FF /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		A3C0DE032DE87C7B007A82FF /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		A3C0DE052DE87C9B007A82FF /* SidebarFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarFilterView.swift; sourceTree = "<group>"; };
-		A3C0DE072DE87CB4007A82FF /* LogListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogListView.swift; sourceTree = "<group>"; };
 		A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericItemRepository.swift; sourceTree = "<group>"; };
 		A9358DA13BCE6A5266FF305A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
 		B7FED6C8E9988A89199B9BE0 /* Shared-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Shared-Release.xcconfig"; sourceTree = "<group>"; };
 		BE84612F17E3F74C54B6C2B0 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		BF310B83651454699A55176F /* IBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBaseService.swift; sourceTree = "<group>"; };
-		C0133403FFABD67FA55E939C /* SnifLeafApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnifLeafApp.swift; sourceTree = "<group>"; };
+		C0133403FFABD67FA55E939C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		C94B986170E9DC23235C74A9 /* SnifLeaf-macOS-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-macOS-Release.xcconfig"; sourceTree = "<group>"; };
 		C9E1A22158281CB859F67816 /* IHTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHTTPManager.swift; sourceTree = "<group>"; };
 		CB309C4D749280B99F7AD699 /* SnifLeaf-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SnifLeaf-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +197,12 @@
 		F3FDAE2A956F4EB42B2F96CF /* SnifLeaf-iOSTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-iOSTests.xcconfig"; sourceTree = "<group>"; };
 		FF5D5D9AF2FA040C6B20449D /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A3343F0D2DE9943300E75B78 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+		A3343F132DE997F700E75B78 /* Scenes */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Scenes; sourceTree = "<group>"; };
+		A3343F212DE99AB300E75B78 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		21F3728CDDF83D01545BC431 /* Frameworks */ = {
@@ -343,7 +337,9 @@
 		56EFBDC6F1D9C333E89E70BB /* NetInterceptor */ = {
 			isa = PBXGroup;
 			children = (
+				A3343F0D2DE9943300E75B78 /* Models */,
 				EF59606CAA95643E61FDC40F /* NioClient.swift */,
+				A3343E732DE9873B00E75B78 /* ProxyMan.swift */,
 			);
 			path = NetInterceptor;
 			sourceTree = "<group>";
@@ -444,18 +440,13 @@
 		83CACDCF0E642970BD88D871 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A3343F212DE99AB300E75B78 /* Components */,
+				A3343F132DE997F700E75B78 /* Scenes */,
 				488B25AFBD1ACA0C04581660 /* Assets.xcassets */,
 				1EC9E3F986CF841F18C9F8D8 /* ContentView.swift */,
-				C0133403FFABD67FA55E939C /* SnifLeafApp.swift */,
-				A3C0DDF72DE8502E007A82FF /* MitmLog.swift */,
-				A3C0DDF92DE85053007A82FF /* MitmProxyManager.swift */,
-				A3C0DE012DE87C64007A82FF /* FilterModel.swift */,
+				C0133403FFABD67FA55E939C /* App.swift */,
+				A3343F0E2DE996A000E75B78 /* AppState.swift */,
 				A3C0DE032DE87C7B007A82FF /* RootView.swift */,
-				A3C0DE052DE87C9B007A82FF /* SidebarFilterView.swift */,
-				A3C0DE072DE87CB4007A82FF /* LogListView.swift */,
-				A3C0DDFB2DE85070007A82FF /* MitmLogRow.swift */,
-				A3C0DDFD2DE852BA007A82FF /* MitmLogDetailView.swift */,
-				A3C0DDFF2DE852F0007A82FF /* SectionView.swift */,
 				CE0B45AD9B4B6F65C0B3DC1E /* Preview Content */,
 			);
 			path = Sources;
@@ -610,6 +601,10 @@
 			dependencies = (
 				78C6E3213E2C40D993C4E782 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				A3343F132DE997F700E75B78 /* Scenes */,
+				A3343F212DE99AB300E75B78 /* Components */,
+			);
 			name = "SnifLeaf-macOS";
 			productName = "SnifLeaf-macOS";
 			productReference = 7808ED5BC8D2F8A6B979417A /* SnifLeaf-macOS.app */;
@@ -695,6 +690,9 @@
 			);
 			dependencies = (
 				F30C2997DC4449C9008C45E0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A3343F0D2DE9943300E75B78 /* Models */,
 			);
 			name = Shared;
 			productName = Shared;
@@ -805,6 +803,7 @@
 				374AAD1DF746EC4DF74CDDBA /* AlamofireHTTPService.swift in Sources */,
 				8589BFC0AE3675882A6A9C2C /* NioClient.swift in Sources */,
 				0EE9F587D752BD9E0A9F20A9 /* Shared.docc in Sources */,
+				A3343E742DE9873B00E75B78 /* ProxyMan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,16 +852,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6FD1D03E6718E1E748DF62D /* ContentView.swift in Sources */,
-				A3C0DDFE2DE852BA007A82FF /* MitmLogDetailView.swift in Sources */,
-				A3C0DDFA2DE85053007A82FF /* MitmProxyManager.swift in Sources */,
-				A3C0DE022DE87C64007A82FF /* FilterModel.swift in Sources */,
-				A3C0DE002DE852F0007A82FF /* SectionView.swift in Sources */,
+				A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */,
 				A3C0DE042DE87C7B007A82FF /* RootView.swift in Sources */,
-				A3C0DDFC2DE85070007A82FF /* MitmLogRow.swift in Sources */,
-				A3C0DDF82DE8502E007A82FF /* MitmLog.swift in Sources */,
-				96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */,
-				A3C0DE062DE87C9B007A82FF /* SidebarFilterView.swift in Sources */,
-				A3C0DE082DE87CB4007A82FF /* LogListView.swift in Sources */,
+				96A9D48B78B70045B1F77705 /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

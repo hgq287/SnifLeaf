@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
+import Shared
 
 struct LogListView: View {
-    let logs: [MitmLog]
-    @ObservedObject var filter: FilterModel
+    let logs: [ProxyLog]
+    @ObservedObject var filter: LogFilter
 
     var body: some View {
         let filtered = filter.apply(to: logs)
         List(filtered) { log in
             NavigationLink(value: log) {
-                MitmLogRow(log: log)
+                ProxyLogRow(log: log)
             }
         }
         .navigationTitle("Logs \(filtered.count)")

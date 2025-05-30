@@ -1,20 +1,23 @@
 //
-//  MitmProxyManager.swift
-//  SnifLeaf-macOS
+//  ProxyMan.swift
+//  Shared
 //
-//  Created by Hg Q. on 29/5/25.
+//  Created by Hg Q. on 30/5/25.
 //
 
 import Foundation
-import SwiftUI
 import UniformTypeIdentifiers
 
-class MitmProxyManager: ObservableObject {
-    @Published var logs: [MitmLog] = []
+public class ProxyMan: ObservableObject {
+    @Published public var logs: [ProxyLog] = []
     private var task: Process?
     private var tempScriptURL: URL?
+    
+    public init () {
+        
+    }
 
-    func startProxy() {
+    public func startProxy() {
         guard task == nil else { return }
         let script = """
         import json
@@ -50,7 +53,8 @@ class MitmProxyManager: ObservableObject {
                 guard let self, !data.isEmpty,
                       let str = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines),
                       let jsonData = str.data(using: .utf8) else { return }
-                if let log = try? JSONDecoder().decode(MitmLog.self, from: jsonData) {
+                 
+                if let log = try? JSONDecoder().decode(ProxyLog.self, from: jsonData) {
                     DispatchQueue.main.async { self.logs.insert(log, at: 0) }
                 }
             }
@@ -61,7 +65,7 @@ class MitmProxyManager: ObservableObject {
     }
     
     
-    func exportLogAsHAR(_ log: MitmLog) -> String {
+    public func exportLogAsHAR(_ log: ProxyLog) -> String {
         let har = [
             "log": [
                 "version": "1.2",
@@ -88,7 +92,7 @@ class MitmProxyManager: ObservableObject {
         return "{}"
     }
 
-    func replay(log: MitmLog) {
+    public func replay(log: ProxyLog) {
         guard let url = URL(string: log.url) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = log.method
@@ -99,16 +103,16 @@ class MitmProxyManager: ObservableObject {
         URLSession.shared.dataTask(with: request).resume()
     }
 
-    func exportToFile(_ log: MitmLog) {
-        let panel = NSSavePanel()
-        panel.title = "Export HAR Log"
-        panel.allowedContentTypes = [UTType.json]
-        panel.nameFieldStringValue = "request.har.json"
-
-        if panel.runModal() == .OK, let url = panel.url {
-            let data = exportLogAsHAR(log).data(using: .utf8)
-            try? data?.write(to: url)
-        }
+    public func exportToFile(_ log: ProxyLog) {
+//        let panel = NSSavePanel()
+//        panel.title = "Export HAR Log"
+//        panel.allowedContentTypes = [UTType.json]
+//        panel.nameFieldStringValue = "request.har.json"
+//
+//        if panel.runModal() == .OK, let url = panel.url {
+//            let data = exportLogAsHAR(log).data(using: .utf8)
+//            try? data?.write(to: url)
+//        }
     }
 
     deinit {

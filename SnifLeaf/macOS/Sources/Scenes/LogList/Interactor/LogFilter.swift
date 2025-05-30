@@ -1,13 +1,14 @@
 //
-//  FilterModel.swift
+//  LogFilter.swift
 //  SnifLeaf-macOS
 //
-//  Created by Hg Q. on 29/5/25.
+//  Created by Hg Q. on 30/5/25.
 //
 
 import Foundation
+import Shared
 
-class FilterModel: ObservableObject {
+class LogFilter: ObservableObject {
     @Published var host: String = ""
     @Published var method: String = ""
     @Published var status: String = ""
@@ -26,7 +27,7 @@ class FilterModel: ObservableObject {
         }
     }
 
-    func apply(to logs: [MitmLog]) -> [MitmLog] {
+    func apply(to logs: [ProxyLog]) -> [ProxyLog] {
         logs.filter { log in
             (host.isEmpty || log.host.contains(host)) &&
             (method.isEmpty || log.method.localizedCaseInsensitiveContains(method)) &&
@@ -35,10 +36,11 @@ class FilterModel: ObservableObject {
         }
     }
 
-    private func matchesRegex(in log: MitmLog) -> Bool {
+    private func matchesRegex(in log: ProxyLog) -> Bool {
         guard let regex else { return true }
         let haystack = "\(log.method) \(log.url) \(log.content) \(log.response_content)"
         let range = NSRange(haystack.startIndex..., in: haystack)
         return regex.firstMatch(in: haystack, options: [], range: range) != nil
     }
 }
+

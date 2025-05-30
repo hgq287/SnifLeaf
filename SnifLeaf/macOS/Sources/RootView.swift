@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Shared
 
 struct RootView: View {
-    @StateObject private var proxy = MitmProxyManager()
-    @StateObject private var filter = FilterModel()
-    @State private var selectedLog: MitmLog? = nil
+    @StateObject var proxy = ProxyMan()
+    @StateObject private var filter = LogFilter()
+    @State private var selectedLog: ProxyLog? = nil
 
     var body: some View {
         NavigationSplitView {
@@ -19,11 +20,11 @@ struct RootView: View {
         } content: {
             List(filter.apply(to: proxy.logs)) { log in
                 NavigationLink(value: log) {
-                    MitmLogRow(log: log)
+                    ProxyLogRow(log: log)
                 }
             }
             .navigationTitle("Logs \(filter.apply(to: proxy.logs).count)")
-            .navigationDestination(for: MitmLog.self) { log in
+            .navigationDestination(for: ProxyLog.self) { log in
                 MitmLogDetailView(log: log, regex: filter.regex)
             }
         } detail: {

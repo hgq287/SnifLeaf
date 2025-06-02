@@ -39,6 +39,7 @@
 		A343742005EEDA76B20E027D /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A45232C7AA6395F27A63 /* SharedTests.swift */; };
 		A3C0DE042DE87C7B007A82FF /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DE032DE87C7B007A82FF /* RootView.swift */; };
 		A3CDA2492DED92B2009C107B /* mitmproxy.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CDA2472DED92A7009C107B /* mitmproxy.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A3CDA24B2DED9676009C107B /* MitmProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CDA24A2DED9676009C107B /* MitmProcessManager.swift */; };
 		A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */; };
 		AF24A0ACD2B5B32268CA52AE /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
 		BBC45DFF32751C58868415A4 /* GenericItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */; };
@@ -200,6 +201,7 @@
 		A3C0DE032DE87C7B007A82FF /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		A3CDA2462DED92A7009C107B /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		A3CDA2472DED92A7009C107B /* mitmproxy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = mitmproxy.app; sourceTree = "<group>"; };
+		A3CDA24A2DED9676009C107B /* MitmProcessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmProcessManager.swift; sourceTree = "<group>"; };
 		A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericItemRepository.swift; sourceTree = "<group>"; };
 		A9358DA13BCE6A5266FF305A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
 		B7FED6C8E9988A89199B9BE0 /* Shared-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Shared-Release.xcconfig"; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				A3343F0D2DE9943300E75B78 /* Models */,
 				EF59606CAA95643E61FDC40F /* NioClient.swift */,
 				A3343E732DE9873B00E75B78 /* ProxyMan.swift */,
+				A3CDA24A2DED9676009C107B /* MitmProcessManager.swift */,
 			);
 			path = NetInterceptor;
 			sourceTree = "<group>";
@@ -837,6 +840,7 @@
 				374AAD1DF746EC4DF74CDDBA /* AlamofireHTTPService.swift in Sources */,
 				8589BFC0AE3675882A6A9C2C /* NioClient.swift in Sources */,
 				0EE9F587D752BD9E0A9F20A9 /* Shared.docc in Sources */,
+				A3CDA24B2DED9676009C107B /* MitmProcessManager.swift in Sources */,
 				A3343E742DE9873B00E75B78 /* ProxyMan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,57 +14,60 @@ public class ProxyMan: ObservableObject {
     private var tempScriptURL: URL?
     
     public init () {
-        
+        // Initialize if needed
     }
 
     public func startProxy() {
-        guard task == nil else { return }
-        let script = """
-        import json
-        def response(flow):
-            data = {
-                "type": "http",
-                "method": flow.request.method,
-                "url": flow.request.pretty_url,
-                "headers": dict(flow.request.headers),
-                "content": flow.request.get_text(),
-                "status_code": flow.response.status_code,
-                "response_headers": dict(flow.response.headers),
-                "response_content": flow.response.get_text(),
-            }
-            print(json.dumps(data), flush=True)
-        """
-        do {
-            let tempDir = FileManager.default.temporaryDirectory
-            let scriptURL = tempDir.appendingPathComponent("dump_log.py")
-            try script.write(to: scriptURL, atomically: true, encoding: .utf8)
-            tempScriptURL = scriptURL
-
-            let pipe = Pipe()
-            let mitmproxyPath = Bundle.main.path(forResource: "mitmproxy.app", ofType: nil)
-            let mitmdumpPath = (
-                mitmproxyPath != nil
-            ) ?  mitmproxyPath! + "/Contents/MacOS/mitmdump" : "/opt/homebrew/bin/mitmdump"
-            task = Process()
-            task?.executableURL = URL(fileURLWithPath: mitmdumpPath)
-            task?.arguments = ["-s", scriptURL.path, " --mode regular", "--listen-port", "8080"]
-            task?.standardOutput = pipe
-            task?.standardError = pipe
-
-            pipe.fileHandleForReading.readabilityHandler = { [weak self] handle in
-                let data = handle.availableData
-                guard let self, !data.isEmpty,
-                      let str = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines),
-                      let jsonData = str.data(using: .utf8) else { return }
-                 
-                if let log = try? JSONDecoder().decode(ProxyLog.self, from: jsonData) {
-                    DispatchQueue.main.async { self.logs.insert(log, at: 0) }
+        MitmProcessManager.shared.stopExistingMitmdump { [self] in
+            guard task == nil else { return }
+            let script = """
+            import json
+            def response(flow):
+                data = {
+                    "type": "http",
+                    "method": flow.request.method,
+                    "url": flow.request.pretty_url,
+                    "headers": dict(flow.request.headers),
+                    "content": flow.request.get_text(),
+                    "status_code": flow.response.status_code,
+                    "response_headers": dict(flow.response.headers),
+                    "response_content": flow.response.get_text(),
                 }
+                print(json.dumps(data), flush=True)
+            """
+            do {
+                let tempDir = FileManager.default.temporaryDirectory
+                let scriptURL = tempDir.appendingPathComponent("dump_log.py")
+                try script.write(to: scriptURL, atomically: true, encoding: .utf8)
+                tempScriptURL = scriptURL
+
+                let pipe = Pipe()
+                let mitmproxyPath = Bundle.main.path(forResource: "mitmproxy.app", ofType: nil)
+                let mitmdumpPath = (
+                    mitmproxyPath != nil
+                ) ?  mitmproxyPath! + "/Contents/MacOS/mitmdump" : "/opt/homebrew/bin/mitmdump"
+                task = Process()
+                task?.executableURL = URL(fileURLWithPath: mitmdumpPath)
+                task?.arguments = ["-s", scriptURL.path, " --mode regular", "--listen-port", "8080"]
+                task?.standardOutput = pipe
+                task?.standardError = pipe
+
+                pipe.fileHandleForReading.readabilityHandler = { [weak self] handle in
+                    let data = handle.availableData
+                    guard let self, !data.isEmpty,
+                          let str = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines),
+                          let jsonData = str.data(using: .utf8) else { return }
+                     
+                    if let log = try? JSONDecoder().decode(ProxyLog.self, from: jsonData) {
+                        DispatchQueue.main.async { self.logs.insert(log, at: 0) }
+                    }
+                }
+                try task?.run()
+            } catch {
+                print("Proxy start error", error)
             }
-            try task?.run()
-        } catch {
-            print("Proxy start error", error)
         }
+
     }
     
     

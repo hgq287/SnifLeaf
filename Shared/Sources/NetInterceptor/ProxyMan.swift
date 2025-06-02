@@ -44,7 +44,7 @@ public class ProxyMan: ObservableObject {
             let mitmPath = "/opt/homebrew/bin/mitmdump" // update path if different
             task = Process()
             task?.executableURL = URL(fileURLWithPath: mitmPath)
-            task?.arguments = ["-s", scriptURL.path, "--listen-port", "8080"]
+            task?.arguments = ["-s", scriptURL.path, " --mode regular", "--listen-port", "8080"]
             task?.standardOutput = pipe
             task?.standardError = pipe
 

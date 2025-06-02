@@ -40,6 +40,8 @@
 		A3C0DE042DE87C7B007A82FF /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DE032DE87C7B007A82FF /* RootView.swift */; };
 		A3CDA2492DED92B2009C107B /* mitmproxy.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CDA2472DED92A7009C107B /* mitmproxy.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A3CDA24B2DED9676009C107B /* MitmProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CDA24A2DED9676009C107B /* MitmProcessManager.swift */; };
+		A3CDA2822DED9F16009C107B /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
+		A3CDA2832DED9F16009C107B /* SnifLeafCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */; };
 		AF24A0ACD2B5B32268CA52AE /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
 		BBC45DFF32751C58868415A4 /* GenericItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */; };
@@ -78,6 +80,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F2276B664E57CC0A135772C1;
 			remoteInfo = Shared;
+		};
+		A3CDA2842DED9F16009C107B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E636D91F21B1EFBE41B889E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F607616D2158766B57B44116;
+			remoteInfo = SnifLeafCore;
 		};
 		CAA5BEFC3FF789CEA40BC39C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -140,6 +149,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				4E9B80AE2329D786E70AA992 /* Shared.framework in Embed Frameworks */,
+				A3CDA2832DED9F16009C107B /* SnifLeafCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74A38362564A1BB6FE709439 /* Shared.framework in Frameworks */,
+				A3CDA2822DED9F16009C107B /* SnifLeafCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +647,7 @@
 			);
 			dependencies = (
 				78C6E3213E2C40D993C4E782 /* PBXTargetDependency */,
+				A3CDA2852DED9F16009C107B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A3343F132DE997F700E75B78 /* Scenes */,
@@ -930,6 +942,11 @@
 			isa = PBXTargetDependency;
 			target = F2276B664E57CC0A135772C1 /* Shared */;
 			targetProxy = 9D7ACF7B13F5C8A60743911C /* PBXContainerItemProxy */;
+		};
+		A3CDA2852DED9F16009C107B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F607616D2158766B57B44116 /* SnifLeafCore */;
+			targetProxy = A3CDA2842DED9F16009C107B /* PBXContainerItemProxy */;
 		};
 		AE01DB40F648A436533CAEF5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

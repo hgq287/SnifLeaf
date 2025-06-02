@@ -1048,6 +1048,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SnifLeaf/macOS/SnifLeaf.entitlements;
 				CODE_SIGN_IDENTITY = "";
+				INFOPLIST_KEY_CFBundleDisplayName = SnifLeaf;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1106,6 +1107,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SnifLeaf/macOS/SnifLeaf.entitlements;
 				CODE_SIGN_IDENTITY = "";
+				INFOPLIST_KEY_CFBundleDisplayName = SnifLeaf;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

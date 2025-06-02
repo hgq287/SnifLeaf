@@ -2,7 +2,7 @@
 //  ProxyLog.swift
 //  Shared
 //
-//  Created by Hung Q. on 30/5/25.
+//  Created by Hg Q. on 30/5/25.
 //
 
 import Foundation

@@ -38,6 +38,7 @@
 		A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343F0E2DE996A000E75B78 /* AppState.swift */; };
 		A343742005EEDA76B20E027D /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A45232C7AA6395F27A63 /* SharedTests.swift */; };
 		A3C0DE042DE87C7B007A82FF /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DE032DE87C7B007A82FF /* RootView.swift */; };
+		A3CDA2492DED92B2009C107B /* mitmproxy.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CDA2472DED92A7009C107B /* mitmproxy.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */; };
 		AF24A0ACD2B5B32268CA52AE /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
 		BBC45DFF32751C58868415A4 /* GenericItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */; };
@@ -101,6 +102,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A3CDA21F2DED901A009C107B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CDA2452DED928D009C107B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				A3CDA2492DED92B2009C107B /* mitmproxy.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF84F16B75520CB275FDB2C2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -178,6 +198,8 @@
 		A3343F0E2DE996A000E75B78 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTests.xcconfig; sourceTree = "<group>"; };
 		A3C0DE032DE87C7B007A82FF /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		A3CDA2462DED92A7009C107B /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		A3CDA2472DED92A7009C107B /* mitmproxy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = mitmproxy.app; sourceTree = "<group>"; };
 		A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericItemRepository.swift; sourceTree = "<group>"; };
 		A9358DA13BCE6A5266FF305A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
 		B7FED6C8E9988A89199B9BE0 /* Shared-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Shared-Release.xcconfig"; sourceTree = "<group>"; };
@@ -375,6 +397,7 @@
 		652AF68A30E240B0CDB81525 = {
 			isa = PBXGroup;
 			children = (
+				A3CDA2482DED92A7009C107B /* Vendors */,
 				7A180F4A562F9843182C104C /* configs */,
 				50D9B23A2085F16F21DFF6E5 /* SnifLeaf */,
 				B4BFD59A2D87E1514B2A847C /* Shared */,
@@ -478,6 +501,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3CDA2482DED92A7009C107B /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				A3CDA2462DED92A7009C107B /* .gitkeep */,
+				A3CDA2472DED92A7009C107B /* mitmproxy.app */,
+			);
+			path = Vendors;
 			sourceTree = "<group>";
 		};
 		A54B45AE77E1D93D240F940F /* iOS */ = {
@@ -595,6 +627,7 @@
 				795F892EECB3C1355032B6A0 /* Resources */,
 				FE019F8F8613A87ECE59D3B5 /* Frameworks */,
 				EA99489EE48A488F718C2850 /* Embed Frameworks */,
+				A3CDA2452DED928D009C107B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -685,6 +718,7 @@
 				2774F5A0E0212AB0FB13A87B /* Headers */,
 				217E69721265BE8D8CE44FC6 /* Sources */,
 				D0FCB7AE16E7A8288A73BB7C /* Frameworks */,
+				A3CDA21F2DED901A009C107B /* CopyFiles */,
 			);
 			buildRules = (
 			);

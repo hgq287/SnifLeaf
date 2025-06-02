@@ -1,0 +1,1 @@
+../../Resources/mitmproxy_rs/wireguard.pyi

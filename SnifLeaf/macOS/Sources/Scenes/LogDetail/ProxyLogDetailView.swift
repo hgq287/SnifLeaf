@@ -30,86 +30,69 @@ struct MitmLogDetailView: View {
                 Text("Method: \(log.method)")
                 Text("URL: \(log.url)")
                 Text("Status: \(log.status_code)")
-//                SectionView(title: "Request Headers", json: log.headers, regex: regex)
-//                SectionView(title: "Request Body", raw: log.content, regex: regex)
-//                Section(header: Text("Request Headers").bold()) {
-//                    ForEach(Array(editableRequestHeaders.keys), id: \ .self) { key in
+                
+                // MARK: - Request Headers
+                SectionView(title: "Request Headers", json: log.headers, regex: regex)
+//                Section(header: Text("Request Headers").bold().font(.title3)) {
+//                    ForEach(Array(editableRequestHeaders.keys), id: \.self) { key in
 //                        HStack(alignment: .top) {
-//                            Text(key).fontWeight(.semibold)
-//                                .frame(width: 150, alignment: .leading)
+//                            Text(key)
+//                                .font(.system(.body, design: .monospaced))
+//                                .frame(width: 160, alignment: .leading)
+//                                .foregroundColor(.secondary)
 //                            TextField("Value", text: Binding(
 //                                get: { editableRequestHeaders[key] ?? "" },
 //                                set: { editableRequestHeaders[key] = $0 }
 //                            ))
+//                            .textFieldStyle(.roundedBorder)
 //                        }
 //                    }
 //                }
-//                Section(header: Text("Request Body").bold()) {
-//                    TextEditor(text: $editableRequestBody)
-//                        .font(.system(.body, design: .monospaced))
-//                        .frame(minHeight: 120)
-//                        .border(Color.gray.opacity(0.2))
-//                }
                 
-                // MARK: - Request Headers
-                Section(header: Text("Request Headers").bold().font(.title3)) {
-                    ForEach(Array(editableRequestHeaders.keys), id: \.self) { key in
-                        HStack(alignment: .top) {
-                            Text(key)
-                                .font(.system(.body, design: .monospaced))
-                                .frame(width: 160, alignment: .leading)
-                                .foregroundColor(.secondary)
-                            TextField("Value", text: Binding(
-                                get: { editableRequestHeaders[key] ?? "" },
-                                set: { editableRequestHeaders[key] = $0 }
-                            ))
-                            .textFieldStyle(.roundedBorder)
-                        }
-                    }
-                }
-
                 // MARK: - Request Body
-                Section(header: Text("Request Body").bold().font(.title3)) {
-                    ScrollView {
-                        TextEditor(text: $editableRequestBody)
-                            .font(.system(.body, design: .monospaced))
-                            .padding(6)
-                            .frame(minHeight: 140, maxHeight: 300)
-                            .background(Color(NSColor.textBackgroundColor))
-                            .cornerRadius(8)
-                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray.opacity(0.2)))
-                    }
-                }
+                SectionView(title: "Request Body", raw: log.content, regex: regex)
+
+//                Section(header: Text("Request Body").bold().font(.title3)) {
+//                    ScrollView {
+//                        TextEditor(text: log.content)
+//                            .font(.system(.body, design: .monospaced))
+//                            .padding(6)
+//                            .frame(minHeight: 140, maxHeight: 300)
+//                            .background(Color(NSColor.textBackgroundColor))
+//                            .cornerRadius(8)
+//                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray.opacity(0.2)))
+//                    }
+//                }
                 SectionView(title: "Response Headers", json: log.response_headers, regex: regex)
                 SectionView(title: "Response Body", raw: log.response_content, regex: regex)
                 // MARK: - Action Buttons
-                     HStack(spacing: 16) {
-                         Button(action: {
-                             var updatedLog = log
-                             updatedLog.headers = editableRequestHeaders
-                             updatedLog.content = editableRequestBody
-                             manager.replay(log: updatedLog)
-                         }) {
-                             Label("Replay Request", systemImage: "arrow.clockwise")
-                                 .font(.body)
-                                 .padding(.horizontal)
-                                 .padding(.vertical, 6)
-                                 .background(Color.accentColor.opacity(0.1))
-                                 .cornerRadius(8)
-                         }
-
-                         Button(action: {
-                             manager.exportToFile(log)
-                         }) {
-                             Label("Export HAR", systemImage: "square.and.arrow.up")
-                                 .font(.body)
-                                 .padding(.horizontal)
-                                 .padding(.vertical, 6)
-                                 .background(Color.accentColor.opacity(0.1))
-                                 .cornerRadius(8)
-                         }
-                     }
-                     .padding(.top)
+//                     HStack(spacing: 16) {
+//                         Button(action: {
+//                             var updatedLog = log
+//                             updatedLog.headers = editableRequestHeaders
+//                             updatedLog.content = editableRequestBody
+//                             manager.replay(log: updatedLog)
+//                         }) {
+//                             Label("Replay Request", systemImage: "arrow.clockwise")
+//                                 .font(.body)
+//                                 .padding(.horizontal)
+//                                 .padding(.vertical, 6)
+//                                 .background(Color.accentColor.opacity(0.1))
+//                                 .cornerRadius(8)
+//                         }
+//
+//                         Button(action: {
+//                             manager.exportToFile(log)
+//                         }) {
+//                             Label("Export HAR", systemImage: "square.and.arrow.up")
+//                                 .font(.body)
+//                                 .padding(.horizontal)
+//                                 .padding(.vertical, 6)
+//                                 .background(Color.accentColor.opacity(0.1))
+//                                 .cornerRadius(8)
+//                         }
+//                     }
+//                     .padding(.top)
             }
             .padding()
         }

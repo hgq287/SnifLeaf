@@ -31,7 +31,7 @@ struct SectionView: View {
                 ForEach(nodes) { JSONNodeView(node: $0, regex: regex) }
             }.padding(.leading, 6)
         } else if let raw, !raw.isEmpty {
-            ScrollView(.horizontal) {
+            ScrollView(.vertical, showsIndicators: false) {
                 Text(raw)
                     .font(.system(.caption, design: .monospaced))
                     .foregroundColor(colorFor(raw))

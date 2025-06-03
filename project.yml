@@ -6,12 +6,8 @@ packages:
   Alamofire:
     url: https://github.com/Alamofire/Alamofire.git
     majorVersion: 5.10.0
-  RealmSwift:
-    url: https://github.com/realm/realm-swift.git
-    majorVersion: 20.0.2
-  SQLite:
-    url: https://github.com/stephencelis/SQLite.swift.git
-    majorVersion: 0.15.3
+  GRDB:
+    url: https://github.com/groue/GRDB.swift.git
   SwiftNIO:
     url: https://github.com/apple/swift-nio.git
     majorVersion: 2.83.0

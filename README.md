@@ -38,7 +38,7 @@ SnifLeaf is a lightweight macOS app built with SwiftUI that captures and analyze
 
 # 🤝 Contributing
 
-Contributions are welcome! Whether it's feature suggestions, bug reports, or pull requests — your support helps make CyberLeafX more useful for the community.
+Contributions are welcome! Whether it's feature suggestions, bug reports, or pull requests — your support helps make SnifLeaf more useful for the community.
 
 # License
 The MIT License (MIT)

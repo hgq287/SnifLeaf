@@ -8,22 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		08076691FE6180502A4DA154 /* APICredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4BFFDCF121FD8894DD483 /* APICredentials.swift */; };
-		0A81C48185CE5AD20D3058BA /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617F88703E86451F54504E8D /* BaseObject.swift */; };
 		0B6F7AEED7F9AA302076EAFC /* SnifLeafTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58749B397B8BB5B9FE546819 /* SnifLeafTests.swift */; };
 		0BC0CA58497582AD8F2656DE /* SnifLeafCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EE9F587D752BD9E0A9F20A9 /* Shared.docc in Sources */ = {isa = PBXBuildFile; fileRef = 572F6524E84CD2CA552A247C /* Shared.docc */; };
 		16F0EE14E04587E2EB062D8D /* CyberLeafXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51925A276B112A48FC8C903 /* CyberLeafXApp.swift */; };
-		1AB07AFD2C689D7A5AED2056 /* IDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27478ADB64C00C7E99FA44A4 /* IDatabase.swift */; };
 		2091699F7A734279C566D3B0 /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF5D5D9AF2FA040C6B20449D /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2C1EC5C03D29C3214B55D84B /* IBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF310B83651454699A55176F /* IBaseService.swift */; };
 		2ED1957AF57DFF50034947F6 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE84612F17E3F74C54B6C2B0 /* AlamofireManager.swift */; };
 		318B34ACEE1EDF68BE73230E /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
 		3427ECE1C8CE58CEC944D6CE /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF217A39F3FE2B08493DFA5 /* APIConfig.swift */; };
 		374AAD1DF746EC4DF74CDDBA /* AlamofireHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CDA1F510BC8CDBDB598E5F /* AlamofireHTTPService.swift */; };
-		381D642AEAB5EE63D9D1981B /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8D3E9DBC5852E42A5F7318 /* BaseService.swift */; };
-		4E4768677729C439289265CA /* IBaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F349F8A1E34878C5930F0B7D /* IBaseRepository.swift */; };
 		4E9B80AE2329D786E70AA992 /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF5D5D9AF2FA040C6B20449D /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4FA21684DDE6EC141F92CB8B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3033738EC1D8844C676BCD7C /* RealmSwift */; };
 		56B217BD92C6F74DBDE111F6 /* Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC62F9E4E6FB80459803164 /* Shared.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66A6894F158DD8DA75F3D312 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5D5D9AF2FA040C6B20449D /* Shared.framework */; };
 		74A38362564A1BB6FE709439 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5D5D9AF2FA040C6B20449D /* Shared.framework */; };
@@ -37,6 +31,10 @@
 		A3343E742DE9873B00E75B78 /* ProxyMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343E732DE9873B00E75B78 /* ProxyMan.swift */; };
 		A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343F0E2DE996A000E75B78 /* AppState.swift */; };
 		A343742005EEDA76B20E027D /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A45232C7AA6395F27A63 /* SharedTests.swift */; };
+		A3911C402DEEF05A0009AEE6 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */; };
+		A3911C622DEEFB1E0009AEE6 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = A3911C612DEEFB1E0009AEE6 /* GRDB */; };
+		A3911C7F2DEEFF810009AEE6 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = A3911C7E2DEEFF810009AEE6 /* GRDB */; };
+		A3911C812DEEFFE70009AEE6 /* GRDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3911C802DEEFFE70009AEE6 /* GRDBManager.swift */; };
 		A3C0DE042DE87C7B007A82FF /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DE032DE87C7B007A82FF /* RootView.swift */; };
 		A3CDA2492DED92B2009C107B /* mitmproxy.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CDA2472DED92A7009C107B /* mitmproxy.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A3CDA24B2DED9676009C107B /* MitmProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CDA24A2DED9676009C107B /* MitmProcessManager.swift */; };
@@ -44,7 +42,6 @@
 		A3CDA2832DED9F16009C107B /* SnifLeafCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */; };
 		AF24A0ACD2B5B32268CA52AE /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
-		BBC45DFF32751C58868415A4 /* GenericItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */; };
 		BF508BE7C15711E540829961 /* SnifLeafCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B1D31778A7F0EA199C4747E /* SnifLeafCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8D83B0FEEEDFD9BE727162C /* APICredentialsComponentsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C94C03ADF7BB61383DD92 /* APICredentialsComponentsError.swift */; };
 		C8F362740A389E5D237C4FDA /* SnifLeafTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CD2EDAB610F0B21294023D /* SnifLeafTests.swift */; };
@@ -56,7 +53,6 @@
 		F0E1FCCBACF5FC519AC63DBF /* INetworkingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB16C0EDE1B3A55B70B7B5D /* INetworkingFactory.swift */; };
 		F1AEA6BCA5D1DE8089C9A1E0 /* IHTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E1A22158281CB859F67816 /* IHTTPManager.swift */; };
 		F6FD1D03E6718E1E748DF62D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC9E3F986CF841F18C9F8D8 /* ContentView.swift */; };
-		F9D82B00C0F04FDECE1A175C /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC925710F3A122E5A211165D /* Database.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,7 +171,6 @@
 		1EC8A45232C7AA6395F27A63 /* SharedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTests.swift; sourceTree = "<group>"; };
 		1EC9E3F986CF841F18C9F8D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1F28CE6CECD5BD982B5DE1DE /* SnifLeaf-iOS-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-iOS-Debug.xcconfig"; sourceTree = "<group>"; };
-		27478ADB64C00C7E99FA44A4 /* IDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDatabase.swift; sourceTree = "<group>"; };
 		2F8BF09FCD81374D6A9811CD /* SnifLeaf-iOS-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-iOS-Release.xcconfig"; sourceTree = "<group>"; };
 		30A73B4EAFEF863551378076 /* SnifLeafCore.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SnifLeafCore.docc; sourceTree = "<group>"; };
 		33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFNetworkingManager.swift; sourceTree = "<group>"; };
@@ -185,11 +180,9 @@
 		572F6524E84CD2CA552A247C /* Shared.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Shared.docc; sourceTree = "<group>"; };
 		58749B397B8BB5B9FE546819 /* SnifLeafTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnifLeafTests.swift; sourceTree = "<group>"; };
 		6140F733EAE7B8085ABEF9FF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		617F88703E86451F54504E8D /* BaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
 		6569B26E22A4F1B5A38A6135 /* Shared-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Shared-Debug.xcconfig"; sourceTree = "<group>"; };
 		69DCF76AD814E93D36076B71 /* SnifLeaf-macOSTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-macOSTests.xcconfig"; sourceTree = "<group>"; };
 		6AA1ABB6FD345CD75495E330 /* SnifLeaf-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SnifLeaf-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C8D3E9DBC5852E42A5F7318 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		76830FBD54532B00BFE9B3DC /* SnifLeafCore-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeafCore-Release.xcconfig"; sourceTree = "<group>"; };
 		77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnifLeafCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7808ED5BC8D2F8A6B979417A /* SnifLeaf-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SnifLeaf-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,26 +201,24 @@
 		A3343E732DE9873B00E75B78 /* ProxyMan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyMan.swift; sourceTree = "<group>"; };
 		A3343F0E2DE996A000E75B78 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTests.xcconfig; sourceTree = "<group>"; };
+		A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
+		A3911C802DEEFFE70009AEE6 /* GRDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManager.swift; sourceTree = "<group>"; };
 		A3C0DE032DE87C7B007A82FF /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		A3CDA2462DED92A7009C107B /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		A3CDA2472DED92A7009C107B /* mitmproxy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = mitmproxy.app; sourceTree = "<group>"; };
 		A3CDA24A2DED9676009C107B /* MitmProcessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmProcessManager.swift; sourceTree = "<group>"; };
-		A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericItemRepository.swift; sourceTree = "<group>"; };
 		A9358DA13BCE6A5266FF305A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
 		B7FED6C8E9988A89199B9BE0 /* Shared-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Shared-Release.xcconfig"; sourceTree = "<group>"; };
 		BE84612F17E3F74C54B6C2B0 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
-		BF310B83651454699A55176F /* IBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBaseService.swift; sourceTree = "<group>"; };
 		C0133403FFABD67FA55E939C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		C94B986170E9DC23235C74A9 /* SnifLeaf-macOS-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-macOS-Release.xcconfig"; sourceTree = "<group>"; };
 		C9E1A22158281CB859F67816 /* IHTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHTTPManager.swift; sourceTree = "<group>"; };
 		CB309C4D749280B99F7AD699 /* SnifLeaf-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SnifLeaf-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7A24E6553D86FD4F7FF485 /* SnifLeafCoreTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SnifLeafCoreTests.xcconfig; sourceTree = "<group>"; };
-		DC925710F3A122E5A211165D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		E51925A276B112A48FC8C903 /* CyberLeafXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyberLeafXApp.swift; sourceTree = "<group>"; };
 		E8BA68911699B9BB0495BBA5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EC846B7A9B178A67216F9754 /* SnifLeafCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnifLeafCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF59606CAA95643E61FDC40F /* NioClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NioClient.swift; sourceTree = "<group>"; };
-		F349F8A1E34878C5930F0B7D /* IBaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBaseRepository.swift; sourceTree = "<group>"; };
 		F3FDAE2A956F4EB42B2F96CF /* SnifLeaf-iOSTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-iOSTests.xcconfig"; sourceTree = "<group>"; };
 		FF5D5D9AF2FA040C6B20449D /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -251,8 +242,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3911C622DEEFB1E0009AEE6 /* GRDB in Frameworks */,
 				E69A576AA776A7134E7E269D /* Alamofire in Frameworks */,
-				4FA21684DDE6EC141F92CB8B /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				318B34ACEE1EDF68BE73230E /* SnifLeafCore.framework in Frameworks */,
+				A3911C7F2DEEFF810009AEE6 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,8 +295,7 @@
 		119983A2AA9F0F486B7C624F /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				DC925710F3A122E5A211165D /* Database.swift */,
-				27478ADB64C00C7E99FA44A4 /* IDatabase.swift */,
+				A3911C802DEEFFE70009AEE6 /* GRDBManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -312,7 +303,7 @@
 		2AE2683CFB78D8FA21FD0BDC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				617F88703E86451F54504E8D /* BaseObject.swift */,
+				A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -425,8 +416,6 @@
 		6F02A4E756D4E38384A7A239 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6C8D3E9DBC5852E42A5F7318 /* BaseService.swift */,
-				BF310B83651454699A55176F /* IBaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -434,8 +423,6 @@
 		70AEC61D8F32CD99C03A6F87 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				A71364852C8AE49C1C8D2F85 /* GenericItemRepository.swift */,
-				F349F8A1E34878C5930F0B7D /* IBaseRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -763,7 +750,7 @@
 			name = SnifLeafCore;
 			packageProductDependencies = (
 				010D13645D20C92B855982CE /* Alamofire */,
-				3033738EC1D8844C676BCD7C /* RealmSwift */,
+				A3911C612DEEFB1E0009AEE6 /* GRDB */,
 			);
 			productName = SnifLeafCore;
 			productReference = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */;
@@ -797,8 +784,7 @@
 			mainGroup = 652AF68A30E240B0CDB81525;
 			packageReferences = (
 				13025A2BAE2DA04B245F4F0C /* XCRemoteSwiftPackageReference "Alamofire" */,
-				5895B3463B254782C7F2BCE2 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				84E728E99295A27D72072781 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				A3911C602DEEFB1E0009AEE6 /* XCRemoteSwiftPackageReference "GRDB" */,
 			);
 			projectDirPath = "";
 			projectRoot = "";
@@ -871,17 +857,12 @@
 			files = (
 				A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */,
 				3427ECE1C8CE58CEC944D6CE /* APIConfig.swift in Sources */,
+				A3911C812DEEFFE70009AEE6 /* GRDBManager.swift in Sources */,
 				08076691FE6180502A4DA154 /* APICredentials.swift in Sources */,
 				8AAC2B696CDC3F9CE3374FE4 /* APICredentialsComponents.swift in Sources */,
 				C8D83B0FEEEDFD9BE727162C /* APICredentialsComponentsError.swift in Sources */,
 				2ED1957AF57DFF50034947F6 /* AlamofireManager.swift in Sources */,
-				0A81C48185CE5AD20D3058BA /* BaseObject.swift in Sources */,
-				381D642AEAB5EE63D9D1981B /* BaseService.swift in Sources */,
-				F9D82B00C0F04FDECE1A175C /* Database.swift in Sources */,
-				BBC45DFF32751C58868415A4 /* GenericItemRepository.swift in Sources */,
-				4E4768677729C439289265CA /* IBaseRepository.swift in Sources */,
-				2C1EC5C03D29C3214B55D84B /* IBaseService.swift in Sources */,
-				1AB07AFD2C689D7A5AED2056 /* IDatabase.swift in Sources */,
+				A3911C402DEEF05A0009AEE6 /* LogEntry.swift in Sources */,
 				F1AEA6BCA5D1DE8089C9A1E0 /* IHTTPManager.swift in Sources */,
 				F0E1FCCBACF5FC519AC63DBF /* INetworkingFactory.swift in Sources */,
 				EB2DB5B7DC3F49B059E1F744 /* NetworkingFactory.swift in Sources */,
@@ -1445,20 +1426,12 @@
 				minimumVersion = 5.10.0;
 			};
 		};
-		5895B3463B254782C7F2BCE2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		A3911C602DEEFB1E0009AEE6 /* XCRemoteSwiftPackageReference "GRDB" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
+			repositoryURL = "https://github.com/groue/GRDB.swift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 20.0.2;
-			};
-		};
-		84E728E99295A27D72072781 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.15.3;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1469,10 +1442,15 @@
 			package = 13025A2BAE2DA04B245F4F0C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		3033738EC1D8844C676BCD7C /* RealmSwift */ = {
+		A3911C612DEEFB1E0009AEE6 /* GRDB */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5895B3463B254782C7F2BCE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
+			package = A3911C602DEEFB1E0009AEE6 /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
+		};
+		A3911C7E2DEEFF810009AEE6 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3911C602DEEFB1E0009AEE6 /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

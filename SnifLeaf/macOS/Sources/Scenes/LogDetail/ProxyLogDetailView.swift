@@ -11,7 +11,7 @@ import Shared
 struct MitmLogDetailView: View {
     var log: ProxyLog
     var regex: NSRegularExpression?
-    @StateObject var manager = ProxyMan()
+    @StateObject var manager = MitmProcessManager()
     
     @State private var editableRequestBody: String
     @State private var editableRequestHeaders: [String: String]

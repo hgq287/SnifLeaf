@@ -42,6 +42,53 @@ public struct LogEntry: Codable, Identifiable {
         self.requestBodyContent = requestBodyContent
         self.responseBodyContent = responseBodyContent
     }
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, timestamp, method, url, host, path, queryParams, requestSize, responseSize, statusCode, latency
+        case requestHeaders
+        case responseHeaders
+        case requestBodyContent
+        case responseBodyContent
+    }
+
+    // MARK: - Init from Decoder
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        id = try container.decodeIfPresent(Int.self, forKey: .id)
+        timestamp = try container.decode(Date.self, forKey: .timestamp)
+        method = try container.decode(String.self, forKey: .method)
+        url = try container.decode(String.self, forKey: .url)
+        host = try container.decode(String.self, forKey: .host)
+        path = try container.decodeIfPresent(String.self, forKey: .path)
+        queryParams = try container.decodeIfPresent(String.self, forKey: .queryParams)
+        requestSize = try container.decode(Int.self, forKey: .requestSize)
+        responseSize = try container.decode(Int.self, forKey: .responseSize)
+        statusCode = try container.decode(Int.self, forKey: .statusCode)
+        latency = try container.decode(Double.self, forKey: .latency)
+        requestHeaders = try container.decodeIfPresent(String.self, forKey: .requestHeaders)
+        responseHeaders = try container.decodeIfPresent(String.self, forKey: .responseHeaders)
+
+        if let bodyString = try container.decodeIfPresent(String.self, forKey: .requestBodyContent) {
+            if let data = Data(base64Encoded: bodyString) {
+                requestBodyContent = data
+            } else {
+                requestBodyContent = bodyString.data(using: .utf8)
+            }
+        } else {
+            requestBodyContent = nil
+        }
+        
+        if let bodyString = try container.decodeIfPresent(String.self, forKey: .responseBodyContent) {
+            if let data = Data(base64Encoded: bodyString) {
+                responseBodyContent = data
+            } else {
+                responseBodyContent = bodyString.data(using: .utf8)
+            }
+        } else {
+            responseBodyContent = nil
+        }
+    }
 }
 
 // MARK: - GRDB Protocols

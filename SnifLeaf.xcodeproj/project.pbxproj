@@ -28,13 +28,13 @@
 		95794707C6CB42859FB4CB72 /* SnifLeafCore.docc in Sources */ = {isa = PBXBuildFile; fileRef = 30A73B4EAFEF863551378076 /* SnifLeafCore.docc */; };
 		96A9D48B78B70045B1F77705 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0133403FFABD67FA55E939C /* App.swift */; };
 		9F8F7FDC68FF3FBDAD03E469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D3E8DB852049383161BE2E /* Assets.xcassets */; };
-		A3343E742DE9873B00E75B78 /* ProxyMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343E732DE9873B00E75B78 /* ProxyMan.swift */; };
 		A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343F0E2DE996A000E75B78 /* AppState.swift */; };
 		A343742005EEDA76B20E027D /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A45232C7AA6395F27A63 /* SharedTests.swift */; };
 		A3911C402DEEF05A0009AEE6 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */; };
 		A3911C622DEEFB1E0009AEE6 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = A3911C612DEEFB1E0009AEE6 /* GRDB */; };
 		A3911C7F2DEEFF810009AEE6 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = A3911C7E2DEEFF810009AEE6 /* GRDB */; };
 		A3911C812DEEFFE70009AEE6 /* GRDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3911C802DEEFFE70009AEE6 /* GRDBManager.swift */; };
+		A3A9DCC32DF976E500B2BCEF /* LogProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A9DCC22DF976E500B2BCEF /* LogProcessor.swift */; };
 		A3C0DE042DE87C7B007A82FF /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0DE032DE87C7B007A82FF /* RootView.swift */; };
 		A3CDA2492DED92B2009C107B /* mitmproxy.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3CDA2472DED92A7009C107B /* mitmproxy.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A3CDA24B2DED9676009C107B /* MitmProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CDA24A2DED9676009C107B /* MitmProcessManager.swift */; };
@@ -198,11 +198,11 @@
 		9B1D31778A7F0EA199C4747E /* SnifLeafCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnifLeafCore.h; sourceTree = "<group>"; };
 		9BC62F9E4E6FB80459803164 /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		9FE60CE0E812382C0D7AB32A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
-		A3343E732DE9873B00E75B78 /* ProxyMan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyMan.swift; sourceTree = "<group>"; };
 		A3343F0E2DE996A000E75B78 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTests.xcconfig; sourceTree = "<group>"; };
 		A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
 		A3911C802DEEFFE70009AEE6 /* GRDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManager.swift; sourceTree = "<group>"; };
+		A3A9DCC22DF976E500B2BCEF /* LogProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProcessor.swift; sourceTree = "<group>"; };
 		A3C0DE032DE87C7B007A82FF /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		A3CDA2462DED92A7009C107B /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		A3CDA2472DED92A7009C107B /* mitmproxy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = mitmproxy.app; sourceTree = "<group>"; };
@@ -365,8 +365,8 @@
 			children = (
 				A3343F0D2DE9943300E75B78 /* Models */,
 				EF59606CAA95643E61FDC40F /* NioClient.swift */,
-				A3343E732DE9873B00E75B78 /* ProxyMan.swift */,
 				A3CDA24A2DED9676009C107B /* MitmProcessManager.swift */,
+				A3A9DCC22DF976E500B2BCEF /* LogProcessor.swift */,
 			);
 			path = NetInterceptor;
 			sourceTree = "<group>";
@@ -836,10 +836,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				374AAD1DF746EC4DF74CDDBA /* AlamofireHTTPService.swift in Sources */,
+				A3A9DCC32DF976E500B2BCEF /* LogProcessor.swift in Sources */,
 				8589BFC0AE3675882A6A9C2C /* NioClient.swift in Sources */,
 				0EE9F587D752BD9E0A9F20A9 /* Shared.docc in Sources */,
 				A3CDA24B2DED9676009C107B /* MitmProcessManager.swift in Sources */,
-				A3343E742DE9873B00E75B78 /* ProxyMan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

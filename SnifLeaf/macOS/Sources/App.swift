@@ -16,6 +16,5 @@ struct MainApp: App {
             ContentView()
                 .environmentObject(appState) 
         }
-        // ...
     }
 }

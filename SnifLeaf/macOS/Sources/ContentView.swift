@@ -56,7 +56,17 @@ struct ContentView: View {
 
             destinationView(for: selectedTab)
         }
+        
+        .onAppear {
+            // Initialize the app state and start necessary processes
+            appState.startup()
+        }
+        .onDisappear() {
+            // Clean up resources if needed
+            appState.shutdown()
+        }
     }
+       
 
     @ViewBuilder
     private func destinationView(for tab: SidebarTab) -> some View {

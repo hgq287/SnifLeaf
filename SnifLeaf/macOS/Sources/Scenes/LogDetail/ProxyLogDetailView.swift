@@ -8,6 +8,8 @@
 import SwiftUI
 import Shared
 
+/**
+
 struct MitmLogDetailView: View {
     var log: ProxyLog
     var regex: NSRegularExpression?
@@ -176,3 +178,5 @@ struct JSONNodeView: View {
         return regex.firstMatch(in: text, options: [], range: range) != nil
     }
 }
+
+*/

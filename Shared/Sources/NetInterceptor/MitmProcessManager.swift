@@ -17,7 +17,7 @@ public class MitmProcessManager: ObservableObject {
     private var outputBuffer = ""
     private var tempScriptURL: URL?
 
-    private var logProcessor: LogProcessor!
+    public var logProcessor: LogProcessor!
     
     @Published var isProxyRunning: Bool = false
     @Published var latestMitmLog: String = "No mitmproxy output yet."
@@ -26,7 +26,10 @@ public class MitmProcessManager: ObservableObject {
         self.logProcessor = logProcessor ?? LogProcessor(dbManager: GRDBManager.shared)
     }
 
-    func stopExistingMitmdump(timeout: TimeInterval = 1.0, completion: @escaping () -> Void) {
+    public func stopExistingMitmdump(
+        timeout: TimeInterval = 1.0,
+        completion: @escaping () -> Void
+    ) {
         let killTask = Process()
         killTask.executableURL = URL(fileURLWithPath: "/usr/bin/killall")
         killTask.arguments = ["-9", "mitmdump"]

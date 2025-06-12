@@ -13,7 +13,7 @@ public struct LogEntry: Codable, Identifiable {
     public let timestamp: Date
     public let method: String
     public let url: String
-    public let host: String
+    public let host: String?
     public let path: String?
     public let queryParams: String?
     public let requestSize: Int

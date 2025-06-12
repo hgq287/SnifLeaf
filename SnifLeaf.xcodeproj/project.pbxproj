@@ -40,6 +40,7 @@
 		A3CDA24B2DED9676009C107B /* MitmProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CDA24A2DED9676009C107B /* MitmProcessManager.swift */; };
 		A3CDA2822DED9F16009C107B /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
 		A3CDA2832DED9F16009C107B /* SnifLeafCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A3EC77AD2DF9BF28005DC12F /* GRDBQuery in Frameworks */ = {isa = PBXBuildFile; productRef = A3EC77AC2DF9BF28005DC12F /* GRDBQuery */; };
 		A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */; };
 		AF24A0ACD2B5B32268CA52AE /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
 		BF508BE7C15711E540829961 /* SnifLeafCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B1D31778A7F0EA199C4747E /* SnifLeafCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -270,6 +271,7 @@
 			files = (
 				74A38362564A1BB6FE709439 /* Shared.framework in Frameworks */,
 				A3CDA2822DED9F16009C107B /* SnifLeafCore.framework in Frameworks */,
+				A3EC77AD2DF9BF28005DC12F /* GRDBQuery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +787,7 @@
 			packageReferences = (
 				13025A2BAE2DA04B245F4F0C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				A3911C602DEEFB1E0009AEE6 /* XCRemoteSwiftPackageReference "GRDB" */,
+				A3EC77AB2DF9BF28005DC12F /* XCRemoteSwiftPackageReference "GRDBQuery" */,
 			);
 			projectDirPath = "";
 			projectRoot = "";
@@ -1434,6 +1437,14 @@
 				kind = branch;
 			};
 		};
+		A3EC77AB2DF9BF28005DC12F /* XCRemoteSwiftPackageReference "GRDBQuery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDBQuery";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1451,6 +1462,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A3911C602DEEFB1E0009AEE6 /* XCRemoteSwiftPackageReference "GRDB" */;
 			productName = GRDB;
+		};
+		A3EC77AC2DF9BF28005DC12F /* GRDBQuery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3EC77AB2DF9BF28005DC12F /* XCRemoteSwiftPackageReference "GRDBQuery" */;
+			productName = GRDBQuery;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

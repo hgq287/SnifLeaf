@@ -57,7 +57,9 @@ public class MitmProcessManager: ObservableObject {
         }
     }
 
-    public func startProxy() {
+    public func startProxy(
+        completion: @escaping (Bool) -> Void = { _ in }
+    ) {
         stopExistingMitmdump { [self] in
             guard task == nil else { return }
 
@@ -222,6 +224,7 @@ public class MitmProcessManager: ObservableObject {
                 try task?.run()
                 DispatchQueue.main.async {
                     self.isProxyRunning = true
+                    completion(true)
                     print("mitmdump process started successfully!")
                 }
 
@@ -238,6 +241,7 @@ public class MitmProcessManager: ObservableObject {
                 DispatchQueue.main.async {
                     self.isProxyRunning = false
                     self.latestMitmLog = "Proxy start error: \(error.localizedDescription)"
+                    completion(false)
                 }
                 self.cleanupTempScript()
             }

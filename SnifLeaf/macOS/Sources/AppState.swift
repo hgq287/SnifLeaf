@@ -48,7 +48,14 @@ public final class AppState: ObservableObject {
 
     // MARK: - App Lifecycle Methods
     public func startup() {
-        print("AppState: Startup sequence initiated.")
+        print("AppState: Startup sequence initiated, starting proxy...")
+        mitmProcessManager.startProxy { success in
+            if success {
+                print("AppState: Proxy started successfully.")
+            } else {
+                print("AppState: Failed to start proxy.")
+            }
+        }
     }
     
     public func shutdown() {

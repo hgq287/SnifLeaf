@@ -19,8 +19,8 @@ public class MitmProcessManager: ObservableObject {
 
     public var logProcessor: LogProcessor!
     
-    @Published var isProxyRunning: Bool = false
-    @Published var latestMitmLog: String = "No mitmproxy output yet."
+    public var isProxyRunning: Bool = false
+    public var latestMitmLog: String = "No mitmproxy output yet."
 
     public init(logProcessor: LogProcessor? = nil) {
         self.logProcessor = logProcessor ?? LogProcessor(dbManager: GRDBManager.shared)

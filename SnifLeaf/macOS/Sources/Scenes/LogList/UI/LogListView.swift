@@ -72,8 +72,8 @@ struct LogListView: View {
         }
         .sheet(isPresented: $showingDetailSheet) {
             if let log = selectedLog {
-//                LogDetailView(log: log)
-//                    .frame(minWidth: 600, minHeight: 700)
+                LogDetailView(log: log)
+                    .frame(minWidth: 600, minHeight: 700)
             }
         }
         .navigationTitle("Live Network Logs")

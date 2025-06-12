@@ -70,14 +70,10 @@ struct ContentView: View {
             LogListView()
                 .environmentObject(appState.logListInteractor)
         case .proxyControl:
-//            ProxyControlView()
-//                .environmentObject(appState.mitmProcessManager)
-            LogListView()
-                .environmentObject(appState.logListInteractor)
+            ProxyControlView()
+                .environmentObject(appState.mitmProcessManager)
         case .settings:
-//            SettingsView()
-            LogListView()
-                .environmentObject(appState.logListInteractor)
+            SettingsView()
         }
     }
     

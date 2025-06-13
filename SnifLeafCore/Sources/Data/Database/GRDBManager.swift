@@ -56,7 +56,29 @@ public class GRDBManager: ObservableObject {
                 t.column(LogEntry.Columns.responseBodyContent.name, .blob)
             }
         }
-
+        
+        migrator.registerMigration("addIndexesToLogEntries") { db in
+            try db.execute(sql: """
+                   CREATE UNIQUE INDEX IF NOT EXISTS idx_logEntries_timestamp_id ON log_entries (timestamp DESC, id DESC);
+               """)
+            
+            try db.execute(sql: """
+                CREATE INDEX IF NOT EXISTS idx_log_entries_url ON log_entries (url);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_host ON log_entries (host);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_path ON log_entries (path);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_method ON log_entries (method);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_statusCode ON log_entries (statusCode);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_latency ON log_entries (latency);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_request_headers ON log_entries (request_headers);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_response_headers ON log_entries (response_headers);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_request_body_content ON log_entries (request_body_content);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_response_body_content ON log_entries (response_body_content);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_queryParams ON log_entries (queryParams);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_requestSize ON log_entries (requestSize);
+                CREATE INDEX IF NOT EXISTS idx_log_entries_responseSize ON log_entries (responseSize);
+            """)
+        }
+        
         return migrator
     }
 

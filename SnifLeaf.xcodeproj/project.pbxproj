@@ -347,8 +347,6 @@
 			children = (
 				119983A2AA9F0F486B7C624F /* Database */,
 				2AE2683CFB78D8FA21FD0BDC /* Models */,
-				70AEC61D8F32CD99C03A6F87 /* Repositories */,
-				6F02A4E756D4E38384A7A239 /* Services */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -413,20 +411,6 @@
 				7AA2A425B8C6EFE7ABBC662D /* Products */,
 				A33410042DE83F8200EE9B4C /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		6F02A4E756D4E38384A7A239 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		70AEC61D8F32CD99C03A6F87 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
 			sourceTree = "<group>";
 		};
 		7A180F4A562F9843182C104C /* configs */ = {

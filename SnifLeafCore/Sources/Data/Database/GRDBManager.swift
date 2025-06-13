@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import GRDB
 
 public class GRDBManager: ObservableObject {
@@ -55,6 +56,7 @@ public class GRDBManager: ObservableObject {
                 t.column(LogEntry.Columns.responseBodyContent.name, .blob)
             }
         }
+
         return migrator
     }
 
@@ -62,13 +64,20 @@ public class GRDBManager: ObservableObject {
     
     public func insertLogEntry(log: LogEntry) async {
         do {
-            try await dbPool.write { db in
-                let mutableLog = log
-                try mutableLog.insert(db)
+            var mutableLog = log
+            let savedLog = try await dbPool.write { db -> LogEntry in
+                try mutableLog.save(db)
+                return mutableLog // <-- Bây giờ mutableLog này sẽ có ID sau khi save thành công
             }
-        } catch {
-            print("GRDBManager: Error inserting log entry: \(error)")
-        }
+            
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .GRDBSavedNewLog, object: nil, userInfo: [NotificationKeys.newLogEntry: savedLog])
+            }
+            
+            
+         } catch {
+             print("Error saving log entry: \(error)")
+         }
     }
 
     public func fetchLogEntries(limit: Int = 100, offset: Int = 0) async -> [LogEntry] {
@@ -85,36 +94,18 @@ public class GRDBManager: ObservableObject {
         }
     }
     
-    public func deleteOldLogs(before date: Date) async throws {
-        try await dbPool.write { db in
-            try LogEntry.filter(LogEntry.Columns.timestamp < date).deleteAll(db)
-        }
-        print("GRDBManager: Deleted logs older than \(date).")
-    }
-
-    public func deleteAllLogEntries() async throws {
-        try await dbPool.write { db in
-            try LogEntry.deleteAll(db)
-        }
-        print("GRDBManager: All logs deleted.")
-    }
-    
-    /// Lấy tất cả LogEntry từ database, sắp xếp theo thời gian mới nhất.
     public func fetchAllLogs() async throws -> [LogEntry] {
         return try await dbQueue.read { db in
             try LogEntry.order(LogEntry.Columns.timestamp.desc).fetchAll(db)
         }
     }
-
-    /// Lấy một LogEntry cụ thể theo ID.
+    
     public func fetchLog(by id: Int64) async throws -> LogEntry? {
         return try await dbQueue.read { db in
             try LogEntry.filter(LogEntry.Columns.id == id).fetchOne(db)
         }
     }
 
-    /// Lọc logs theo điều kiện tìm kiếm.
-    /// Lưu ý: Đây là ví dụ đơn giản. Đối với các query phức tạp hơn, bạn sẽ xây dựng predicate GRDB.
     public func filterLogs(searchText: String) async throws -> [LogEntry] {
         return try await dbQueue.read { db in
             var query = LogEntry.order(LogEntry.Columns.timestamp.desc).asRequest(of: LogEntry.self)
@@ -130,5 +121,57 @@ public class GRDBManager: ObservableObject {
             }
             return try query.fetchAll(db)
         }
+    }
+    
+    public func fetchLogs(limit: Int, offset: Int, searchText: String) async throws -> [LogEntry] {
+        return try await dbQueue.read { db in
+            var query = LogEntry.order(LogEntry.Columns.timestamp.desc).asRequest(of: LogEntry.self)
+
+            if !searchText.isEmpty {
+                let pattern = "%" + searchText.lowercased() + "%"
+                query = query.filter(
+                    LogEntry.Columns.url.like(pattern) ||
+                    LogEntry.Columns.host.like(pattern) ||
+                    LogEntry.Columns.method.like(pattern) ||
+                    LogEntry.Columns.statusCode.like(pattern)
+                )
+            }
+
+            return try query.limit(limit, offset: offset).fetchAll(db)
+        }
+    }
+    public func fetchLogsCount(searchText: String) async throws -> Int {
+        return try await dbQueue.read { db in
+            var query = LogEntry.all()
+            if !searchText.isEmpty {
+                let pattern = "%" + searchText.lowercased() + "%"
+                query = query.filter(
+                    LogEntry.Columns.url.like(pattern) ||
+                    LogEntry.Columns.host.like(pattern) ||
+                    LogEntry.Columns.method.like(pattern) ||
+                    LogEntry.Columns.statusCode.like(pattern)
+                )
+            }
+            return try query.fetchCount(db)
+        }
+    }
+    
+    public func deleteOldLogs(before date: Date) async throws {
+        _ = try await dbPool.write { db in
+            try LogEntry.filter(LogEntry.Columns.timestamp < date).deleteAll(db)
+        }
+        print("GRDBManager: Deleted logs older than \(date).")
+    }
+
+
+    public func deleteAllLogEntries() async {
+       do {
+           _ = try await dbQueue.write { db in
+               try LogEntry.deleteAll(db)
+           }
+           NotificationCenter.default.post(name: .GRDBDidUpdate, object: nil)
+       } catch {
+           print("Error deleting all log entries: \(error)")
+       }
     }
 }

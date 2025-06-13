@@ -41,6 +41,7 @@
 		A3CDA2822DED9F16009C107B /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
 		A3CDA2832DED9F16009C107B /* SnifLeafCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3EC77AD2DF9BF28005DC12F /* GRDBQuery in Frameworks */ = {isa = PBXBuildFile; productRef = A3EC77AC2DF9BF28005DC12F /* GRDBQuery */; };
+		A3EC786A2DFC0662005DC12F /* GRDBSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = A3EC78692DFC0662005DC12F /* GRDBSQLite */; };
 		A852EB49B3095AB46C20573F /* AFNetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33367C07F80387CDDF8F22C7 /* AFNetworkingManager.swift */; };
 		AF24A0ACD2B5B32268CA52AE /* SnifLeafCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */; };
 		BF508BE7C15711E540829961 /* SnifLeafCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B1D31778A7F0EA199C4747E /* SnifLeafCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -208,6 +209,7 @@
 		A3CDA2462DED92A7009C107B /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		A3CDA2472DED92A7009C107B /* mitmproxy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = mitmproxy.app; sourceTree = "<group>"; };
 		A3CDA24A2DED9676009C107B /* MitmProcessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MitmProcessManager.swift; sourceTree = "<group>"; };
+		A3EC78672DFC0473005DC12F /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = System/Library/Frameworks/Combine.framework; sourceTree = SDKROOT; };
 		A9358DA13BCE6A5266FF305A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
 		B7FED6C8E9988A89199B9BE0 /* Shared-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Shared-Release.xcconfig"; sourceTree = "<group>"; };
 		BE84612F17E3F74C54B6C2B0 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		A3343F0D2DE9943300E75B78 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
 		A3343F132DE997F700E75B78 /* Scenes */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Scenes; sourceTree = "<group>"; };
 		A3343F212DE99AB300E75B78 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
+		A3EC78642DFC0236005DC12F /* Utils */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utils; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +246,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3EC786A2DFC0662005DC12F /* GRDBSQLite in Frameworks */,
 				A3911C622DEEFB1E0009AEE6 /* GRDB in Frameworks */,
 				E69A576AA776A7134E7E269D /* Alamofire in Frameworks */,
 			);
@@ -313,6 +317,7 @@
 		332FED7C28F75E29F4F42737 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A3EC78642DFC0236005DC12F /* Utils */,
 				5038B2688520C9C4BBC5DFD6 /* Data */,
 				335FF8E04045E064984F1E9B /* HTTPProviders */,
 			);
@@ -347,8 +352,6 @@
 			children = (
 				119983A2AA9F0F486B7C624F /* Database */,
 				2AE2683CFB78D8FA21FD0BDC /* Models */,
-				70AEC61D8F32CD99C03A6F87 /* Repositories */,
-				6F02A4E756D4E38384A7A239 /* Services */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -413,20 +416,6 @@
 				7AA2A425B8C6EFE7ABBC662D /* Products */,
 				A33410042DE83F8200EE9B4C /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		6F02A4E756D4E38384A7A239 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		70AEC61D8F32CD99C03A6F87 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
 			sourceTree = "<group>";
 		};
 		7A180F4A562F9843182C104C /* configs */ = {
@@ -502,6 +491,7 @@
 		A33410042DE83F8200EE9B4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3EC78672DFC0473005DC12F /* Combine.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -749,10 +739,14 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				A3EC78642DFC0236005DC12F /* Utils */,
+			);
 			name = SnifLeafCore;
 			packageProductDependencies = (
 				010D13645D20C92B855982CE /* Alamofire */,
 				A3911C612DEEFB1E0009AEE6 /* GRDB */,
+				A3EC78692DFC0662005DC12F /* GRDBSQLite */,
 			);
 			productName = SnifLeafCore;
 			productReference = 77F7FDD6A62A5247DE92CD33 /* SnifLeafCore.framework */;
@@ -1467,6 +1461,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A3EC77AB2DF9BF28005DC12F /* XCRemoteSwiftPackageReference "GRDBQuery" */;
 			productName = GRDBQuery;
+		};
+		A3EC78692DFC0662005DC12F /* GRDBSQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3911C602DEEFB1E0009AEE6 /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDBSQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

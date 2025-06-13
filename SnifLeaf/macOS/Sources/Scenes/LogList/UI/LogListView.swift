@@ -66,6 +66,23 @@ struct LogListView: View {
                             .listRowSeparator(.hidden)
                             .listRowInsets(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
                     }
+                    
+                    if logListInteractor.hasMoreLogs {
+                        ProgressView()
+                            .id(UUID())
+                            .onAppear {
+                                print("Loading next page...")
+                                logListInteractor.loadNextPage()
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                    } else if !logListInteractor.isLoading && !logListInteractor.logs.isEmpty {
+                        Text("End of Logs")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                    }
                 }
                 .listStyle(.plain)
             }

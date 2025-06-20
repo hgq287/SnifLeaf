@@ -89,7 +89,7 @@ public class GRDBManager: ObservableObject {
             var mutableLog = log
             let savedLog = try await dbPool.write { db -> LogEntry in
                 try mutableLog.save(db)
-                return mutableLog // <-- Bây giờ mutableLog này sẽ có ID sau khi save thành công
+                return mutableLog
             }
             
             DispatchQueue.main.async {

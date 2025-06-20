@@ -36,8 +36,8 @@ public final class LogListInteractor: ObservableObject {
         $searchText
             .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
             .removeDuplicates()
-            .sink { [weak self] searchText in
-                self?.loadLogs()
+            .sink { [weak self] _ in
+                self?.resetAndLoadLogs()
             }
             .store(in: &cancellables)
         
@@ -51,15 +51,15 @@ public final class LogListInteractor: ObservableObject {
             .sink { [weak self] notification in
                 guard let self = self else { return }
                 if let newLog = notification.userInfo?[NotificationKeys.newLogEntry] as? LogEntry {
-                    if !self.logs
-                        .contains(where: { $0.timestamp == newLog.timestamp }) {
+//                    if !self.logs
+//                        .contains(where: { $0.timestamp == newLog.timestamp }) {
                         self.logs.insert(newLog, at: 0)
                         self.totalLogsCount += 1
 
                         self.loadedOffset += 1
                         self.updateHasMoreLogsState()
                     }
-                }
+//                }
             }
             .store(in: &cancellables)
         
@@ -127,19 +127,6 @@ public final class LogListInteractor: ObservableObject {
 
     private func updateHasMoreLogsState() {
         hasMoreLogs = logs.count < totalLogsCount
-    }
-
-    public func loadLogs() {
-        Task { @MainActor in
-            isLoading = true
-            do {
-                let fetchedLogs = try await dbManager.filterLogs(searchText: searchText)
-                self.logs = fetchedLogs
-            } catch {
-                print("LogListInteractor: Failed to load logs: \(error.localizedDescription)")
-            }
-            isLoading = false
-        }
     }
 
     public func deleteAllLogs() {

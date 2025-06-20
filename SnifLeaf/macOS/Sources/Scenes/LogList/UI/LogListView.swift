@@ -94,9 +94,6 @@ struct LogListView: View {
             }
         }
         .navigationTitle("Live Network Logs")
-        .onAppear {
-            logListInteractor.loadLogs()
-        }
     }
 }
 

@@ -21,6 +21,11 @@ public class MitmProcessManager: ObservableObject {
     
     public var isProxyRunning: Bool = false
     public var latestMitmLog: String = "No mitmproxy output yet."
+    
+    private let processingQueue = DispatchQueue(label: "com.yourapp.logProcessing", qos: .userInitiated)
+    private var logBuffer: [LogEntry] = []
+    private let bufferLock = NSLock()
+    private var flushTimer: Timer?
 
     public init(logProcessor: LogProcessor? = nil) {
         self.logProcessor = logProcessor ?? LogProcessor(dbManager: GRDBManager.shared)
@@ -183,12 +188,18 @@ public class MitmProcessManager: ObservableObject {
                         print(self.latestMitmLog)
                         return
                     }
-
+                    
                     while let newlineRange = self.outputBuffer.range(of: "\n") {
                         let line = String(self.outputBuffer[..<newlineRange.lowerBound])
                         self.outputBuffer.removeSubrange(..<newlineRange.upperBound)
 
                         guard !line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { continue }
+
+//                    while let newlineRange = self.outputBuffer.range(of: "\n") {
+//                        let line = String(self.outputBuffer[..<newlineRange.lowerBound])
+//                        self.outputBuffer.removeSubrange(..<newlineRange.upperBound)
+//
+//                        guard !line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { continue }
                         
                         DispatchQueue.main.async {
                              self.latestMitmLog = line
@@ -199,24 +210,28 @@ public class MitmProcessManager: ObservableObject {
                             continue
                         }
                         
-                        do {
-                            let decoder = JSONDecoder()
-                            decoder.dateDecodingStrategy = .custom { decoder in
-                                let container = try decoder.singleValueContainer()
-                                let timestamp = try container.decode(TimeInterval.self)
-                                return Date(timeIntervalSince1970: timestamp)
-                            }
-                            
-                            var logEntry = try decoder.decode(LogEntry.self, from: jsonData)
-                            logEntry.id = nil
+                        processingQueue.async { [weak self] in
+                            guard let self = self else { return }
+                            do {
+                                let decoder = JSONDecoder()
+                                decoder.dateDecodingStrategy = .custom { decoder in
+                                    let container = try decoder.singleValueContainer()
+                                    let timestamp = try container.decode(TimeInterval.self)
+                                    return Date(timeIntervalSince1970: timestamp)
+                                }
+                                
+                                var logEntry = try decoder.decode(LogEntry.self, from: jsonData)
+                                logEntry.id = nil
 
-                            self.logProcessor?.processNewLog(logEntry)
-                            
-                        } catch {
-                            print("MitmProxy Output: Error decoding JSON line: \(error) for line: \(line)")
-                            DispatchQueue.main.async {
-                                self.latestMitmLog = "JSON Decode Error: \(error.localizedDescription) for line: \(line)"
+                                self.logProcessor?.processNewLog(logEntry)
+                                
+                            } catch {
+                                print("MitmProxy Output: Error decoding JSON line: \(error) for line: \(line)")
+                                DispatchQueue.main.async {
+                                    self.latestMitmLog = "JSON Decode Error: \(error.localizedDescription) for line: \(line)"
+                                }
                             }
+                            
                         }
                     }
                 }

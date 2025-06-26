@@ -21,13 +21,13 @@
 ## Screenshots
 
 ### 🟢 Real-Time Proxy Control  
-![Proxy Control](assets/proxy-control.jpg)
+![Proxy Control](Assets/proxy-control.jpg)
 
 ### 🔍 Log Detail View  
-![Log Details](assets/log-details.jpg)
+![Log Details](Assets/log-details.jpg)
 
 ### 📈 Live Traffic Viewer  
-![Live Logs](assets/live-logs.jpg)
+![Live Logs](Assets/live-logs.jpg)
 
 ---
 

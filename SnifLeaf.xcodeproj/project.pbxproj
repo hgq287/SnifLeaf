@@ -26,7 +26,7 @@
 		8AAC2B696CDC3F9CE3374FE4 /* APICredentialsComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7D0418BE07829203386EC2 /* APICredentialsComponents.swift */; };
 		9559300C3CD8D0015599084F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 488B25AFBD1ACA0C04581660 /* Assets.xcassets */; };
 		95794707C6CB42859FB4CB72 /* SnifLeafCore.docc in Sources */ = {isa = PBXBuildFile; fileRef = 30A73B4EAFEF863551378076 /* SnifLeafCore.docc */; };
-		96A9D48B78B70045B1F77705 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0133403FFABD67FA55E939C /* App.swift */; };
+		96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0133403FFABD67FA55E939C /* SnifLeafApp.swift */; };
 		9F8F7FDC68FF3FBDAD03E469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D3E8DB852049383161BE2E /* Assets.xcassets */; };
 		A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343F0E2DE996A000E75B78 /* AppState.swift */; };
 		A343742005EEDA76B20E027D /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A45232C7AA6395F27A63 /* SharedTests.swift */; };
@@ -213,7 +213,7 @@
 		A9358DA13BCE6A5266FF305A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
 		B7FED6C8E9988A89199B9BE0 /* Shared-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Shared-Release.xcconfig"; sourceTree = "<group>"; };
 		BE84612F17E3F74C54B6C2B0 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
-		C0133403FFABD67FA55E939C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		C0133403FFABD67FA55E939C /* SnifLeafApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnifLeafApp.swift; sourceTree = "<group>"; };
 		C94B986170E9DC23235C74A9 /* SnifLeaf-macOS-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SnifLeaf-macOS-Release.xcconfig"; sourceTree = "<group>"; };
 		C9E1A22158281CB859F67816 /* IHTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IHTTPManager.swift; sourceTree = "<group>"; };
 		CB309C4D749280B99F7AD699 /* SnifLeaf-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SnifLeaf-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -459,7 +459,7 @@
 				A3343F132DE997F700E75B78 /* Scenes */,
 				488B25AFBD1ACA0C04581660 /* Assets.xcassets */,
 				1EC9E3F986CF841F18C9F8D8 /* ContentView.swift */,
-				C0133403FFABD67FA55E939C /* App.swift */,
+				C0133403FFABD67FA55E939C /* SnifLeafApp.swift */,
 				A3343F0E2DE996A000E75B78 /* AppState.swift */,
 				A3C0DE032DE87C7B007A82FF /* RootView.swift */,
 				CE0B45AD9B4B6F65C0B3DC1E /* Preview Content */,
@@ -882,7 +882,7 @@
 				F6FD1D03E6718E1E748DF62D /* ContentView.swift in Sources */,
 				A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */,
 				A3C0DE042DE87C7B007A82FF /* RootView.swift in Sources */,
-				96A9D48B78B70045B1F77705 /* App.swift in Sources */,
+				96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

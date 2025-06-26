@@ -14,87 +14,62 @@ struct LogListView: View {
 
     @State private var selectedLog: LogEntry?
     @State private var showingDetailSheet: Bool = false
+    @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.gray)
-                TextField("Search logs...", text: $logListInteractor.searchText)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(maxWidth: 300)
-                
-                Spacer()
-                
-                Button("Clear All Logs") {
-                    logListInteractor.deleteAllLogs()
-                }
-                .buttonStyle(.bordered)
-            }
-            .padding(.horizontal)
-            .padding(.vertical, 8)
-            .background(Color.secondary.opacity(0.1))
-            .cornerRadius(8)
+           VStack(spacing: 0) {
+//               CustomToolbarBarView()
+//                   .frame(maxWidth: .infinity)
+//                   .background(Color.gray.opacity(0.1))
+//                   .padding(.bottom, 1)
 
-            Divider()
+               LogListHeaderView(logListInteractor: logListInteractor)
+                   .frame(maxWidth: .infinity)
 
-            if logListInteractor.isLoading {
-                ProgressView("Loading Logs...")
-                    .padding()
-            } else if logListInteractor.logs.isEmpty && logListInteractor.searchText.isEmpty {
-                ContentUnavailableView(
-                    "No Logs Captured",
-                    systemImage: "network.slash",
-                    description: Text("Start the proxy to begin capturing network traffic.")
-                )
-            } else if logListInteractor.logs.isEmpty && !logListInteractor.searchText.isEmpty {
-                 ContentUnavailableView(
-                    "No Matching Logs",
-                    systemImage: "magnifyingglass",
-                    description: Text("No logs found for your search query.")
-                )
-            } else {
-                List {
-                    ForEach(logListInteractor.logs) { log in
-                        LogRowFancyView(log: log)
-                            .onTapGesture {
-                                selectedLog = log
-                                showingDetailSheet = true
-                            }
-                            .background(selectedLog?.id == log.id ? Color.accentColor.opacity(0.1) : Color.clear)
-                            .cornerRadius(5)
-                            .listRowSeparator(.hidden)
-                            .listRowInsets(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
-                    }
-                    
-                    if logListInteractor.hasMoreLogs {
-                        ProgressView()
-                            .id(UUID())
-                            .onAppear {
-                                print("Loading next page...")
-                                logListInteractor.loadNextPage()
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                    } else if !logListInteractor.isLoading && !logListInteractor.logs.isEmpty {
-                        Text("End of Logs")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                    }
-                }
-                .listStyle(.plain)
-            }
-        }
-        .sheet(isPresented: $showingDetailSheet) {
-            if let log = selectedLog {
-                LogDetailView(log: log)
-                    .frame(minWidth: 600, minHeight: 700)
-            }
-        }
-        .navigationTitle("Live Network Logs")
-    }
+               Divider()
+
+               HSplitView {
+                   LogListBodyView(
+                       logListInteractor: logListInteractor,
+                       selectedLog: $selectedLog
+                   )
+                   .frame(minWidth: 450)
+                   .layoutPriority(1)
+
+  
+                   Group {
+                       if let log = selectedLog {
+                           LogDetailView(log: log)
+                               .frame(minWidth: 300)
+                       } else {
+                           EmptyDetailView()
+                               .frame(maxWidth: 300, maxHeight: .infinity)
+                               .foregroundColor(.secondary)
+                               .padding()
+                               .multilineTextAlignment(.center)
+                               .overlay(
+                                   Text("Select a log to view details")
+                                       .font(.headline)
+                                       .foregroundColor(.gray)
+                               )
+                           
+                       }
+                   }
+               }
+               .frame(maxWidth: .infinity, maxHeight: .infinity)
+           }
+
+           .frame(maxWidth: .infinity, maxHeight: .infinity)
+           
+           .ignoresSafeArea(.container, edges: [])
+           .navigationTitle("Live Network Logs")
+           .sheet(isPresented: $showingDetailSheet) {
+               if let log = selectedLog {
+                   LogDetailView(log: log)
+                       .frame(minWidth: 600, minHeight: 700)
+               }
+           }
+       }
 }
 
 // MARK: - Preview Provider

@@ -1,64 +1,97 @@
-# SnifLeaf – macOS Network Proxy & Request Inspector
+# SnifLeaf – macOS Network Proxy & HTTP Inspector
 
-SnifLeaf is a lightweight macOS app built with SwiftUI that captures and analyzes HTTP/HTTPS traffic in real time, powered by `mitmproxy`.
+**SnifLeaf** is a lightweight, native macOS app built with SwiftUI that captures and analyzes HTTP/HTTPS traffic in real time, powered by [mitmproxy](https://mitmproxy.org/). It's ideal for developers, testers, and network debuggers who want a fast, focused alternative to tools like Charles Proxy.
 
-# Features
+![Stars](https://img.shields.io/github/stars/hgq287/SnifLeaf?style=social)
+![Forks](https://img.shields.io/github/forks/hgq287/SnifLeaf?style=social)
+![Last Commit](https://img.shields.io/github/last-commit/hgq287/SnifLeaf)
 
-- Log all outgoing and incoming HTTP/S requests
+---
 
-- Inspect request and response headers, status codes, and body content
+## Features
 
-- Filter logs by host, method, status, and more
+- Log all HTTP/S traffic (incoming + outgoing)
+- Inspect headers, status codes, and bodies
+- Filter logs by host, method, status, etc.
+- Click to view full request/response details
+- macOS-native SwiftUI interface
 
-- Click on any log to see detailed information
+---
 
-- Clean, responsive macOS-native UI (SwiftUI)
+## Screenshots
 
-# Coming Soon
+### 🟢 Real-Time Proxy Control  
+![Proxy Control](assets/proxy-control.jpg)
 
-- Export logs to multiple formats (JSON, HAR, etc.)
+### 🔍 Log Detail View  
+![Log Details](assets/log-details.jpg)
 
-- Generate formatted reports for testers and QA teams
+### 📈 Live Traffic Viewer  
+![Live Logs](assets/live-logs.jpg)
 
-- Detect anomalies and unusual traffic with machine learning
+---
 
-- Track and analyze macOS app battery usage
+## Coming Soon
 
-- Additional utilities to support everyday dev/test workflows
+- Export logs to JSON, HAR, and more
+- Generate QA tester reports
+- Detect anomalies using ML
+- Battery usage analysis
+- Dev/test utility toolkit
 
-# Use Cases
+---
 
-- Inspecting request flow in complex apps
+## Use Cases
 
-- Verifying API usage and payloads during testing
+| Who?         | Why?                                               |
+|--------------|----------------------------------------------------|
+| Developers   | Debug REST APIs, inspect network calls             |
+| QA Testers   | Verify API usage, generate reports                 |
+| Security     | Detect anomalies in traffic                        |
+| DevOps       | Lightweight alternative to Wireshark on macOS     |
 
-- Troubleshooting unexpected backend communication
+---
 
-- Generating network traffic reports for QA
+## Quick Start
 
-# 🤝 Contributing
+```bash
+git clone https://github.com/hgq287/SnifLeaf.git
+open SnifLeaf.xcodeproj
+```
 
-Contributions are welcome! Whether it's feature suggestions, bug reports, or pull requests — your support helps make SnifLeaf more useful for the community.
+- Requires: macOS 15+, Xcode 16+
 
-# License
-The MIT License (MIT)
+> `mitmdump` is already bundled and invoked via CLI by the app. No manual installation is needed.
 
-Copyright (C) 2025, Hg Q. https://hgq287.github.io. All rights reserved.
+---
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## Setup Instructions
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. **Configure System Proxy**
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+   - System Settings → Network → Your Wi-Fi → Proxy → Enable Web Proxy (127.0.0.1:8080)
+
+2. **Install SSL Certificate**
+
+   - With the proxy running, visit http://mitm.it in your browser
+   - Download the certificate and trust it via Keychain Access (macOS only)
+
+> These steps are mandatory for HTTPS traffic interception due to macOS security restrictions.
+
+---
+
+## Contributing
+
+Your contributions are welcome 🙌  
+Feel free to:
+- Submit issues and feature requests
+- Create pull requests
+- Improve docs and automation
+
+---
+
+## License
+
+MIT License — see [LICENSE](LICENSE) for full details.
+
+© 2025 [Hg Q.](https://hgq287.github.io)

@@ -56,11 +56,18 @@ public final class LogListInteractor: ObservableObject {
                 if let newLog = notification.userInfo?[NotificationKeys.newLogEntry] as? LogEntry {
 //                    if !self.logs
 //                        .contains(where: { $0.timestamp == newLog.timestamp }) {
+                    
+                    withAnimation(.interpolatingSpring(stiffness: 250, damping: 25)) {
                         self.logs.insert(newLog, at: 0)
                         self.totalLogsCount += 1
-
                         self.loadedOffset += 1
                         self.updateHasMoreLogsState()
+                    }
+//                        self.logs.insert(newLog, at: 0)
+//                        self.totalLogsCount += 1
+//
+//                        self.loadedOffset += 1
+//                        self.updateHasMoreLogsState()
                     }
 //                }
             }

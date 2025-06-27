@@ -18,10 +18,10 @@ struct LogListView: View {
 
     var body: some View {
            VStack(spacing: 0) {
-//               CustomToolbarBarView()
-//                   .frame(maxWidth: .infinity)
-//                   .background(Color.gray.opacity(0.1))
-//                   .padding(.bottom, 1)
+               CustomToolbarView()
+                   .frame(maxWidth: .infinity)
+                   .background(Color.gray.opacity(0.1))
+                   .padding(.bottom, 1)
 
                LogListHeaderView(logListInteractor: logListInteractor)
                    .frame(maxWidth: .infinity)

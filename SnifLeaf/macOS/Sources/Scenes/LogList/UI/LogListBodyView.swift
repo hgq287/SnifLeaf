@@ -14,10 +14,7 @@ struct LogListBodyView: View {
 
     var body: some View {
         Group {
-            if logListInteractor.isLoading {
-                ProgressView("Loading Logs...")
-                    .padding()
-            } else if logListInteractor.logs.isEmpty && logListInteractor.searchText.isEmpty {
+            if logListInteractor.logs.isEmpty && logListInteractor.searchText.isEmpty {
                 ContentUnavailableView(
                     "No Logs Captured",
                     systemImage: "network.slash",
@@ -47,13 +44,14 @@ struct LogListBodyView: View {
                     }
 
                     if logListInteractor.hasMoreLogs {
-                        ProgressView()
+                        
+                        ProgressView("Loading next page...")
                             .onAppear {
-                                print("Loading next page...")
                                 logListInteractor.loadNextPage()
                             }
                             .frame(maxWidth: .infinity)
-                            .padding()
+                            .padding(.vertical, 12)
+                            .padding(.bottom, 24)
                     } else if !logListInteractor.isLoading && !logListInteractor.logs.isEmpty {
                         Text("End of Logs")
                             .font(.caption)

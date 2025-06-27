@@ -8,7 +8,7 @@
 import Foundation
 import GRDB
 
-public struct LogEntry: Codable, Identifiable {
+public struct LogEntry: Codable, Identifiable, Equatable {
     public var id: Int?
     public let timestamp: Date
     public let method: String

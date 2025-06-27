@@ -34,8 +34,11 @@ public final class LogListInteractor: ObservableObject {
         
         // Observe the change of `searchText` to filter automatically
         $searchText
-            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
+            .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
             .removeDuplicates()
+            .filter {
+                $0.isEmpty || $0.count > 1
+            }
             .sink { [weak self] _ in
                 self?.resetAndLoadLogs()
             }
@@ -82,29 +85,34 @@ public final class LogListInteractor: ObservableObject {
         guard !isLoading else { return }
         isLoading = true
         
-        Task { @MainActor in
+        Task {
             do {
                 let fetchedLogs = try await dbManager.fetchLogs(limit: itemsPerPage, offset: offset, searchText: searchText)
                 
-                if clearExisting {
-                    self.logs = fetchedLogs
-                } else {
-                    let existingLogIds = Set(self.logs.compactMap { $0.id })
-                    let uniqueNewLogs = fetchedLogs.filter { newLog in
-                        guard let newId = newLog.id else { return false }
-                        return !existingLogIds.contains(newId)
+                await MainActor.run {
+                    
+                    if clearExisting {
+                        self.logs = fetchedLogs
+                    } else {
+                        let existingLogIds = Set(self.logs.compactMap { $0.id })
+                        let uniqueNewLogs = fetchedLogs.filter { newLog in
+                            guard let newId = newLog.id else { return false }
+                            return !existingLogIds.contains(newId)
+                        }
+                        self.logs.append(contentsOf: uniqueNewLogs)
                     }
-                    self.logs.append(contentsOf: uniqueNewLogs)
+                    
+                    self.loadedOffset = offset + fetchedLogs.count
+                    self.updateHasMoreLogsState()
+                    isLoading = false
                 }
-                
-                self.loadedOffset = offset + fetchedLogs.count
-                self.updateHasMoreLogsState()
-
             } catch {
-                print("LogListInteractor: Failed to load logs from offset \(offset): \(error.localizedDescription)")
-                self.hasMoreLogs = false
+                await MainActor.run {
+                    print("LogListInteractor: Failed to load logs from offset \(offset): \(error.localizedDescription)")
+                    self.hasMoreLogs = false
+                    isLoading = false
+                }
             }
-            isLoading = false
         }
     }
 

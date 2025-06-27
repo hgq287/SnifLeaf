@@ -1,5 +1,5 @@
 //
-//  CustomToolbarBarView.swift
+//  CustomToolbarView.swift
 //  SnifLeaf-macOS
 //
 //  Created by Hg Q. on 27/6/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomToolbarBarView: View {
+struct CustomToolbarView: View {
     var body: some View {
         HStack {
             Button { print("Replay") } label: { Label("Replay", systemImage: "arrow.counterclockwise") }
@@ -28,5 +28,5 @@ struct CustomToolbarBarView: View {
 }
 
 #Preview {
-    CustomToolbarBarView()
+    CustomToolbarView()
 }

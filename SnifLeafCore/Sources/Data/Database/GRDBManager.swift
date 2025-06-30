@@ -13,20 +13,26 @@ public class GRDBManager: ObservableObject {
     public static let shared = GRDBManager()
 
     private var dbPool: DatabasePool!
-    public var dbQueue: DatabaseQueue!
 
     private init() {
+        print("GRDBManager: Initialized")
+    }
+    
+    public func openDatabase(databaseURL: URL) {
         do {
-            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-            let dbURL = URL(fileURLWithPath: path).appendingPathComponent("snifleaf.sqlite3")
-            
-            dbPool = try DatabasePool(path: dbURL.path)
-            self.dbQueue = try DatabaseQueue(path: dbURL.path)
-            
-            try migrator.migrate(dbPool)
-            print("GRDBManager: Database opened and migrated at \(dbURL.path)")
+            dbPool = try DatabasePool(path: databaseURL.path)
+            print("GRDBManager: Database opened and migrated at \(databaseURL.path)")
         } catch {
             print("GRDBManager: Error opening or migrating database: \(error)")
+        }
+    }
+    
+    public func migrateDatabase() {
+        do {
+            try migrator.migrate(dbPool)
+            print("GRDBManager: Database migrated successfully.")
+        } catch {
+            print("GRDBManager: Error migrating database: \(error)")
         }
     }
 
@@ -69,10 +75,6 @@ public class GRDBManager: ObservableObject {
                 CREATE INDEX IF NOT EXISTS idx_log_entries_method ON log_entries (method);
                 CREATE INDEX IF NOT EXISTS idx_log_entries_statusCode ON log_entries (statusCode);
                 CREATE INDEX IF NOT EXISTS idx_log_entries_latency ON log_entries (latency);
-                CREATE INDEX IF NOT EXISTS idx_log_entries_request_headers ON log_entries (request_headers);
-                CREATE INDEX IF NOT EXISTS idx_log_entries_response_headers ON log_entries (response_headers);
-                CREATE INDEX IF NOT EXISTS idx_log_entries_request_body_content ON log_entries (request_body_content);
-                CREATE INDEX IF NOT EXISTS idx_log_entries_response_body_content ON log_entries (response_body_content);
                 CREATE INDEX IF NOT EXISTS idx_log_entries_queryParams ON log_entries (queryParams);
                 CREATE INDEX IF NOT EXISTS idx_log_entries_requestSize ON log_entries (requestSize);
                 CREATE INDEX IF NOT EXISTS idx_log_entries_responseSize ON log_entries (responseSize);
@@ -117,19 +119,19 @@ public class GRDBManager: ObservableObject {
     }
     
     public func fetchAllLogs() async throws -> [LogEntry] {
-        return try await dbQueue.read { db in
+        return try await dbPool.read { db in
             try LogEntry.order(LogEntry.Columns.timestamp.desc).fetchAll(db)
         }
     }
     
     public func fetchLog(by id: Int64) async throws -> LogEntry? {
-        return try await dbQueue.read { db in
+        return try await dbPool.read { db in
             try LogEntry.filter(LogEntry.Columns.id == id).fetchOne(db)
         }
     }
 
     public func filterLogs(searchText: String) async throws -> [LogEntry] {
-        return try await dbQueue.read { db in
+        return try await dbPool.read { db in
             var query = LogEntry.order(LogEntry.Columns.timestamp.desc).asRequest(of: LogEntry.self)
 
             if !searchText.isEmpty {
@@ -146,7 +148,7 @@ public class GRDBManager: ObservableObject {
     }
     
     public func fetchLogs(limit: Int, offset: Int, searchText: String) async throws -> [LogEntry] {
-        return try await dbQueue.read { db in
+        return try await dbPool.read { db in
             var query = LogEntry.order(LogEntry.Columns.timestamp.desc).asRequest(of: LogEntry.self)
 
             if !searchText.isEmpty {
@@ -163,7 +165,7 @@ public class GRDBManager: ObservableObject {
         }
     }
     public func fetchLogsCount(searchText: String) async throws -> Int {
-        return try await dbQueue.read { db in
+        return try await dbPool.read { db in
             var query = LogEntry.all()
             if !searchText.isEmpty {
                 let pattern = "%" + searchText.lowercased() + "%"
@@ -188,7 +190,7 @@ public class GRDBManager: ObservableObject {
 
     public func deleteAllLogEntries() async {
        do {
-           _ = try await dbQueue.write { db in
+           _ = try await dbPool.write { db in
                try LogEntry.deleteAll(db)
            }
            NotificationCenter.default.post(name: .GRDBDidUpdate, object: nil)

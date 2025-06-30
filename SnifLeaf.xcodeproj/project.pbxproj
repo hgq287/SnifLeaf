@@ -30,6 +30,7 @@
 		9F8F7FDC68FF3FBDAD03E469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D3E8DB852049383161BE2E /* Assets.xcassets */; };
 		A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343F0E2DE996A000E75B78 /* AppState.swift */; };
 		A343742005EEDA76B20E027D /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A45232C7AA6395F27A63 /* SharedTests.swift */; };
+		A36AA99F2E12A6E70066B38D /* GRDBManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AA99E2E12A6E70066B38D /* GRDBManagerTests.swift */; };
 		A3911C402DEEF05A0009AEE6 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */; };
 		A3911C622DEEFB1E0009AEE6 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = A3911C612DEEFB1E0009AEE6 /* GRDB */; };
 		A3911C7F2DEEFF810009AEE6 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = A3911C7E2DEEFF810009AEE6 /* GRDB */; };
@@ -202,6 +203,7 @@
 		9FE60CE0E812382C0D7AB32A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
 		A3343F0E2DE996A000E75B78 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTests.xcconfig; sourceTree = "<group>"; };
+		A36AA99E2E12A6E70066B38D /* GRDBManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManagerTests.swift; sourceTree = "<group>"; };
 		A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
 		A3911C802DEEFFE70009AEE6 /* GRDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManager.swift; sourceTree = "<group>"; };
 		A3A9DCC22DF976E500B2BCEF /* LogProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProcessor.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				9825CD601110C306F1ECA80A /* SnifLeafCoreTests.swift */,
+				A36AA99E2E12A6E70066B38D /* GRDBManagerTests.swift */,
 			);
 			path = SnifLeafCoreTests;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36AA99F2E12A6E70066B38D /* GRDBManagerTests.swift in Sources */,
 				D4327E300A9CBCE182F3D6B6 /* SnifLeafCoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1040,7 +1044,10 @@
 			baseConfigurationReference = CF7A24E6553D86FD4F7FF485 /* SnifLeafCoreTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1054,7 +1061,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

@@ -24,6 +24,10 @@ public final class AppState: ObservableObject {
     // MARK: - Initializer
     public init() {
         let _sharedDBManager = GRDBManager.shared
+        
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let dbURL = URL(fileURLWithPath: path).appendingPathComponent("snifleaf.sqlite3")
+        _sharedDBManager.openDatabase(databaseURL: dbURL)
         self.dbManager = _sharedDBManager
         
         let _logProcessor = LogProcessor(dbManager: _sharedDBManager)

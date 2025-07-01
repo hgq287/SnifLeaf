@@ -9,7 +9,7 @@ import Foundation
 import GRDB
 
 public struct LogEntry: Codable, Identifiable, Equatable {
-    public var id: Int?
+    public var id: Int64?
     public let timestamp: Date
     public let method: String
     public let url: String
@@ -25,7 +25,7 @@ public struct LogEntry: Codable, Identifiable, Equatable {
     public let requestBodyContent: Data?
     public let responseBodyContent: Data?
 
-    public init(id: Int? = nil, timestamp: Date, method: String, url: String, host: String, path: String?, queryParams: String?, requestSize: Int, responseSize: Int, statusCode: Int, latency: Double, requestHeaders: String?, responseHeaders: String?, requestBodyContent: Data?, responseBodyContent: Data?) {
+    public init(id: Int64? = nil, timestamp: Date, method: String, url: String, host: String, path: String?, queryParams: String?, requestSize: Int, responseSize: Int, statusCode: Int, latency: Double, requestHeaders: String?, responseHeaders: String?, requestBodyContent: Data?, responseBodyContent: Data?) {
         self.id = id
         self.timestamp = timestamp
         self.method = method
@@ -55,7 +55,7 @@ public struct LogEntry: Codable, Identifiable, Equatable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        id = try container.decodeIfPresent(Int.self, forKey: .id)
+        id = try container.decodeIfPresent(Int64.self, forKey: .id)
         timestamp = try container.decode(Date.self, forKey: .timestamp)
         method = try container.decode(String.self, forKey: .method)
         url = try container.decode(String.self, forKey: .url)
@@ -93,7 +93,7 @@ public struct LogEntry: Codable, Identifiable, Equatable {
 
 // MARK: - GRDB Protocols
 
-extension LogEntry: FetchableRecord, PersistableRecord {
+extension LogEntry: FetchableRecord, MutablePersistableRecord {
 
     public static var databaseTableName: String { "log_entries" }
 
@@ -151,5 +151,10 @@ extension LogEntry: FetchableRecord, PersistableRecord {
         container[Columns.responseHeaders] = responseHeaders
         container[Columns.requestBodyContent] = requestBodyContent
         container[Columns.responseBodyContent] = responseBodyContent
+    }
+    
+    // Update auto-incremented id upon successful insertion
+    mutating public func didInsert(_ inserted: InsertionSuccess) {
+        id = inserted.rowID
     }
 }

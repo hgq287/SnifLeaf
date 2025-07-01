@@ -86,22 +86,23 @@ public class GRDBManager: ObservableObject {
 
     // MARK: - Database Operations
     
-    public func insertLogEntry(log: LogEntry) async {
+    public func insertLogEntry(log: LogEntry) {
+        var savedLog = log
         do {
-            var mutableLog = log
-            let savedLog = try await dbPool.write { db -> LogEntry in
-                try mutableLog.save(db)
-                return mutableLog
+            try dbPool.write { db in
+                try savedLog.save(db)
             }
-            
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .GRDBSavedNewLog, object: nil, userInfo: [NotificationKeys.newLogEntry: savedLog])
+
+            DispatchQueue.main.async { [savedLog] in
+                NotificationCenter.default.post(
+                    name: .GRDBSavedNewLog,
+                    object: nil,
+                    userInfo: [NotificationKeys.newLogEntry: savedLog]
+                )
             }
-            
-            
-         } catch {
-             print("Error saving log entry: \(error)")
-         }
+        } catch {
+            print("Error saving log entry: \(error)")
+        }
     }
 
     public func fetchLogEntries(limit: Int = 100, offset: Int = 0) async -> [LogEntry] {

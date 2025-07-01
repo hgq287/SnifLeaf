@@ -21,7 +21,6 @@ public class LogProcessor: ObservableObject {
     public func processNewLog(_ logEntry: LogEntry) {
         Task {
             await dbManager.insertLogEntry(log: logEntry)
-            print("Log entry inserted into DB: \(logEntry.url)")
         }
     }
 }

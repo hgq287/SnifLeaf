@@ -226,7 +226,6 @@ public class MitmProcessManager: ObservableObject {
                                 self.logProcessor?.processNewLog(logEntry)
                                 
                             } catch {
-                                print("MitmProxy Output: Error decoding JSON line: \(error) for line: \(line)")
                                 DispatchQueue.main.async {
                                     self.latestMitmLog = "JSON Decode Error: \(error.localizedDescription) for line: \(line)"
                                 }

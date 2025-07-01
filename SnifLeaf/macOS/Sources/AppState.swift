@@ -28,6 +28,7 @@ public final class AppState: ObservableObject {
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let dbURL = URL(fileURLWithPath: path).appendingPathComponent("snifleaf.sqlite3")
         _sharedDBManager.openDatabase(databaseURL: dbURL)
+        _sharedDBManager.migrateDatabase()
         self.dbManager = _sharedDBManager
         
         let _logProcessor = LogProcessor(dbManager: _sharedDBManager)

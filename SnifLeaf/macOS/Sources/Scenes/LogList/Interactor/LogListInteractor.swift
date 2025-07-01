@@ -54,8 +54,7 @@ public final class LogListInteractor: ObservableObject {
             .sink { [weak self] notification in
                 guard let self = self else { return }
                 if let newLog = notification.userInfo?[NotificationKeys.newLogEntry] as? LogEntry {
-//                    if !self.logs
-//                        .contains(where: { $0.timestamp == newLog.timestamp }) {
+                    if !self.logs.contains(where: { $0.id == newLog.id }) {
                     
                     withAnimation(.interpolatingSpring(stiffness: 250, damping: 25)) {
                         self.logs.insert(newLog, at: 0)
@@ -69,7 +68,7 @@ public final class LogListInteractor: ObservableObject {
 //                        self.loadedOffset += 1
 //                        self.updateHasMoreLogsState()
                     }
-//                }
+                } 
             }
             .store(in: &cancellables)
         

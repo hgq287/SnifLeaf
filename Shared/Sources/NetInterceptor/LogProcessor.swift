@@ -20,7 +20,7 @@ public class LogProcessor: ObservableObject {
 
     public func processNewLog(_ logEntry: LogEntry) {
         Task {
-            await dbManager.insertLogEntry(log: logEntry)
+            dbManager.insertLogEntry(log: logEntry)
         }
     }
 }

@@ -21,6 +21,7 @@ final class GRDBManagerTests: XCTestCase {
         let dbURL = URL(fileURLWithPath: path).appendingPathComponent("test_snifleaf.sqlite3")
         grdbManager = GRDBManager.shared
         grdbManager.openDatabase(databaseURL: dbURL)
+        grdbManager.migrateDatabase()
     }
 
     override func tearDownWithError() throws {
@@ -47,7 +48,7 @@ final class GRDBManagerTests: XCTestCase {
             path: nil, queryParams: nil, requestSize: 100, responseSize: 200, statusCode: 200, latency: 0.1,
             requestHeaders: nil, responseHeaders: nil, requestBodyContent: nil, responseBodyContent: nil
         )
-        await grdbManager.insertLogEntry(log: logEntry)
+        grdbManager.insertLogEntry(log: logEntry)
 
         let fetchedLogs = try await grdbManager.fetchAllLogs()
         XCTAssertEqual(fetchedLogs.count, 1, "Should be one log entry in the database")

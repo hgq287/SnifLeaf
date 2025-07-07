@@ -20,7 +20,17 @@ public class LogProcessor: ObservableObject {
 
     public func processNewLog(_ logEntry: LogEntry) {
         Task {
-            dbManager.insertLogEntry(log: logEntry)
+            var logToSave = logEntry
+            
+            let filteredCategory: TrafficCategory
+            if logEntry.host!.contains("https") {
+                filteredCategory = .other
+            } else {
+                filteredCategory = .unknown
+            }
+            
+            logToSave.trafficCategory = filteredCategory
+            dbManager.insertLogEntry(log: logToSave)
         }
     }
 }

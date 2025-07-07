@@ -29,6 +29,22 @@
 		96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0133403FFABD67FA55E939C /* SnifLeafApp.swift */; };
 		9F8F7FDC68FF3FBDAD03E469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D3E8DB852049383161BE2E /* Assets.xcassets */; };
 		A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343F0E2DE996A000E75B78 /* AppState.swift */; };
+		A33461D32E1B0BB40053FF0A /* BenchmarkMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33461D22E1B0BB40053FF0A /* BenchmarkMetrics.swift */; };
+		A33461D52E1B0C0B0053FF0A /* TrafficCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33461D42E1B0C0B0053FF0A /* TrafficCategory.swift */; };
+		A33461D82E1B0C810053FF0A /* BenchmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33461D72E1B0C810053FF0A /* BenchmarkService.swift */; };
+		A33462222E1BC7490053FF0A /* LogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33462122E1BC7490053FF0A /* LogListView.swift */; };
+		A33462232E1BC7490053FF0A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334621A2E1BC7490053FF0A /* SettingsView.swift */; };
+		A33462242E1BC7490053FF0A /* LogFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334620C2E1BC7490053FF0A /* LogFilter.swift */; };
+		A33462252E1BC7490053FF0A /* LogListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33462112E1BC7490053FF0A /* LogListHeaderView.swift */; };
+		A33462262E1BC7490053FF0A /* CustomToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334620F2E1BC7490053FF0A /* CustomToolbarView.swift */; };
+		A33462272E1BC7490053FF0A /* LogListBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33462102E1BC7490053FF0A /* LogListBodyView.swift */; };
+		A33462282E1BC7490053FF0A /* ProxyControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33462162E1BC7490053FF0A /* ProxyControlView.swift */; };
+		A33462292E1BC7490053FF0A /* SidebarFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334621E2E1BC7490053FF0A /* SidebarFilterView.swift */; };
+		A334622A2E1BC7490053FF0A /* LogListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334620D2E1BC7490053FF0A /* LogListInteractor.swift */; };
+		A334622F2E1BC7940053FF0A /* BenchmarkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334622E2E1BC7940053FF0A /* BenchmarkInteractor.swift */; };
+		A33462312E1BC7CA0053FF0A /* BenchmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33462302E1BC7CA0053FF0A /* BenchmarkView.swift */; };
+		A33462332E1BC8670053FF0A /* CategoryBenchmarkTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33462322E1BC8670053FF0A /* CategoryBenchmarkTableView.swift */; };
+		A33462352E1BC9E50053FF0A /* EndpointBenchmarkTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33462342E1BC9E50053FF0A /* EndpointBenchmarkTableView.swift */; };
 		A343742005EEDA76B20E027D /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A45232C7AA6395F27A63 /* SharedTests.swift */; };
 		A36AA99F2E12A6E70066B38D /* GRDBManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AA99E2E12A6E70066B38D /* GRDBManagerTests.swift */; };
 		A3911C402DEEF05A0009AEE6 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */; };
@@ -202,6 +218,22 @@
 		9BC62F9E4E6FB80459803164 /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		9FE60CE0E812382C0D7AB32A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
 		A3343F0E2DE996A000E75B78 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A33461D22E1B0BB40053FF0A /* BenchmarkMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkMetrics.swift; sourceTree = "<group>"; };
+		A33461D42E1B0C0B0053FF0A /* TrafficCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficCategory.swift; sourceTree = "<group>"; };
+		A33461D72E1B0C810053FF0A /* BenchmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkService.swift; sourceTree = "<group>"; };
+		A334620C2E1BC7490053FF0A /* LogFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFilter.swift; sourceTree = "<group>"; };
+		A334620D2E1BC7490053FF0A /* LogListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogListInteractor.swift; sourceTree = "<group>"; };
+		A334620F2E1BC7490053FF0A /* CustomToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbarView.swift; sourceTree = "<group>"; };
+		A33462102E1BC7490053FF0A /* LogListBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogListBodyView.swift; sourceTree = "<group>"; };
+		A33462112E1BC7490053FF0A /* LogListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogListHeaderView.swift; sourceTree = "<group>"; };
+		A33462122E1BC7490053FF0A /* LogListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogListView.swift; sourceTree = "<group>"; };
+		A33462162E1BC7490053FF0A /* ProxyControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyControlView.swift; sourceTree = "<group>"; };
+		A334621A2E1BC7490053FF0A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A334621E2E1BC7490053FF0A /* SidebarFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarFilterView.swift; sourceTree = "<group>"; };
+		A334622E2E1BC7940053FF0A /* BenchmarkInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkInteractor.swift; sourceTree = "<group>"; };
+		A33462302E1BC7CA0053FF0A /* BenchmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkView.swift; sourceTree = "<group>"; };
+		A33462322E1BC8670053FF0A /* CategoryBenchmarkTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBenchmarkTableView.swift; sourceTree = "<group>"; };
+		A33462342E1BC9E50053FF0A /* EndpointBenchmarkTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointBenchmarkTableView.swift; sourceTree = "<group>"; };
 		A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTests.xcconfig; sourceTree = "<group>"; };
 		A36AA99E2E12A6E70066B38D /* GRDBManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManagerTests.swift; sourceTree = "<group>"; };
 		A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
@@ -230,7 +262,6 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A3343F0D2DE9943300E75B78 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
-		A3343F132DE997F700E75B78 /* Scenes */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Scenes; sourceTree = "<group>"; };
 		A3343F212DE99AB300E75B78 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
 		A3EC78642DFC0236005DC12F /* Utils */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utils; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -312,6 +343,8 @@
 			isa = PBXGroup;
 			children = (
 				A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */,
+				A33461D22E1B0BB40053FF0A /* BenchmarkMetrics.swift */,
+				A33461D42E1B0C0B0053FF0A /* TrafficCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,7 +385,7 @@
 		5038B2688520C9C4BBC5DFD6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				119983A2AA9F0F486B7C624F /* Database */,
+				A33461D62E1B0C730053FF0A /* Services */,
 				2AE2683CFB78D8FA21FD0BDC /* Models */,
 			);
 			path = Data;
@@ -459,7 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				A3343F212DE99AB300E75B78 /* Components */,
-				A3343F132DE997F700E75B78 /* Scenes */,
+				A33462212E1BC7490053FF0A /* Scenes */,
 				488B25AFBD1ACA0C04581660 /* Assets.xcassets */,
 				1EC9E3F986CF841F18C9F8D8 /* ContentView.swift */,
 				C0133403FFABD67FA55E939C /* SnifLeafApp.swift */,
@@ -497,6 +530,155 @@
 				A3EC78672DFC0473005DC12F /* Combine.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A33461D62E1B0C730053FF0A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A33461D72E1B0C810053FF0A /* BenchmarkService.swift */,
+				119983A2AA9F0F486B7C624F /* Database */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A334620E2E1BC7490053FF0A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				A334620C2E1BC7490053FF0A /* LogFilter.swift */,
+				A334620D2E1BC7490053FF0A /* LogListInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		A33462132E1BC7490053FF0A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A334620F2E1BC7490053FF0A /* CustomToolbarView.swift */,
+				A33462102E1BC7490053FF0A /* LogListBodyView.swift */,
+				A33462112E1BC7490053FF0A /* LogListHeaderView.swift */,
+				A33462122E1BC7490053FF0A /* LogListView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A33462142E1BC7490053FF0A /* LogList */ = {
+			isa = PBXGroup;
+			children = (
+				A334620E2E1BC7490053FF0A /* Interactor */,
+				A33462132E1BC7490053FF0A /* UI */,
+			);
+			path = LogList;
+			sourceTree = "<group>";
+		};
+		A33462152E1BC7490053FF0A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		A33462172E1BC7490053FF0A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A33462162E1BC7490053FF0A /* ProxyControlView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A33462182E1BC7490053FF0A /* ProxyControl */ = {
+			isa = PBXGroup;
+			children = (
+				A33462152E1BC7490053FF0A /* Interactor */,
+				A33462172E1BC7490053FF0A /* UI */,
+			);
+			path = ProxyControl;
+			sourceTree = "<group>";
+		};
+		A33462192E1BC7490053FF0A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		A334621B2E1BC7490053FF0A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A334621A2E1BC7490053FF0A /* SettingsView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A334621C2E1BC7490053FF0A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A33462192E1BC7490053FF0A /* Interactor */,
+				A334621B2E1BC7490053FF0A /* UI */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A334621D2E1BC7490053FF0A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		A334621F2E1BC7490053FF0A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A334621E2E1BC7490053FF0A /* SidebarFilterView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A33462202E1BC7490053FF0A /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				A334621D2E1BC7490053FF0A /* Interactor */,
+				A334621F2E1BC7490053FF0A /* UI */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		A33462212E1BC7490053FF0A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A334622B2E1BC7520053FF0A /* Benchmark */,
+				A33462142E1BC7490053FF0A /* LogList */,
+				A33462182E1BC7490053FF0A /* ProxyControl */,
+				A334621C2E1BC7490053FF0A /* Settings */,
+				A33462202E1BC7490053FF0A /* Sidebar */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A334622B2E1BC7520053FF0A /* Benchmark */ = {
+			isa = PBXGroup;
+			children = (
+				A334622D2E1BC7610053FF0A /* Interactor */,
+				A334622C2E1BC75C0053FF0A /* UI */,
+			);
+			path = Benchmark;
+			sourceTree = "<group>";
+		};
+		A334622C2E1BC75C0053FF0A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A33462302E1BC7CA0053FF0A /* BenchmarkView.swift */,
+				A33462322E1BC8670053FF0A /* CategoryBenchmarkTableView.swift */,
+				A33462342E1BC9E50053FF0A /* EndpointBenchmarkTableView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A334622D2E1BC7610053FF0A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				A334622E2E1BC7940053FF0A /* BenchmarkInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		A3CDA2482DED92A7009C107B /* Vendors */ = {
@@ -632,7 +814,6 @@
 				A3CDA2852DED9F16009C107B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				A3343F132DE997F700E75B78 /* Scenes */,
 				A3343F212DE99AB300E75B78 /* Components */,
 			);
 			name = "SnifLeaf-macOS";
@@ -863,8 +1044,11 @@
 				C8D83B0FEEEDFD9BE727162C /* APICredentialsComponentsError.swift in Sources */,
 				2ED1957AF57DFF50034947F6 /* AlamofireManager.swift in Sources */,
 				A3911C402DEEF05A0009AEE6 /* LogEntry.swift in Sources */,
+				A33461D32E1B0BB40053FF0A /* BenchmarkMetrics.swift in Sources */,
 				F1AEA6BCA5D1DE8089C9A1E0 /* IHTTPManager.swift in Sources */,
+				A33461D52E1B0C0B0053FF0A /* TrafficCategory.swift in Sources */,
 				F0E1FCCBACF5FC519AC63DBF /* INetworkingFactory.swift in Sources */,
+				A33461D82E1B0C810053FF0A /* BenchmarkService.swift in Sources */,
 				EB2DB5B7DC3F49B059E1F744 /* NetworkingFactory.swift in Sources */,
 				95794707C6CB42859FB4CB72 /* SnifLeafCore.docc in Sources */,
 			);
@@ -886,6 +1070,19 @@
 				F6FD1D03E6718E1E748DF62D /* ContentView.swift in Sources */,
 				A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */,
 				A3C0DE042DE87C7B007A82FF /* RootView.swift in Sources */,
+				A33462222E1BC7490053FF0A /* LogListView.swift in Sources */,
+				A33462232E1BC7490053FF0A /* SettingsView.swift in Sources */,
+				A33462352E1BC9E50053FF0A /* EndpointBenchmarkTableView.swift in Sources */,
+				A33462242E1BC7490053FF0A /* LogFilter.swift in Sources */,
+				A33462332E1BC8670053FF0A /* CategoryBenchmarkTableView.swift in Sources */,
+				A33462252E1BC7490053FF0A /* LogListHeaderView.swift in Sources */,
+				A33462312E1BC7CA0053FF0A /* BenchmarkView.swift in Sources */,
+				A33462262E1BC7490053FF0A /* CustomToolbarView.swift in Sources */,
+				A33462272E1BC7490053FF0A /* LogListBodyView.swift in Sources */,
+				A33462282E1BC7490053FF0A /* ProxyControlView.swift in Sources */,
+				A33462292E1BC7490053FF0A /* SidebarFilterView.swift in Sources */,
+				A334622A2E1BC7490053FF0A /* LogListInteractor.swift in Sources */,
+				A334622F2E1BC7940053FF0A /* BenchmarkInteractor.swift in Sources */,
 				96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,8 +24,10 @@ public struct LogEntry: Codable, Identifiable, Equatable {
     public let responseHeaders: String?
     public let requestBodyContent: Data?
     public let responseBodyContent: Data?
+    public var trafficCategory: TrafficCategory
+    
 
-    public init(id: Int64? = nil, timestamp: Date, method: String, url: String, host: String, path: String?, queryParams: String?, requestSize: Int, responseSize: Int, statusCode: Int, latency: Double, requestHeaders: String?, responseHeaders: String?, requestBodyContent: Data?, responseBodyContent: Data?) {
+    public init(id: Int64? = nil, timestamp: Date, method: String, url: String, host: String, path: String?, queryParams: String?, requestSize: Int, responseSize: Int, statusCode: Int, latency: Double, requestHeaders: String?, responseHeaders: String?, requestBodyContent: Data?, responseBodyContent: Data?, trafficCategory: TrafficCategory) {
         self.id = id
         self.timestamp = timestamp
         self.method = method
@@ -41,6 +43,7 @@ public struct LogEntry: Codable, Identifiable, Equatable {
         self.responseHeaders = responseHeaders
         self.requestBodyContent = requestBodyContent
         self.responseBodyContent = responseBodyContent
+        self.trafficCategory = trafficCategory
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -49,6 +52,7 @@ public struct LogEntry: Codable, Identifiable, Equatable {
         case responseHeaders
         case requestBodyContent
         case responseBodyContent
+        case trafficCategory
     }
 
     // MARK: - Init from Decoder
@@ -88,6 +92,9 @@ public struct LogEntry: Codable, Identifiable, Equatable {
         } else {
             responseBodyContent = nil
         }
+        
+        let categoryString = try container.decode(String.self, forKey: .trafficCategory)
+        trafficCategory = TrafficCategory.fromString(categoryString)
     }
 }
 
@@ -113,6 +120,7 @@ extension LogEntry: FetchableRecord, MutablePersistableRecord {
         static let responseHeaders = Column("response_headers")
         static let requestBodyContent = Column("request_body_content")
         static let responseBodyContent = Column("response_body_content")
+        static let trafficCategory = Column("traffic_category")
     }
     
     // MARK: - init
@@ -132,6 +140,7 @@ extension LogEntry: FetchableRecord, MutablePersistableRecord {
         responseHeaders = row[Columns.responseHeaders]
         requestBodyContent = row[Columns.requestBodyContent]
         responseBodyContent = row[Columns.responseBodyContent]
+        trafficCategory = TrafficCategory.fromString(row[Columns.trafficCategory])
     }
 
     // MARK: - encode
@@ -151,6 +160,7 @@ extension LogEntry: FetchableRecord, MutablePersistableRecord {
         container[Columns.responseHeaders] = responseHeaders
         container[Columns.requestBodyContent] = requestBodyContent
         container[Columns.responseBodyContent] = responseBodyContent
+        container[Columns.trafficCategory] = trafficCategory.rawValue
     }
     
     // Update auto-incremented id upon successful insertion

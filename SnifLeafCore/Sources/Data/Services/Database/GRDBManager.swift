@@ -12,7 +12,7 @@ import GRDB
 public class GRDBManager: ObservableObject {
     public static let shared = GRDBManager()
 
-    private var dbPool: DatabasePool!
+    public var dbPool: DatabasePool!
 
     private init() {
         print("GRDBManager: Initialized")
@@ -60,6 +60,7 @@ public class GRDBManager: ObservableObject {
                 t.column(LogEntry.Columns.responseHeaders.name, .text)
                 t.column(LogEntry.Columns.requestBodyContent.name, .blob)
                 t.column(LogEntry.Columns.responseBodyContent.name, .blob)
+                t.column(LogEntry.Columns.trafficCategory.name, .text).notNull().collate(.nocase)
             }
         }
         

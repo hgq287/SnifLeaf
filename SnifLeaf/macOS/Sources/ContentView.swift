@@ -15,6 +15,7 @@ struct ContentView: View {
 
     enum SidebarTab: String, CaseIterable, Identifiable {
         case liveLogs = "Live Logs"
+        case benchmarks = "Benchmarks"
         case anomalies = "Detected Anomalies"
         case proxyControl = "Proxy Control"
         case settings = "Settings"
@@ -24,6 +25,7 @@ struct ContentView: View {
         var systemImage: String {
             switch self {
             case .liveLogs: return "network"
+            case .benchmarks: return "chart.bar.fill"
             case .anomalies: return "exclamationmark.triangle.fill"
             case .proxyControl: return "hammer.fill"
             case .settings: return "gearshape.fill"
@@ -74,6 +76,10 @@ struct ContentView: View {
         case .liveLogs:
             LogListView()
                 .environmentObject(appState.logListInteractor)
+            // Tab mới cho Benchmarks
+        case .benchmarks:
+            BenchmarkView()
+                .tabItem { Label("Benchmarks", systemImage: "chart.bar.fill") }
         case .anomalies:
 //            AnomalyView()
 //                .environmentObject(appState.anomalyDetectionViewModel)

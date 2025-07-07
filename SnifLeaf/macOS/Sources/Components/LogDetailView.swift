@@ -221,9 +221,9 @@ private func parseJsonString(_ jsonString: String) -> Any? {
 }
 
 // MARK: - Preview Provider
-struct LogDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        LogDetailView(log: LogEntry(id: 1, timestamp: Date(), method: "POST", url: "https://api.example.com/data/submit?user=test&token=abc", host: "api.example.com", path: "/data/submit", queryParams: "{\"user\":\"test\",\"token\":\"abc\"}", requestSize: 500, responseSize: 200, statusCode: 200, latency: 0.123, requestHeaders: "{\"Content-Type\":\"application/json\",\"Authorization\":\"Bearer xyz\"}", responseHeaders: "{\"Server\":\"Nginx\",\"X-Cache\":\"HIT\"}", requestBodyContent: "{\"name\":\"test\", \"value\":123}".data(using: .utf8), responseBodyContent: "{\"status\":\"success\",\"data\":{\"id\":123}}".data(using: .utf8)))
-            .previewDisplayName("Log Detail View - Pro")
-    }
-}
+//struct LogDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LogDetailView(log: LogEntry(id: 1, timestamp: Date(), method: "POST", url: "https://api.example.com/data/submit?user=test&token=abc", host: "api.example.com", path: "/data/submit", queryParams: "{\"user\":\"test\",\"token\":\"abc\"}", requestSize: 500, responseSize: 200, statusCode: 200, latency: 0.123, requestHeaders: "{\"Content-Type\":\"application/json\",\"Authorization\":\"Bearer xyz\"}", responseHeaders: "{\"Server\":\"Nginx\",\"X-Cache\":\"HIT\"}", requestBodyContent: "{\"name\":\"test\", \"value\":123}".data(using: .utf8), responseBodyContent: "{\"status\":\"success\",\"data\":{\"id\":123}}".data(using: .utf8)))
+//            .previewDisplayName("Log Detail View - Pro")
+//    }
+//}

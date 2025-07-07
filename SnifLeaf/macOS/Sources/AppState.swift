@@ -10,6 +10,7 @@ import SwiftUI
 import Shared
 import SnifLeafCore
 import UserNotifications
+import Combine
 
 public final class AppState: ObservableObject {
 
@@ -20,6 +21,23 @@ public final class AppState: ObservableObject {
 
     // MARK: - Interactors (Feature-specific logic)
     @Published public var logListInteractor: LogListInteractor
+    
+    // MARK: - Benchmarks
+   @Published public var categoryBenchmarks: [BenchmarkMetrics] = []
+   @Published public var endpointBenchmarks: [BenchmarkMetrics] = []
+   
+   @Published public var selectedDimension: BenchmarkDimension = .category
+    @Published public var selectedTimeRange: TimeRange = .last7Days
+    
+    @Published var categoryMetrics: [SnifLeafCore.TrafficCategory: SnifLeafCore.BenchmarkMetrics] = [:]
+    @Published var endpointMetrics: [String: SnifLeafCore.BenchmarkMetrics] = [:]
+    @Published var isLoadingBenchmarks: Bool = false
+    @Published var benchmarkErrorMessage: String?
+
+    // MARK: - Benchmark Interactor
+    private var benchmarkService: SnifLeafCore.BenchmarkService!
+    private var benchmarkInteractor: BenchmarkInteractor!
+    private var cancellables = Set<AnyCancellable>()
 
     // MARK: - Initializer
     public init() {
@@ -47,8 +65,48 @@ public final class AppState: ObservableObject {
                 print("AppState: Error requesting notification permissions: \(error.localizedDescription)")
             }
         }
-        
+
+        self.benchmarkService = SnifLeafCore
+            .BenchmarkService(
+                dbPool: GRDBManager.shared.dbPool
+            )
+
+
+       self.benchmarkInteractor = BenchmarkInteractor(appState: self, benchmarkService: self.benchmarkService)
+       $selectedTimeRange
+           .combineLatest($selectedDimension)
+           .debounce(for: .seconds(0.3), scheduler: DispatchQueue.main)
+           .sink { [weak self] _, _ in
+               self?.benchmarkInteractor.fetchBenchmarks()
+           }
+           .store(in: &cancellables)
+
         print("AppState: All core components and interactors initialized.")
+    }
+    
+    public func fetchBenchmarks() {
+        Task {
+            let startDate = selectedTimeRange.startDate() ?? Date(timeIntervalSince1970: 0)
+            do {
+                if selectedDimension == .category {
+                    let bm = try await benchmarkService
+                        .fetchCategoryBenchmarks(since: startDate)
+                    await MainActor.run {
+                        self.categoryBenchmarks = bm
+                    }
+                } else {
+                    let bm = try await benchmarkService.fetchEndpointBenchmarks(
+                        since: startDate,
+                        filterByUrlContains: "us-central1-habitum-backend.cloudfunctions.net/api/v1" // Example filter, adjust as needed
+                    )
+                    await MainActor.run {
+                        self.endpointBenchmarks = bm
+                    }
+                }
+            } catch {
+                print("Error fetching benchmarks: \(error.localizedDescription)")
+            }
+        }
     }
 
     // MARK: - App Lifecycle Methods

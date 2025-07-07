@@ -66,9 +66,7 @@ struct LogListBodyView: View {
                     .animation(.interpolatingSpring(stiffness: 250, damping: 25), value: logListInteractor.logs)
                     .onChange(of: logListInteractor.logs.first?.id) { firstID in
                         guard let firstID = firstID else { return }
-                        withAnimation {
-                            proxy.scrollTo(firstID, anchor: .top)
-                        }
+                        proxy.scrollTo(firstID, anchor: .top)
                     }
                 }
             }

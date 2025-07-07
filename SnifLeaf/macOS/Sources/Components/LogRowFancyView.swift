@@ -117,11 +117,11 @@ struct LogRowFancyView: View {
 }
 
 // MARK: - Preview
-struct LogRowFancyView_Previews: PreviewProvider {
-    static var previews: some View {
-        LogRowFancyView(log: LogEntry(id: 1, timestamp: Date().addingTimeInterval(-10), method: "GET", url: "https://api.example.com/data/users?id=123", host: "api.example.com", path: "/data/users", queryParams: "{\"id\":\"123\"}", requestSize: 100, responseSize: 500, statusCode: 200, latency: 0.15, requestHeaders: "{\"Content-Type\":\"application/json\"}", responseHeaders: "{\"Content-Type\":\"application/json\"}", requestBodyContent: nil, responseBodyContent: "{\"user\":\"example\"}".data(using: .utf8)))
-            .previewLayout(.sizeThatFits)
-            .padding()
-            .previewDisplayName("Log Row Fancy")
-    }
-}
+//struct LogRowFancyView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LogRowFancyView(log: LogEntry(id: 1, timestamp: Date().addingTimeInterval(-10), method: "GET", url: "https://api.example.com/data/users?id=123", host: "api.example.com", path: "/data/users", queryParams: "{\"id\":\"123\"}", requestSize: 100, responseSize: 500, statusCode: 200, latency: 0.15, requestHeaders: "{\"Content-Type\":\"application/json\"}", responseHeaders: "{\"Content-Type\":\"application/json\"}", requestBodyContent: nil, responseBodyContent: "{\"user\":\"example\"}".data(using: .utf8), trafficCategory: "API"))
+//            .previewLayout(.sizeThatFits)
+//            .padding()
+//            .previewDisplayName("Log Row Fancy")
+//    }
+//}

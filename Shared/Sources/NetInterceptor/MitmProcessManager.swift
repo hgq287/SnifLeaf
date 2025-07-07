@@ -129,7 +129,8 @@ public class MitmProcessManager: ObservableObject {
                             "requestHeaders": request_headers_json_str,
                             "responseHeaders": response_headers_json_str,
                             "requestBodyContent": request_body_content,
-                            "responseBodyContent": response_body_content
+                            "responseBodyContent": response_body_content,
+                            "trafficCategory": "Unknown" 
                         }
                         print(json.dumps(log_entry, ensure_ascii=False), flush=True)
                     except Exception as e:
@@ -226,9 +227,9 @@ public class MitmProcessManager: ObservableObject {
                                 self.logProcessor?.processNewLog(logEntry)
                                 
                             } catch {
-                                DispatchQueue.main.async {
-                                    self.latestMitmLog = "JSON Decode Error: \(error.localizedDescription) for line: \(line)"
-                                }
+//                                DispatchQueue.main.async {
+//                                    self.latestMitmLog = "JSON Decode Error: \(error.localizedDescription) for line: \(line)"
+//                                }
                             }
                             
                         }

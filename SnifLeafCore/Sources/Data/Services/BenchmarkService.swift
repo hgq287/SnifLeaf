@@ -99,13 +99,11 @@ public class BenchmarkService {
 
                 if let start = startDate {
                     whereClauses.append("timestamp >= ?")
-                    // SỬA LẠI ĐÚNG CÚ PHÁP: Giữ contentsOf và chuyển đổi giá trị
                     arguments.append(contentsOf: [start])
                 }
                 
                 if let filter = filterByUrlContains, !filter.isEmpty {
                     whereClauses.append("url LIKE ?")
-                    // SỬA LẠI ĐÚNG CÚ PHÁP: Giữ contentsOf và chuyển đổi giá trị
                     arguments.append(contentsOf: ["%" + filter + "%"])
                 }
 

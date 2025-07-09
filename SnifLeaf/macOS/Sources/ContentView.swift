@@ -16,7 +16,7 @@ struct ContentView: View {
     enum SidebarTab: String, CaseIterable, Identifiable {
         case liveLogs = "Live Logs"
         case benchmarks = "Benchmarks"
-        case anomalies = "Detected Anomalies"
+        case anomalies = "AI Anomous Detection"
         case proxyControl = "Proxy Control"
         case settings = "Settings"
 

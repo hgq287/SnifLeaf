@@ -19,7 +19,6 @@ final class BenchmarkInteractor {
         self.benchmarkService = benchmarkService
     }
 
-    // Hàm để fetch dữ liệu benchmark và cập nhật AppState
     func fetchBenchmarks() {
         appState.isLoadingBenchmarks = true
         appState.benchmarkErrorMessage = nil
@@ -28,11 +27,11 @@ final class BenchmarkInteractor {
             do {
                 if appState.selectedDimension == .category {
                     let metrics = try await benchmarkService.fetchCategoryBenchmarks(
-                        since: appState.selectedTimeRange.startDate() ?? Date(timeIntervalSince1970: 0) // Lấy thời gian bắt đầu từ selectedTimeRange
+                        since: appState.selectedTimeRange.startDate() ?? Date(timeIntervalSince1970: 0)
                     )
                     await MainActor.run {
 //                        self.appState.categoryMetrics = metrics
-                        self.appState.endpointMetrics = [:] // Clear metrics của chiều khác
+                        self.appState.endpointMetrics = [:]
                         self.appState.isLoadingBenchmarks = false
                     }
                 } else { // "Endpoint"

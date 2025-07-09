@@ -97,7 +97,7 @@ public final class AppState: ObservableObject {
                 } else {
                     let bm = try await benchmarkService.fetchEndpointBenchmarks(
                         since: startDate,
-                        filterByUrlContains: "us-central1-habitum-backend.cloudfunctions.net/api/v1" // Example filter, adjust as needed
+                        filterByUrlContains: "dav" // Example filter, adjust as needed
                     )
                     await MainActor.run {
                         self.endpointBenchmarks = bm

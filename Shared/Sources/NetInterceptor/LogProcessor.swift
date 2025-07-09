@@ -23,10 +23,20 @@ public class LogProcessor: ObservableObject {
             var logToSave = logEntry
             
             let filteredCategory: TrafficCategory
-            if logEntry.host!.contains("https") {
-                filteredCategory = .other
-            } else {
+            if logEntry.host!.contains("http://") {
                 filteredCategory = .unknown
+            } else if logEntry.host!.contains("dav") {
+                filteredCategory = .apiCallJson
+            } else if logEntry.host!.contains("teams") {
+                filteredCategory = .productivity
+            } else if logEntry.host!.contains("zalo")
+                        || logEntry.host!.contains("messenger")
+                        || logEntry.host!.contains("whatsapp")
+                        || logEntry.host!.contains("viber")
+                        || logEntry.host!.contains("telegram") {
+                filteredCategory = .socialMedia
+            } else {
+                filteredCategory = .others
             }
             
             logToSave.trafficCategory = filteredCategory

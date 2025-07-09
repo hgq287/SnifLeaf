@@ -57,8 +57,23 @@ struct CategoryBenchmarkTableView: View {
     
     func iconForCategory(_ category: String) -> String {
         switch TrafficCategory.fromString(category) {
-        case .other: return "ellipsis.circle.fill"
+        case .googleServices: return "magnifyingglass"
+        case .socialMedia: return "person.3.fill"
+        case .videoStreaming: return "play.rectangle.fill"
+        case .gaming: return "gamecontroller.fill"
+        case .apiCallJson: return "cloud.fill"
+        case .newsAndInformation: return "newspaper.fill"
+        case .email: return "envelope.fill"
+        case .productivity: return "text.book_closed.fill"
+        case .shopping: return "cart.fill"
+        case .security: return "lock.fill"
+        case .fileTransfer: return "arrow.up.arrow.down.square.fill"
+        case .p2p: return "bolt.fill"
+        case .systemUpdates: return "arrow.clockwise.icloud.fill"
+        case .advertisement: return "megaphone.fill"
+        case .iotDevice: return "lightbulb.fill"
         case .unknown: return "questionmark.circle.fill"
+        case .others: return "ellipsis.circle.fill"
         }
     }
 }

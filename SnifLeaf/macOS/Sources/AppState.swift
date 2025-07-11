@@ -97,7 +97,7 @@ public final class AppState: ObservableObject {
                 } else {
                     let bm = try await benchmarkService.fetchEndpointBenchmarks(
                         since: startDate,
-                        filterByUrlContains: "dav" // Example filter, adjust as needed
+                        filterByUrlContains: "google" // Example filter, adjust as needed
                     )
                     await MainActor.run {
                         self.endpointBenchmarks = bm

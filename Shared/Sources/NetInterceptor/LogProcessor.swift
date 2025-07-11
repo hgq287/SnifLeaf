@@ -25,10 +25,16 @@ public class LogProcessor: ObservableObject {
             let filteredCategory: TrafficCategory
             if logEntry.host!.contains("http://") {
                 filteredCategory = .unknown
-            } else if logEntry.host!.contains("dav") {
+            } else if logEntry.host!.contains("docker") {
+                filteredCategory = .systemUpdates
+            } else if logEntry.host!.contains("floware") {
                 filteredCategory = .apiCallJson
             } else if logEntry.host!.contains("teams") {
                 filteredCategory = .productivity
+            } else if logEntry.host!.contains("google") {
+                filteredCategory = .googleServices
+            } else if logEntry.host!.contains("youtube") {
+                filteredCategory = .videoStreaming
             } else if logEntry.host!.contains("zalo")
                         || logEntry.host!.contains("messenger")
                         || logEntry.host!.contains("whatsapp")

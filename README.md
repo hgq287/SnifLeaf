@@ -29,6 +29,9 @@
 ### 📈 Live Traffic Viewer  
 ![Live Logs](Assets/live-logs.jpg)
 
+### 📈 Benchmarks
+![Live Logs](Assets/benchmarks.jpg)
+
 ---
 
 ## Coming Soon

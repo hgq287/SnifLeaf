@@ -17,6 +17,15 @@ public class LogProcessor: ObservableObject {
         self.dbManager = dbManager
         print("LogProcessor initialized.")
     }
+    
+    public func processBatchNewLogs(_ logEntries: [LogEntry]) {
+        Task {
+            for logEntry in logEntries {
+                let logToSave = logEntry
+                self.processNewLog(logToSave)
+            }
+        }
+    }
 
     public func processNewLog(_ logEntry: LogEntry) {
         Task {

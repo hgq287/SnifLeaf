@@ -81,10 +81,8 @@ struct ContentView: View {
             BenchmarkView()
                 .tabItem { Label("Benchmarks", systemImage: "chart.bar.fill") }
         case .anomalies:
-//            AnomalyView()
-//                .environmentObject(appState.anomalyDetectionViewModel)
-            LogListView()
-                .environmentObject(appState.logListInteractor)
+            AnomalyView()
+                .environmentObject(appState.amomaliesInteractor)
         case .proxyControl:
             ProxyControlView()
                 .environmentObject(appState.mitmProcessManager)

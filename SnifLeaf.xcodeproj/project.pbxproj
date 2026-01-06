@@ -49,6 +49,9 @@
 		A344F2982E3E6E3100591AF4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A344F2972E3E6E3100591AF4 /* Info.plist */; };
 		A34A5B572E3DE70400E0F929 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A5B562E3DE70400E0F929 /* AppConfig.swift */; };
 		A36AA99F2E12A6E70066B38D /* GRDBManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AA99E2E12A6E70066B38D /* GRDBManagerTests.swift */; };
+		A37E14C32EFE68BB007D0B32 /* AnomalyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E14C22EFE68BB007D0B32 /* AnomalyView.swift */; };
+		A37E14C52EFE68FF007D0B32 /* AnomaliesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37E14C42EFE68FF007D0B32 /* AnomaliesInteractor.swift */; };
+		A37E14C72EFE6C8F007D0B32 /* EndpointAnomalyDetector.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = A37E14C62EFE6C8F007D0B32 /* EndpointAnomalyDetector.mlpackage */; };
 		A3911C402DEEF05A0009AEE6 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */; };
 		A3911C622DEEFB1E0009AEE6 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = A3911C612DEEFB1E0009AEE6 /* GRDB */; };
 		A3911C7F2DEEFF810009AEE6 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = A3911C7E2DEEFF810009AEE6 /* GRDB */; };
@@ -240,6 +243,9 @@
 		A34A5B562E3DE70400E0F929 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		A363F8C9DDA959E6283A36FD /* SharedTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTests.xcconfig; sourceTree = "<group>"; };
 		A36AA99E2E12A6E70066B38D /* GRDBManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManagerTests.swift; sourceTree = "<group>"; };
+		A37E14C22EFE68BB007D0B32 /* AnomalyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnomalyView.swift; sourceTree = "<group>"; };
+		A37E14C42EFE68FF007D0B32 /* AnomaliesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnomaliesInteractor.swift; sourceTree = "<group>"; };
+		A37E14C62EFE6C8F007D0B32 /* EndpointAnomalyDetector.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = EndpointAnomalyDetector.mlpackage; sourceTree = "<group>"; };
 		A3911C3F2DEEF05A0009AEE6 /* LogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
 		A3911C802DEEFFE70009AEE6 /* GRDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBManager.swift; sourceTree = "<group>"; };
 		A3A9DCC22DF976E500B2BCEF /* LogProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProcessor.swift; sourceTree = "<group>"; };
@@ -503,6 +509,7 @@
 				1EC9E3F986CF841F18C9F8D8 /* ContentView.swift */,
 				C0133403FFABD67FA55E939C /* SnifLeafApp.swift */,
 				A3343F0E2DE996A000E75B78 /* AppState.swift */,
+				A37E14C62EFE6C8F007D0B32 /* EndpointAnomalyDetector.mlpackage */,
 				A3C0DE032DE87C7B007A82FF /* RootView.swift */,
 				CE0B45AD9B4B6F65C0B3DC1E /* Preview Content */,
 			);
@@ -651,6 +658,7 @@
 		A33462212E1BC7490053FF0A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A37E14BF2EFE686D007D0B32 /* anomalies */,
 				A334622B2E1BC7520053FF0A /* Benchmark */,
 				A33462142E1BC7490053FF0A /* LogList */,
 				A33462182E1BC7490053FF0A /* ProxyControl */,
@@ -693,6 +701,31 @@
 				A34A5B562E3DE70400E0F929 /* AppConfig.swift */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		A37E14BF2EFE686D007D0B32 /* anomalies */ = {
+			isa = PBXGroup;
+			children = (
+				A37E14C12EFE6885007D0B32 /* UI */,
+				A37E14C02EFE687F007D0B32 /* Interactor */,
+			);
+			path = anomalies;
+			sourceTree = "<group>";
+		};
+		A37E14C02EFE687F007D0B32 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				A37E14C42EFE68FF007D0B32 /* AnomaliesInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		A37E14C12EFE6885007D0B32 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A37E14C22EFE68BB007D0B32 /* AnomalyView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		A3CDA2482DED92A7009C107B /* Vendors */ = {
@@ -1091,9 +1124,12 @@
 				A33462242E1BC7490053FF0A /* LogFilter.swift in Sources */,
 				A33462332E1BC8670053FF0A /* CategoryBenchmarkTableView.swift in Sources */,
 				A33462252E1BC7490053FF0A /* LogListHeaderView.swift in Sources */,
+				A37E14C52EFE68FF007D0B32 /* AnomaliesInteractor.swift in Sources */,
 				A33462312E1BC7CA0053FF0A /* BenchmarkView.swift in Sources */,
 				A33462262E1BC7490053FF0A /* CustomToolbarView.swift in Sources */,
+				A37E14C32EFE68BB007D0B32 /* AnomalyView.swift in Sources */,
 				A33462272E1BC7490053FF0A /* LogListBodyView.swift in Sources */,
+				A37E14C72EFE6C8F007D0B32 /* EndpointAnomalyDetector.mlpackage in Sources */,
 				A33462282E1BC7490053FF0A /* ProxyControlView.swift in Sources */,
 				A33462292E1BC7490053FF0A /* SidebarFilterView.swift in Sources */,
 				A334622A2E1BC7490053FF0A /* LogListInteractor.swift in Sources */,

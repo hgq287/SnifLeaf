@@ -21,6 +21,7 @@ public final class AppState: ObservableObject {
 
     // MARK: - Interactors (Feature-specific logic)
     @Published public var logListInteractor: LogListInteractor
+    @Published public var amomaliesInteractor: AnomaliesInteractor
     
     // MARK: - Benchmarks
    @Published public var categoryBenchmarks: [BenchmarkMetrics] = []
@@ -55,6 +56,7 @@ public final class AppState: ObservableObject {
         self.mitmProcessManager = _mitmProcessManager
         
         self.logListInteractor = LogListInteractor(dbManager: _sharedDBManager)
+        self.amomaliesInteractor = AnomaliesInteractor(dbManager: _sharedDBManager)
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if granted {

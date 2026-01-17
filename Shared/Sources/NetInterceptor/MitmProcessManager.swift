@@ -1,183 +1,139 @@
 import Foundation
 import Combine
+import OSLog
 import SnifLeafCore
 
+@MainActor
 public final class MitmProcessManager: ObservableObject {
     public static let shared = MitmProcessManager()
-
-    @Published public private(set) var logs: [ProxyLog] = []
+    private let logger = Logger(subsystem: "com.snifleaf.Shared", category: "ProxyEngine")
+    
     @Published public private(set) var isProxyRunning: Bool = false
-    @Published public private(set) var latestMitmLog: String = "No mitmproxy output yet."
-
-    private var task: Process?
-    private var outputBuffer = ""
-    private var tempScriptURL: URL?
+    @Published public private(set) var latestMitmLog: String = "Idle"
+    
+    private var process: Process?
     public var logProcessor: LogProcessor
-
+    
+    // Concurrency: Thread-safe buffer for batching
     private var logEntryBuffer: [LogEntry] = []
-    private let logEntryBufferLock = NSLock()
-    private var flushLogEntryTimer: DispatchSourceTimer?
+    private var flushTask: Task<Void, Never>?
+    
     private let flushInterval: TimeInterval = 1.0
     private let maxBufferCount = 100
 
-    private let parsingQueue = DispatchQueue(label: "com.snifleaf.parsing", qos: .userInitiated)
-    private let processingQueue = DispatchQueue(label: "com.snifleaf.processing", qos: .userInitiated)
-    private let mitmPythonScript = """
-    import json
-    import time
-    from urllib.parse import urlparse, parse_qs
-    from mitmproxy import http
-    import sys
-
-    def response(flow: http.HTTPFlow):
-        if flow.response:
-            try:
-                # Filter unnecessary requests
-                #   - Skip static requests, e.g., images, fonts, CSS, and JS.
-                content_type = flow.response.headers.get("Content-Type", "").lower()
-                excluded_types = ["image", "font", "javascript", "css", "video", "audio", "zip", "octet-stream", "application/pdf"]
-                if any(x in content_type for x in excluded_types):
-                    return
-    
-                # Handle logic to create Json
-                parsed_url = urlparse(flow.request.url)
-                host = parsed_url.netloc
-                path = parsed_url.path
-
-                query_params_dict = parse_qs(parsed_url.query)
-                simplified_query_params = {k: v[0] for k, v in query_params_dict.items()} if query_params_dict else {}
-                query_params_json_str = json.dumps(simplified_query_params, ensure_ascii=False) if simplified_query_params else None
-
-                request_body_content = None
-                request_content = flow.request.content
-                if request_content:
-                    try:
-                        # Size limit: if body > 100kb, do not process
-                        if len(request_content) <= 102400: 
-                            request_body_content = request_content.decode('utf-8')
-                        else:
-                            request_body_content = f"[Content Truncated: {len(request_content)} bytes]"
-                    except UnicodeDecodeError:
-                        import base64
-                        request_body_content = base64.b64encode(request_content).decode('utf-8')
-
-                response_body_content = None
-                response_content = flow.response.content
-                if response_content:
-                    try:
-                        # Size limit: if body > 100kb, do not process
-                        if len(response_content) <= 102400: 
-                            response_body_content = response_content.decode('utf-8')
-                        else:
-                            response_body_content = f"[Content Truncated: {len(response_content)} bytes]"
-                    except UnicodeDecodeError:
-                        import base64
-                        response_body_content = base64.b64encode(flow.response.content).decode('utf-8')
-
-                request_headers_dict = dict(flow.request.headers)
-                request_headers_json_str = json.dumps(request_headers_dict, ensure_ascii=False)
-
-                response_headers_dict = dict(flow.response.headers)
-                response_headers_json_str = json.dumps(response_headers_dict, ensure_ascii=False)
-
-                timestamp = int(flow.request.timestamp_start)
-                latency = (flow.response.timestamp_end - flow.request.timestamp_start) if flow.response.timestamp_end and flow.request.timestamp_start else 0.0
-
-                log_entry = {
-                    "id": None,
-                    "timestamp": timestamp,
-                    "method": flow.request.method,
-                    "url": flow.request.url,
-                    "host": host,
-                    "path": path,
-                    "queryParams": query_params_json_str,
-                    "requestSize": len(flow.request.content) if flow.request.content else 0,
-                    "responseSize": len(flow.response.content) if flow.response.content else 0,
-                    "statusCode": flow.response.status_code,
-                    "latency": latency,
-                    "requestHeaders": request_headers_json_str,
-                    "responseHeaders": response_headers_json_str,
-                    "requestBodyContent": request_body_content,
-                    "responseBodyContent": response_body_content,
-                    "trafficCategory": "Unknown"
-                }
-                
-                # Output filtered requests to JSON
-                print(json.dumps(log_entry, ensure_ascii=False), flush=True)
-            except Exception as e:
-                print(f"Error in mitmproxy addon: {e}", file=sys.stderr, flush=True)
-
-    addons = [
-        response
-    ]
-    """
-    
     public init(logProcessor: LogProcessor = LogProcessor(dbManager: GRDBManager.shared)) {
         self.logProcessor = logProcessor
-        setupFlushTimer()
+    }
+    
+    // MARK: - Lifecycle
+
+    public func startProxy() async throws {
+        stopProxy()
+
+        let pipe = Pipe()
+        let newTask = Process()
+        
+        newTask.executableURL = URL(fileURLWithPath: try resolveMitmdumpPath())
+        
+        // Lead Tip: Use Bundled Python Script for environment consistency
+        let scriptURL = Bundle.main.url(forResource: "snifleaf_inspector", withExtension: "py")
+        
+//        newTask.arguments = [
+//            "-s", scriptURL?.path ?? "",
+//            "--listen-port", "8080",
+//            "--set", "termlog_verbosity=error"
+//        ]
+//        
+        newTask.arguments = [
+            "-s", scriptURL?.path ?? "",
+            "--mode", "regular",
+            "--listen-host", "127.0.0.1",
+            "--listen-port", "8080",
+            "--set", "block_global=false"
+        ]
+
+        
+        newTask.standardOutput = pipe
+        newTask.standardError = pipe
+
+        // 2. Modern Ingestion: Stream bytes asynchronously
+        listenToStream(pipe)
+        
+        newTask.terminationHandler = { [weak self] _ in
+            Task { @MainActor in
+                self?.isProxyRunning = false
+                self?.flushTask?.cancel()
+            }
+        }
+
+        try newTask.run()
+        self.process = newTask
+        self.isProxyRunning = true
+        
+        startFlushTimer()
+        logger.info("Proxy Engine started.")
     }
 
-    // MARK: - Proxy Management
+    public func stopProxy() {
+        process?.terminate()
+        process = nil
+        isProxyRunning = false
+        flushTask?.cancel()
+    }
+    
+    // MARK: - Ingestion Pipeline
 
-    public func stopExistingMitmdump(timeout: TimeInterval = 1.0, completion: @escaping () -> Void) {
-        let killTask = Process()
-        killTask.executableURL = URL(fileURLWithPath: "/usr/bin/killall")
-        killTask.arguments = ["-9", "mitmdump"]
-        try? killTask.run()
-
-        DispatchQueue.global().asyncAfter(deadline: .now() + timeout) {
-            completion()
+    private func listenToStream(_ pipe: Pipe) {
+        let handle = pipe.fileHandleForReading
+        Task(priority: .userInitiated) {
+            // Zero-copy line reading from the process pipe
+            for try await line in handle.bytes.lines {
+                await self.handleIncomingLine(line)
+            }
         }
     }
 
-    public func startProxy(completion: @escaping (Bool) -> Void = { _ in }) {
-        stopExistingMitmdump { [weak self] in
-            guard let self else { return }
+    private func handleIncomingLine(_ line: String) async {
+        let trimmed = line.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
 
-            guard task == nil else {
-                print("mitmdump already running.")
-                completion(false)
-                return
+        // Update UI Status
+        self.latestMitmLog = String(trimmed.prefix(100))
+
+        guard let data = trimmed.data(using: .utf8) else { return }
+        
+        do {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .secondsSince1970
+            let entry = try decoder.decode(LogEntry.self, from: data)
+            
+            logEntryBuffer.append(entry)
+            
+            if logEntryBuffer.count >= maxBufferCount {
+                await flush()
             }
+        } catch {
+            // Ignore non-JSON output noise from mitmdump
+        }
+    }
 
-            do {
-                let scriptURL = try self.writeMitmScriptToTemp()
-                self.tempScriptURL = scriptURL
-
-                let mitmdumpPath = try self.resolveMitmdumpPath()
-
-                let pipe = Pipe()
-                let newTask = Process()
-                newTask.executableURL = URL(fileURLWithPath: mitmdumpPath)
-                newTask.arguments = [
-                    "-s", scriptURL.path,
-                    "--mode", "regular",
-                    "--listen-host", "127.0.0.1",
-                    "--listen-port", "8080",
-                    "--set", "block_global=false"
-                ]
-                newTask.standardOutput = pipe
-                newTask.standardError = pipe
-
-                pipe.fileHandleForReading.readabilityHandler = self.makeReadabilityHandler()
-                newTask.terminationHandler = self.makeTerminationHandler()
-
-                try newTask.run()
-                self.task = newTask
-
-                DispatchQueue.main.async {
-                    self.isProxyRunning = true
-                    completion(true)
-                    print("mitmdump started.")
-                }
-            } catch {
-                self.cleanupTempScript()
-                DispatchQueue.main.async {
-                    self.isProxyRunning = false
-                    self.latestMitmLog = "Proxy start error: \(error.localizedDescription)"
-                    completion(false)
-                }
+    private func startFlushTimer() {
+        flushTask = Task {
+            while !Task.isCancelled {
+                try? await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+                await flush()
             }
+        }
+    }
+
+    private func flush() async {
+        guard !logEntryBuffer.isEmpty else { return }
+        let batch = logEntryBuffer
+        logEntryBuffer.removeAll()
+        
+        // Offload DB I/O to background via LogProcessor
+        Task.detached(priority: .background) {
+            await self.logProcessor.processBatchNewLogs(batch)
         }
     }
 
@@ -185,163 +141,6 @@ public final class MitmProcessManager: ObservableObject {
         if let bundlePath = Bundle.main.path(forResource: "mitmproxy.app", ofType: nil) {
             return bundlePath + "/Contents/MacOS/mitmdump"
         }
-
-        let paths = ["/opt/homebrew/bin/mitmdump", "/usr/local/bin/mitmdump"]
-        for path in paths {
-            if FileManager.default.fileExists(atPath: path) {
-                return path
-            }
-        }
-
-        throw MitmProcessError.mitmdumpNotFound
-    }
-
-    private func writeMitmScriptToTemp() throws -> URL {
-        let tempURL = FileManager.default.temporaryDirectory
-            .appendingPathComponent("dump_log_\(UUID().uuidString).py")
-        try mitmPythonScript.write(to: tempURL, atomically: true, encoding: .utf8)
-        return tempURL
-    }
-
-    private func cleanupTempScript() {
-        if let url = tempScriptURL {
-            try? FileManager.default.removeItem(at: url)
-            tempScriptURL = nil
-        }
-    }
-
-    // MARK: - Output Handling
-
-    private func makeReadabilityHandler() -> (FileHandle) -> Void {
-        return { [weak self] handle in
-            guard let self else { return }
-            let data = handle.availableData
-            guard !data.isEmpty else { return }
-
-            guard let newString = String(data: data, encoding: .utf8) else {
-                DispatchQueue.main.async {
-                    self.latestMitmLog = "MitmProxy output decode error."
-                }
-                return
-            }
-
-            self.outputBuffer.append(newString)
-            
-            while let newlineRange = self.outputBuffer.range(of: "\n") {
-                let line = String(self.outputBuffer[..<newlineRange.lowerBound])
-                self.outputBuffer.removeSubrange(..<newlineRange.upperBound)
-
-                guard !line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                    print("Empty line received, skipping.")
-                    continue
-                }
-                DispatchQueue.main.async { self.latestMitmLog = line }
-
-                self.parsingQueue.async {
-                    self.parseLogLine(line)
-                }
-            }
-        }
-    }
-
-    private func parseLogLine(_ line: String) {
-        guard let data = line.data(using: .utf8) else {
-            print("Invalid UTF-8 line: \(line)")
-            return
-        }
-
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom { decoder in
-            let container = try decoder.singleValueContainer()
-            let timestamp = try container.decode(TimeInterval.self)
-            return Date(timeIntervalSince1970: timestamp)
-        }
-
-        do {
-            var logEntry = try decoder.decode(LogEntry.self, from: data)
-            logEntry.id = nil
-
-            logEntryBufferLock.lock()
-            logEntryBuffer.append(logEntry)
-
-            if logEntryBuffer.count >= maxBufferCount {
-                logEntryBufferLock.unlock()
-                flushLogBuffer()
-            } else {
-                logEntryBufferLock.unlock()
-            }
-        } catch {
-            if let decodingError = error as? DecodingError {
-                print("DecodingError: \(decodingError)")
-            } else {
-                print("JSON Decode Error: \(error.localizedDescription)")
-            }
-        }
-    }
-
-    private func makeTerminationHandler() -> (Process) -> Void {
-        return { [weak self] _ in
-            guard let self else { return }
-            DispatchQueue.main.async {
-                self.isProxyRunning = false
-                self.cleanupTempScript()
-                self.flushLogEntryTimer?.cancel()
-                self.flushLogEntryTimer = nil
-                self.task = nil
-                print("mitmdump terminated.")
-            }
-        }
-    }
-
-    // MARK: - Log Flushing
-
-    private func setupFlushTimer() {
-        let timer = DispatchSource.makeTimerSource(queue: processingQueue)
-        timer.schedule(deadline: .now() + flushInterval, repeating: flushInterval)
-        timer.setEventHandler { [weak self] in
-            self?.flushLogBuffer()
-        }
-        timer.resume()
-        flushLogEntryTimer = timer
-    }
-
-    private func flushLogBuffer() {
-        logEntryBufferLock.lock()
-        let logsToFlush = logEntryBuffer
-        logEntryBuffer.removeAll()
-        logEntryBufferLock.unlock()
-
-        guard !logsToFlush.isEmpty else { return }
-
-        processingQueue.async { [weak self] in
-            self?.logProcessor.processBatchNewLogs(logsToFlush)
-        }
-    }
-
-    // MARK: - Deinit
-
-    deinit {
-        task?.terminate()
-        task = nil
-        flushLogEntryTimer?.cancel()
-        cleanupTempScript()
-        print("MitmProcessManager deinit.")
-    }
-
-    // MARK: - Errors
-
-    enum MitmProcessError: LocalizedError {
-        case mitmdumpNotFound
-        case scriptWriteFailed(Error)
-
-        var errorDescription: String? {
-            switch self {
-            case .mitmdumpNotFound:
-                return "Could not find mitmdump in standard locations or bundle."
-            case .scriptWriteFailed(let err):
-                return "Failed to write mitmdump script: \(err.localizedDescription)"
-            }
-        }
+        throw NSError(domain: "SnifLeaf", code: 404, userInfo: [NSLocalizedDescriptionKey: "mitmdump missing"])
     }
 }
-

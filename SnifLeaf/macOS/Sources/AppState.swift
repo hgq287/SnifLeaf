@@ -12,12 +12,13 @@ import SnifLeafCore
 import UserNotifications
 import Combine
 
+@MainActor
 public final class AppState: ObservableObject {
 
     // MARK: - Core Managers & Models
     @Published public var dbManager: GRDBManager
     @Published public var logProcessor: LogProcessor
-    @Published public var mitmProcessManager: MitmProcessManager
+    @Published public var proxyManager: MitmProcessManager
 
     // MARK: - Interactors (Feature-specific logic)
     @Published public var logListInteractor: LogListInteractor
@@ -48,12 +49,10 @@ public final class AppState: ObservableObject {
         _sharedDBManager.migrateDatabase()
         self.dbManager = _sharedDBManager
         
-        let _logProcessor = LogProcessor(dbManager: _sharedDBManager)
-        self.logProcessor = _logProcessor
+        let sharedLogProcessor = LogProcessor(dbManager: _sharedDBManager)
+        self.logProcessor = sharedLogProcessor
 
-        let _mitmProcessManager = MitmProcessManager.shared
-        _mitmProcessManager.logProcessor = _logProcessor
-        self.mitmProcessManager = _mitmProcessManager
+        self.proxyManager = MitmProcessManager(logProcessor: sharedLogProcessor)
         
         self.logListInteractor = LogListInteractor(dbManager: _sharedDBManager)
         self.amomaliesInteractor = AnomaliesInteractor(dbManager: _sharedDBManager)
@@ -111,19 +110,19 @@ public final class AppState: ObservableObject {
 
     // MARK: - App Lifecycle Methods
     public func startup() {
-        print("AppState: Startup sequence initiated, starting proxy...")
-        mitmProcessManager.startProxy { success in
-            if success {
+        Task {
+            do {
+                try await proxyManager.startProxy()
                 print("AppState: Proxy started successfully.")
-            } else {
-                print("AppState: Failed to start proxy.")
+            } catch {
+                print("AppState Error: Failed to start proxy: \(error)")
             }
         }
     }
     
     public func shutdown() {
         print("AppState: Shutdown sequence initiated, stopping proxy...")
-        mitmProcessManager.stopExistingMitmdump {}
+        proxyManager.stopProxy()
     }
 }
 

@@ -10,6 +10,8 @@ import Combine
 import SnifLeafCore
 
 // MARK: - BenchmarkInteractor
+
+@MainActor
 final class BenchmarkInteractor {
     private unowned let appState: AppState
     private let benchmarkService: SnifLeafCore.BenchmarkService

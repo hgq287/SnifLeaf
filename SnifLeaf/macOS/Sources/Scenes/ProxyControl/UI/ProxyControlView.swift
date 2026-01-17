@@ -39,9 +39,15 @@ struct ProxyControlView: View {
                         
                         Button {
                             if mitmProcessManager.isProxyRunning {
-                                mitmProcessManager.stopExistingMitmdump {}
+                                mitmProcessManager.stopProxy()
                             } else {
-                                mitmProcessManager.startProxy()
+                                Task {
+                                    do {
+                                        try await mitmProcessManager.startProxy()
+                                    } catch {
+                                        print("Error starting proxy: \(error)")
+                                    }
+                                }
                             }
                         } label: {
                             Label(mitmProcessManager.isProxyRunning ? "Stop Proxy" : "Start Proxy",

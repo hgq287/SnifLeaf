@@ -28,6 +28,7 @@
 		95794707C6CB42859FB4CB72 /* SnifLeafCore.docc in Sources */ = {isa = PBXBuildFile; fileRef = 30A73B4EAFEF863551378076 /* SnifLeafCore.docc */; };
 		96A9D48B78B70045B1F77705 /* SnifLeafApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0133403FFABD67FA55E939C /* SnifLeafApp.swift */; };
 		9F8F7FDC68FF3FBDAD03E469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D3E8DB852049383161BE2E /* Assets.xcassets */; };
+		A32508A12F10F3BA00557591 /* snifleaf_inspector.py in Resources */ = {isa = PBXBuildFile; fileRef = A32508A02F10F17B00557591 /* snifleaf_inspector.py */; };
 		A3343F0F2DE996A000E75B78 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3343F0E2DE996A000E75B78 /* AppState.swift */; };
 		A33461D32E1B0BB40053FF0A /* BenchmarkMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33461D22E1B0BB40053FF0A /* BenchmarkMetrics.swift */; };
 		A33461D52E1B0C0B0053FF0A /* TrafficCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33461D42E1B0C0B0053FF0A /* TrafficCategory.swift */; };
@@ -222,6 +223,7 @@
 		9B1D31778A7F0EA199C4747E /* SnifLeafCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnifLeafCore.h; sourceTree = "<group>"; };
 		9BC62F9E4E6FB80459803164 /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		9FE60CE0E812382C0D7AB32A /* SnifLeaf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnifLeaf.entitlements; sourceTree = "<group>"; };
+		A32508A02F10F17B00557591 /* snifleaf_inspector.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = snifleaf_inspector.py; sourceTree = "<group>"; };
 		A3343F0E2DE996A000E75B78 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A33461D22E1B0BB40053FF0A /* BenchmarkMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkMetrics.swift; sourceTree = "<group>"; };
 		A33461D42E1B0C0B0053FF0A /* TrafficCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficCategory.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 		A3CDA2482DED92A7009C107B /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				A32508A02F10F17B00557591 /* snifleaf_inspector.py */,
 				A3CDA2462DED92A7009C107B /* .gitkeep */,
 				A3CDA2472DED92A7009C107B /* mitmproxy.app */,
 			);
@@ -1036,6 +1039,7 @@
 			files = (
 				9559300C3CD8D0015599084F /* Assets.xcassets in Resources */,
 				DAABEE8BC9EE2497CA0396C5 /* Preview Assets.xcassets in Resources */,
+				A32508A12F10F3BA00557591 /* snifleaf_inspector.py in Resources */,
 				A344F2982E3E6E3100591AF4 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

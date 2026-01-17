@@ -85,7 +85,7 @@ struct ContentView: View {
                 .environmentObject(appState.amomaliesInteractor)
         case .proxyControl:
             ProxyControlView()
-                .environmentObject(appState.mitmProcessManager)
+                .environmentObject(appState.proxyManager)
         case .settings:
             SettingsView()
         }

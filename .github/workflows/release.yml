@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    name: Build and Release
+    runs-on: macos-14
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Show Xcode version
+        run: |
+          XCODE_PATH=$(xcode-select -p)
+          echo "Using Xcode at: $XCODE_PATH"
+          xcodebuild -version
+      
+      - name: Extract version from tag
+        id: tag_version
+        run: |
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          echo "version=$TAG_NAME" >> $GITHUB_OUTPUT
+          echo "Tag version: $TAG_NAME"
+      
+      - name: Build and Archive
+        run: |
+          xcodebuild archive \
+            -project SnifLeaf.xcodeproj \
+            -scheme SnifLeaf-macOS \
+            -configuration Release \
+            -archivePath ./build/SnifLeaf.xcarchive \
+            -destination 'platform=macOS' \
+            CODE_SIGN_IDENTITY="${{ secrets.MACOS_CODE_SIGN_IDENTITY }}" \
+            CODE_SIGNING_REQUIRED=YES \
+            CODE_SIGNING_ALLOWED=YES \
+            DEVELOPMENT_TEAM="${{ secrets.MACOS_DEVELOPMENT_TEAM }}"
+      
+      - name: Extract Application from Archive
+        run: |
+          mkdir -p ./build/export
+          cp -R ./build/SnifLeaf.xcarchive/Products/Applications/SnifLeaf-macOS.app ./build/export/
+      
+      - name: Package Application
+        run: |
+          cd build/export
+          zip -r ../../SnifLeaf-${{ steps.tag_version.outputs.version }}.zip SnifLeaf-macOS.app
+          cd ../..
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: SnifLeaf-${{ steps.tag_version.outputs.version }}.zip
+          name: Release ${{ steps.tag_version.outputs.version }}
+          body: |
+            ## SnifLeaf ${{ steps.tag_version.outputs.version }}
+            
+            ### Installation
+            1. Download `SnifLeaf-${{ steps.tag_version.outputs.version }}.zip`
+            2. Extract the archive
+            3. Move `SnifLeaf-macOS.app` to your Applications folder
+            
+            ### Changes
+            See [CHANGELOG.md](CHANGELOG.md) for details.
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

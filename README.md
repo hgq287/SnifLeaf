@@ -1,6 +1,6 @@
 # SnifLeaf – macOS Network Proxy & HTTP Inspector
 
-**SnifLeaf** is a lightweight, native macOS app built with SwiftUI that captures and analyzes HTTP/HTTPS traffic in real time, powered by [mitmproxy](https://mitmproxy.org/). It's ideal for developers, testers, and network debuggers who want a fast, focused alternative to tools like Charles Proxy.
+**SnifLeaf** is a production-grade, native macOS application built with SwiftUI for real-time HTTP/HTTPS traffic capture and analysis. It is engineered with a focus on high-performance data ingestion, modular clean architecture, and ML-powered insights.
 
 ![Stars](https://img.shields.io/github/stars/hgq287/SnifLeaf?style=social)
 ![Forks](https://img.shields.io/github/forks/hgq287/SnifLeaf?style=social)
@@ -8,13 +8,51 @@
 
 ---
 
-## Features
+## Technical Architecture
 
-- Log all HTTP/S traffic (incoming + outgoing)
-- Inspect headers, status codes, and bodies
-- Filter logs by host, method, status, etc.
-- Click to view full request/response details
-- macOS-native SwiftUI interface
+### Core Pattern: Modular Clean Architecture
+The project follows a **layered modular architecture** that separates concerns across independent frameworks, ensuring testability and cross-platform reusability.
+
+* **SnifLeafCore**: The "Source of Truth." Contains core business logic, GRDB data models, and services.
+* **Shared**: Infrastructure layer handling process management (`mitmproxy`), networking factories, and utilities.
+* **App Targets**: Declarative SwiftUI layers for macOS and iOS that consume the logic via Interactors.
+
+### The Interactor Pattern
+To maintain a responsive UI, we utilize the **Interactor Pattern** for business logic:
+* **Views**: Purely declarative SwiftUI components.
+* **Interactors**: `ObservableObject` classes that coordinate state, handle async data fetching, and manage Combine-based reactive updates.
+* **Services**: Low-level logic for specialized tasks like ML anomaly detection and database querying.
+
+---
+
+## Strategic Tech Stack
+
+| Layer | Technology | Rationale |
+| :--- | :--- | :--- |
+| **Language** | Swift 5.10 | Native performance, memory safety, and modern concurrency. |
+| **Persistence** | [GRDB.swift](https://github.com/groue/GRDB.swift) | High-performance SQLite wrapper with type-safe query building and batch-write capabilities. |
+| **Concurrency** | Async/Await + Combine | Dual strategy: Async/Await for I/O; Combine for reactive UI state. |
+| **Build System** | XcodeGen | Reproducible, version-controlled project structure via `project.yml`. |
+| **ML Engine** | CoreML | On-device, real-time anomaly detection using native Apple silicon acceleration. |
+| **Proxy Engine** | mitmproxy | Integrated as a robust, industry-standard backbone for traffic interception. |
+
+---
+
+## Highlights
+
+### 1. High-Throughput Data Pipeline
+SnifLeaf implements a non-blocking ingestion engine designed to handle thousands of events per minute:
+* **Batch Processing**: Log entries are collected in **100-entry buffers** or flushed every 1 second to minimize disk contention.
+* **Process Isolation**: The proxy runs as a separate subprocess, communicating via a JSON stream over `stdout` to ensure app stability.
+
+### 2. Persistence
+* **Schema Migrations**: A robust versioning system allows for zero-downtime schema updates as the app evolves.
+* **Query Optimization**: Strategic indexing on `timestamp`, `host`, and `statusCode` ensures sub-millisecond search performance across large datasets.
+* **Pagination**: UI utilizes an infinite scroll strategy (50 items per page) to maintain a constant memory footprint.
+
+### 3. Native ML Integration
+* **Anomaly Detection**: Features are extracted from live `LogEntry` data and fed into a `CoreML` pipeline to detect unusual endpoint behavior.
+* **Hybrid Training**: Includes a Python-based training service for model generation, while inference remains 100% on-device.
 
 ---
 
@@ -31,16 +69,6 @@
 
 ### 📈 Benchmarks
 ![Live Logs](Assets/benchmarks.jpg)
-
----
-
-## Coming Soon
-
-- Export logs to JSON, HAR, and more
-- Generate QA tester reports
-- Detect anomalies using ML
-- Battery usage analysis
-- Dev/test utility toolkit
 
 ---
 
@@ -97,4 +125,4 @@ Feel free to:
 
 MIT License — see [LICENSE](LICENSE) for full details.
 
-© 2025 [Hg Q.](https://hgq287.github.io)
+© 2026 [Hg Q.](https://hgq287.github.io)

@@ -21,3 +21,6 @@ Carthage/
 # ml-service
 ml_service/__pycache__/*
 ml_service/.venv
+
+# Local docs (not pushed to git)
+Docs/local/

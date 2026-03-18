@@ -8,6 +8,7 @@ packages:
     majorVersion: 5.10.0
   GRDB:
     url: https://github.com/groue/GRDB.swift.git
+    from: "6.0.0"
   SwiftNIO:
     url: https://github.com/apple/swift-nio.git
     majorVersion: 2.83.0
@@ -34,11 +35,32 @@ targets:
       Release: configs/SnifLeaf-macOS-Release.xcconfig
     dependencies:
       - target: Shared
+      - target: SnifLeafCore
+      - target: SnifLeafApplication
+      - target: SnifLeafDomain
     scheme:
       environmentVariables:
         ENABLE_SIGNPOST: YES
 
   # Framework Targets
+  SnifLeafDomain:
+    platform: macOS
+    type: framework
+    sources:
+      - SnifLeafDomain
+    configFiles:
+      Debug: configs/SnifLeafDomain-Debug.xcconfig
+      Release: configs/SnifLeafDomain-Release.xcconfig
+  SnifLeafApplication:
+    platform: macOS
+    type: framework
+    sources:
+      - SnifLeafApplication
+    configFiles:
+      Debug: configs/SnifLeafApplication-Debug.xcconfig
+      Release: configs/SnifLeafApplication-Release.xcconfig
+    dependencies:
+      - target: SnifLeafDomain
   Shared:
     platform: macOS
     type: framework
@@ -48,7 +70,7 @@ targets:
       Debug: configs/Shared-Debug.xcconfig
       Release: configs/Shared-Release.xcconfig
     dependencies:
-      - target: SnifLeafCore
+      - target: SnifLeafDomain
   SnifLeafCore:
     platform: macOS
     type: framework
@@ -58,8 +80,9 @@ targets:
       Debug: configs/SnifLeafCore-Debug.xcconfig
       Release: configs/SnifLeafCore-Release.xcconfig
     dependencies:
-      - package: Alamofire 
-      - package: RealmSwift
+      - target: SnifLeafDomain
+      - package: Alamofire
+      - package: GRDB
   #Test Targets
   SnifLeaf-macOSTests:
     platform: macOS
@@ -99,6 +122,32 @@ targets:
     scheme:
       testTargets:
         - SharedTests
+      gatherCoverageData: true
+  SnifLeafDomainTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/SnifLeafDomainTests.xcconfig
+    sources:
+      - Tests/SnifLeafDomainTests
+    dependencies:
+      - target: SnifLeafDomain
+    scheme:
+      testTargets:
+        - SnifLeafDomainTests
+      gatherCoverageData: true
+  SnifLeafApplicationTests:
+    platform: macOS
+    type: bundle.unit-test
+    configFiles:
+      Debug: configs/SnifLeafApplicationTests.xcconfig
+    sources:
+      - Tests/SnifLeafApplicationTests
+    dependencies:
+      - target: SnifLeafApplication
+    scheme:
+      testTargets:
+        - SnifLeafApplicationTests
       gatherCoverageData: true
   SnifLeafCoreTests:
     platform: macOS

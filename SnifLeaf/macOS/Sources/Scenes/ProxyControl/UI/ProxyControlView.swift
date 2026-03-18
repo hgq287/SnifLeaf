@@ -114,10 +114,12 @@ struct ProxyControlView: View {
 }
 
 // MARK: - Preview
+#if DEBUG
 struct ProxyControlView_Previews: PreviewProvider {
     static var previews: some View {
         ProxyControlView()
-            .environmentObject(MitmProcessManager.shared)
+            .environmentObject(PreviewHelpers.makeMitmProcessManager())
             .previewDisplayName("Proxy Control View")
     }
 }
+#endif

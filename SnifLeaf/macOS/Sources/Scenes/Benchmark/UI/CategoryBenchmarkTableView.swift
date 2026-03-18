@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Charts
-import SnifLeafCore
+import SnifLeafDomain
 
 struct CategoryBenchmarkTableView: View {
     @EnvironmentObject var appState: AppState
@@ -97,7 +97,7 @@ struct CategoryBenchmarkTableView: View {
 
 // MARK: - Chart for Category Benchmarks
 struct CategoryLatencyChart: View {
-    var metrics: [BenchmarkMetrics]
+    var metrics: [SnifLeafDomain.BenchmarkMetrics]
     
     var body: some View {
         Chart {

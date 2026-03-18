@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SnifLeafCore
+import SnifLeafDomain
 
 struct AnomalyView: View {
     @EnvironmentObject var interactor: AnomaliesInteractor
@@ -49,7 +49,7 @@ struct AnomalyView: View {
 }
 
 struct AnomalyRow: View {
-    let entry: LogEntry
+    let entry: SnifLeafDomain.LogEntry
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {

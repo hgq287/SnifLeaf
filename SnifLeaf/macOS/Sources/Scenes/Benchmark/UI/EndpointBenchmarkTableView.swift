@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Charts
-import SnifLeafCore
+import SnifLeafDomain
 
 struct EndpointBenchmarkTableView: View {
     @EnvironmentObject var appState: AppState
@@ -59,7 +59,7 @@ struct EndpointBenchmarkTableView: View {
 
 // MARK: - Chart for Endpoint Latency
 struct EndpointLatencyChart: View {
-    var metrics: [BenchmarkMetrics]
+    var metrics: [SnifLeafDomain.BenchmarkMetrics]
     
     private func cleanUrl(_ url: String) -> String {
         if let range = url.range(of: "://") {

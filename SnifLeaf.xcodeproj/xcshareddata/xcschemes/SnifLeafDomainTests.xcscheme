@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8047E316D287C2AAA4D7CED0"
-               BuildableName = "SnifLeafCoreTests.xctest"
-               BlueprintName = "SnifLeafCoreTests"
+               BlueprintIdentifier = "7422EE5484A5E7DDD0F3E0B7"
+               BuildableName = "SnifLeafDomainTests.xctest"
+               BlueprintName = "SnifLeafDomainTests"
                ReferencedContainer = "container:SnifLeaf.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,9 +33,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8047E316D287C2AAA4D7CED0"
-            BuildableName = "SnifLeafCoreTests.xctest"
-            BlueprintName = "SnifLeafCoreTests"
+            BlueprintIdentifier = "7422EE5484A5E7DDD0F3E0B7"
+            BuildableName = "SnifLeafDomainTests.xctest"
+            BlueprintName = "SnifLeafDomainTests"
             ReferencedContainer = "container:SnifLeaf.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -44,9 +44,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8047E316D287C2AAA4D7CED0"
-               BuildableName = "SnifLeafCoreTests.xctest"
-               BlueprintName = "SnifLeafCoreTests"
+               BlueprintIdentifier = "7422EE5484A5E7DDD0F3E0B7"
+               BuildableName = "SnifLeafDomainTests.xctest"
+               BlueprintName = "SnifLeafDomainTests"
                ReferencedContainer = "container:SnifLeaf.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -67,9 +67,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8047E316D287C2AAA4D7CED0"
-            BuildableName = "SnifLeafCoreTests.xctest"
-            BlueprintName = "SnifLeafCoreTests"
+            BlueprintIdentifier = "7422EE5484A5E7DDD0F3E0B7"
+            BuildableName = "SnifLeafDomainTests.xctest"
+            BlueprintName = "SnifLeafDomainTests"
             ReferencedContainer = "container:SnifLeaf.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -87,9 +87,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8047E316D287C2AAA4D7CED0"
-            BuildableName = "SnifLeafCoreTests.xctest"
-            BlueprintName = "SnifLeafCoreTests"
+            BlueprintIdentifier = "7422EE5484A5E7DDD0F3E0B7"
+            BuildableName = "SnifLeafDomainTests.xctest"
+            BlueprintName = "SnifLeafDomainTests"
             ReferencedContainer = "container:SnifLeaf.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

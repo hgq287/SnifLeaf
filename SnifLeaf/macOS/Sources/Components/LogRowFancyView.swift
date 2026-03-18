@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-import SnifLeafCore
+import SnifLeafDomain
 
 struct LogRowFancyView: View {
-    let log: LogEntry
+    let log: SnifLeafDomain.LogEntry
 
     var body: some View {
         HStack(alignment: .center, spacing: 10) {

@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-import SnifLeafCore
+import SnifLeafDomain
 
 struct LogDetailView: View {
-    let log: LogEntry
+    let log: SnifLeafDomain.LogEntry
 
     @Environment(\.dismiss) var dismiss
     @State private var selectedTab: DetailTab = .summary
@@ -76,7 +76,7 @@ struct LogDetailView: View {
 // MARK: - Sub-Views for LogDetailView Tabs
 
 struct SummaryDetailView: View {
-    let log: LogEntry
+    let log: SnifLeafDomain.LogEntry
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("General Information")
@@ -106,7 +106,7 @@ struct SummaryDetailView: View {
 }
 
 struct RequestDetailView: View {
-    let log: LogEntry
+    let log: SnifLeafDomain.LogEntry
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             if let requestHeadersString = log.requestHeaders,
@@ -133,7 +133,7 @@ struct RequestDetailView: View {
 }
 
 struct ResponseDetailView: View {
-    let log: LogEntry
+    let log: SnifLeafDomain.LogEntry
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             if let responseHeadersString = log.responseHeaders,

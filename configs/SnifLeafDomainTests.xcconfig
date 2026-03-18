@@ -1,3 +1,2 @@
 #include "Base.xcconfig"
 GENERATE_INFOPLIST_FILE = YES
-API_ROOT= http:/$()/localhost:3005

@@ -1,18 +1,19 @@
 //
 //  BenchmarkMetrics.swift
-//  SnifLeafCore
+//  SnifLeafDomain
 //
-//  Created by Hg Q. on 7/7/25.
+//  Domain value type – framework-agnostic.
 //
 
 import Foundation
+
 public struct BenchmarkMetrics: Identifiable {
     public let id = UUID()
     public let dimension: String
     public let requestCount: Int
     public let avgLatency: Double
-    public let p95Latency: Double // 95th percentile latency
-    public let errorRate: Double // Percentage of requests with non-2xx status codes
+    public let p95Latency: Double
+    public let errorRate: Double
 
     public init(dimension: String, requestCount: Int, avgLatency: Double, p95Latency: Double, errorRate: Double) {
         self.dimension = dimension

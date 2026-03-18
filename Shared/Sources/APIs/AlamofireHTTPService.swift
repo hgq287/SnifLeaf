@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import SnifLeafCore
 
-public class AlamofireHTTPService  {
+public class AlamofireHTTPService {
 
 }

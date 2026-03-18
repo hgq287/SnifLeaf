@@ -7,6 +7,7 @@
 
 import Foundation
 import GRDB
+import SnifLeafDomain
 
 public struct LogEntry: Codable, Identifiable, Equatable {
     public var id: Int64?
@@ -166,5 +167,50 @@ extension LogEntry: FetchableRecord, MutablePersistableRecord {
     // Update auto-incremented id upon successful insertion
     mutating public func didInsert(_ inserted: InsertionSuccess) {
         id = inserted.rowID
+    }
+}
+
+// MARK: - Domain conversion
+extension LogEntry {
+    public func toDomain() -> SnifLeafDomain.LogEntry {
+        SnifLeafDomain.LogEntry(
+            id: id,
+            timestamp: timestamp,
+            method: method,
+            url: url,
+            host: host,
+            path: path,
+            queryParams: queryParams,
+            requestSize: requestSize,
+            responseSize: responseSize,
+            statusCode: statusCode,
+            latency: latency,
+            requestHeaders: requestHeaders,
+            responseHeaders: responseHeaders,
+            requestBodyContent: requestBodyContent,
+            responseBodyContent: responseBodyContent,
+            trafficCategory: trafficCategory
+        )
+    }
+
+    public init(from domain: SnifLeafDomain.LogEntry) {
+        self.init(
+            id: domain.id,
+            timestamp: domain.timestamp,
+            method: domain.method,
+            url: domain.url,
+            host: domain.host ?? "",
+            path: domain.path,
+            queryParams: domain.queryParams,
+            requestSize: domain.requestSize,
+            responseSize: domain.responseSize,
+            statusCode: domain.statusCode,
+            latency: domain.latency,
+            requestHeaders: domain.requestHeaders,
+            responseHeaders: domain.responseHeaders,
+            requestBodyContent: domain.requestBodyContent,
+            responseBodyContent: domain.responseBodyContent,
+            trafficCategory: domain.trafficCategory
+        )
     }
 }

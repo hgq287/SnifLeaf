@@ -106,6 +106,20 @@ public class GRDBManager: ObservableObject {
         }
     }
 
+    public func insertLogEntryAsync(_ log: LogEntry) async throws {
+        var savedLog = log
+        try await dbPool.write { db in
+            try savedLog.save(db)
+        }
+        await MainActor.run {
+            NotificationCenter.default.post(
+                name: .GRDBSavedNewLog,
+                object: nil,
+                userInfo: [NotificationKeys.newLogEntry: savedLog]
+            )
+        }
+    }
+
     public func fetchLogEntries(limit: Int = 100, offset: Int = 0) async -> [LogEntry] {
         do {
             return try await dbPool.read { db in

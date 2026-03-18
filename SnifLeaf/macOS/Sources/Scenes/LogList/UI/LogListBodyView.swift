@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-import SnifLeafCore
+import SnifLeafDomain
 
 struct LogListBodyView: View {
     @ObservedObject var logListInteractor: LogListInteractor
-    @Binding var selectedLog: LogEntry?
+    @Binding var selectedLog: SnifLeafDomain.LogEntry?
 
     var body: some View {
         Group {

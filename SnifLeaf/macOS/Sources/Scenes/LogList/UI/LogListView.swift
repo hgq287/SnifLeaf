@@ -7,12 +7,12 @@
 
 import SwiftUI
 import Shared
-import SnifLeafCore
+import SnifLeafDomain
 
 struct LogListView: View {
     @EnvironmentObject var logListInteractor: LogListInteractor
 
-    @State private var selectedLog: LogEntry?
+    @State private var selectedLog: SnifLeafDomain.LogEntry?
     @State private var showingDetailSheet: Bool = false
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
@@ -72,11 +72,13 @@ struct LogListView: View {
        }
 }
 
-// MARK: - Preview Provider
+// MARK: - Preview (requires full composition root in production)
+#if DEBUG
 struct LogListView_Previews: PreviewProvider {
     static var previews: some View {
         LogListView()
-            .environmentObject(LogListInteractor(dbManager: GRDBManager.shared))
-            .previewDisplayName("Log List View - No GRDBQuery")
+            .environmentObject(PreviewHelpers.makeLogListInteractor())
+            .previewDisplayName("Log List View")
     }
 }
+#endif

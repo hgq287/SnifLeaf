@@ -2,60 +2,74 @@
 //  AppState.swift
 //  SnifLeaf-macOS
 //
-//  Created by Hg Q. on 30/5/25.
+//  Composition root: builds repositories, use cases, and interactors.
 //
 
 import Foundation
 import SwiftUI
 import Shared
 import SnifLeafCore
+import SnifLeafApplication
+import SnifLeafDomain
 import UserNotifications
 import Combine
 
 @MainActor
 public final class AppState: ObservableObject {
 
-    // MARK: - Core Managers & Models
-    @Published public var dbManager: GRDBManager
+    // MARK: - Injected to views
     @Published public var logProcessor: LogProcessor
     @Published public var proxyManager: MitmProcessManager
-
-    // MARK: - Interactors (Feature-specific logic)
     @Published public var logListInteractor: LogListInteractor
     @Published public var amomaliesInteractor: AnomaliesInteractor
-    
-    // MARK: - Benchmarks
-   @Published public var categoryBenchmarks: [BenchmarkMetrics] = []
-   @Published public var endpointBenchmarks: [BenchmarkMetrics] = []
-   
-   @Published public var selectedDimension: BenchmarkDimension = .category
-    @Published public var selectedTimeRange: TimeRange = .last7Days
-    
-    @Published var categoryMetrics: [SnifLeafCore.TrafficCategory: SnifLeafCore.BenchmarkMetrics] = [:]
-    @Published var endpointMetrics: [String: SnifLeafCore.BenchmarkMetrics] = [:]
-    @Published var isLoadingBenchmarks: Bool = false
-    @Published var benchmarkErrorMessage: String?
 
-    // MARK: - Benchmark Interactor
-    private var benchmarkService: SnifLeafCore.BenchmarkService!
+    // MARK: - Benchmark state
+    @Published public var categoryBenchmarks: [SnifLeafDomain.BenchmarkMetrics] = []
+    @Published public var endpointBenchmarks: [SnifLeafDomain.BenchmarkMetrics] = []
+    @Published public var selectedDimension: BenchmarkDimension = .category
+    @Published public var selectedTimeRange: TimeRange = .last7Days
+    @Published public var categoryMetrics: [SnifLeafDomain.TrafficCategory: SnifLeafDomain.BenchmarkMetrics] = [:]
+    @Published public var endpointMetrics: [String: SnifLeafDomain.BenchmarkMetrics] = [:]
+    @Published public var isLoadingBenchmarks: Bool = false
+    @Published public var benchmarkErrorMessage: String?
+
     private var benchmarkInteractor: BenchmarkInteractor!
     private var cancellables = Set<AnyCancellable>()
 
-    // MARK: - Initializer
     public init() {
-        let _sharedDBManager = GRDBManager.shared
+        let dbManager = GRDBManager.shared
         let dbURL = AppConfig.databaseURL!
-        _sharedDBManager.openDatabase(databaseURL: dbURL)
-        _sharedDBManager.migrateDatabase()
-        self.dbManager = _sharedDBManager
-        
-        let sharedLogProcessor = LogProcessor(dbManager: _sharedDBManager)
-        self.logProcessor = sharedLogProcessor
+        dbManager.openDatabase(databaseURL: dbURL)
+        dbManager.migrateDatabase()
 
-        self.proxyManager = MitmProcessManager(logProcessor: sharedLogProcessor)
-        
-        self.logListInteractor = LogListInteractor(dbManager: _sharedDBManager)
-        self.amomaliesInteractor = AnomaliesInteractor(dbManager: _sharedDBManager)
+        let logRepository = GRDBLogEntryRepository(manager: dbManager)
+        let newLogSubject = PassthroughSubject<SnifLeafDomain.LogEntry, Never>()
+        logRepository.onLogInserted = { newLogSubject.send($0) }
+
+        let benchmarkService = SnifLeafCore.BenchmarkService(dbPool: dbManager.dbPool)
+        let benchmarkRepository = GRDBBenchmarkRepository(benchmarkService: benchmarkService)
+
+        let fetchPaginatedLogsUseCase = FetchPaginatedLogsUseCaseImpl(repository: logRepository)
+        let categorizeAndStoreUseCase = CategorizeAndStoreLogUseCaseImpl(writer: logRepository)
+        let fetchBenchmarksUseCase = FetchBenchmarksUseCaseImpl(repository: benchmarkRepository)
+
+        let categorizeAndStore = categorizeAndStoreUseCase
+        let lp = LogProcessor(categorizeAndStore: categorizeAndStore)
+        let pm = MitmProcessManager(logProcessor: lp)
+        logProcessor = lp
+        proxyManager = pm
+
+        logListInteractor = LogListInteractor(
+            fetchPaginatedLogs: fetchPaginatedLogsUseCase,
+            logRepository: logRepository,
+            newLogPublisher: newLogSubject.eraseToAnyPublisher()
+        )
+        amomaliesInteractor = AnomaliesInteractor(fetchPaginatedLogs: fetchPaginatedLogsUseCase)
+
+        benchmarkInteractor = BenchmarkInteractor(
+            appState: self,
+            fetchBenchmarksUseCase: fetchBenchmarksUseCase
+        )
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if granted {
@@ -65,50 +79,21 @@ public final class AppState: ObservableObject {
             }
         }
 
-        self.benchmarkService = SnifLeafCore
-            .BenchmarkService(
-                dbPool: GRDBManager.shared.dbPool
-            )
-
-
-       self.benchmarkInteractor = BenchmarkInteractor(appState: self, benchmarkService: self.benchmarkService)
-       $selectedTimeRange
-           .combineLatest($selectedDimension)
-           .debounce(for: .seconds(0.3), scheduler: DispatchQueue.main)
-           .sink { [weak self] _, _ in
-               self?.benchmarkInteractor.fetchBenchmarks()
-           }
-           .store(in: &cancellables)
+        $selectedTimeRange
+            .combineLatest($selectedDimension)
+            .debounce(for: .seconds(0.3), scheduler: DispatchQueue.main)
+            .sink { [weak self] _, _ in
+                self?.benchmarkInteractor.fetchBenchmarks()
+            }
+            .store(in: &cancellables)
 
         print("AppState: All core components and interactors initialized.")
     }
-    
+
     public func fetchBenchmarks() {
-        Task {
-            let startDate = selectedTimeRange.startDate() ?? Date(timeIntervalSince1970: 0)
-            do {
-                if selectedDimension == .category {
-                    let bm = try await benchmarkService
-                        .fetchCategoryBenchmarks(since: startDate)
-                    await MainActor.run {
-                        self.categoryBenchmarks = bm
-                    }
-                } else {
-                    let bm = try await benchmarkService.fetchEndpointBenchmarks(
-                        since: startDate,
-                        filterByUrlContains: "google" // Example filter, adjust as needed
-                    )
-                    await MainActor.run {
-                        self.endpointBenchmarks = bm
-                    }
-                }
-            } catch {
-                print("Error fetching benchmarks: \(error.localizedDescription)")
-            }
-        }
+        benchmarkInteractor.fetchBenchmarks()
     }
 
-    // MARK: - App Lifecycle Methods
     public func startup() {
         Task {
             do {
@@ -119,11 +104,9 @@ public final class AppState: ObservableObject {
             }
         }
     }
-    
+
     public func shutdown() {
         print("AppState: Shutdown sequence initiated, stopping proxy...")
         proxyManager.stopProxy()
     }
 }
-
-
